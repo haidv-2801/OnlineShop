@@ -1,0 +1,11 @@
+D:\C# ASP.NET MVC\OnlineShop\StaticResources\bin\Debug\StaticResources.dll
+D:\C# ASP.NET MVC\OnlineShop\StaticResources\bin\Debug\StaticResources.pdb
+D:\C# ASP.NET MVC\OnlineShop\StaticResources\bin\Debug\en\StaticResources.resources.dll
+D:\C# ASP.NET MVC\OnlineShop\StaticResources\obj\Debug\StaticResources.csprojAssemblyReference.cache
+D:\C# ASP.NET MVC\OnlineShop\StaticResources\obj\Debug\StaticResources.Resources.resources
+D:\C# ASP.NET MVC\OnlineShop\StaticResources\obj\Debug\StaticResources.Resources.en.resources
+D:\C# ASP.NET MVC\OnlineShop\StaticResources\obj\Debug\StaticResources.csproj.GenerateResource.cache
+D:\C# ASP.NET MVC\OnlineShop\StaticResources\obj\Debug\StaticResources.csproj.CoreCompileInputs.cache
+D:\C# ASP.NET MVC\OnlineShop\StaticResources\obj\Debug\en\StaticResources.resources.dll
+D:\C# ASP.NET MVC\OnlineShop\StaticResources\obj\Debug\StaticResources.dll
+D:\C# ASP.NET MVC\OnlineShop\StaticResources\obj\Debug\StaticResources.pdb
