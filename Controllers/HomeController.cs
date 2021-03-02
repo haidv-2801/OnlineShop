@@ -51,7 +51,7 @@ namespace OnlineShop.Controllers
             return PartialView(model);
         }
         [ChildActionOnly]   // trên view con
-        public PartialViewResult HeaderCart()
+        /*public PartialViewResult HeaderCart()
         {
             var cart = Session[CommonConstants.CartSession];
             var list = new List<CartItem>();
@@ -60,6 +60,6 @@ namespace OnlineShop.Controllers
                 list = (List<CartItem>)cart;
             }
             return PartialView(list);
-        }
+        }*/
     }
 }
