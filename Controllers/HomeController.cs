@@ -43,7 +43,7 @@ namespace OnlineShop.Controllers
             var model = new MenuDao().ListByGroupId(2);
             return PartialView(model);
         }
-        [ChildActionOnly]   // trên view con
+        /*[ChildActionOnly]   // trên view con
         [OutputCache(Duration = 3600 * 24)]
         public ActionResult Footer()
         {
@@ -60,6 +60,6 @@ namespace OnlineShop.Controllers
                 list = (List<CartItem>)cart;
             }
             return PartialView(list);
-        }
+        }*/
     }
 }
