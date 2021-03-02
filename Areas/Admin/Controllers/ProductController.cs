@@ -33,12 +33,19 @@ namespace OnlineShop.Areas.Admin.Controllers
             ProductDao dao = new ProductDao();
             var product = dao.ViewDetail(id);
             var images = product.MoreImages;
-            XElement xImages = XElement.Parse(images);
+            // handling moreImages = null
             List<string> listImagesReturn = new List<string>();
-
-            foreach (XElement element in xImages.Elements())
+            if (images == null)
             {
-                listImagesReturn.Add(element.Value);
+                listImagesReturn = null;
+            }
+            else
+            {
+                XElement xImages = XElement.Parse(images);
+                foreach (XElement element in xImages.Elements())
+                {
+                    listImagesReturn.Add(element.Value);
+                }
             }
             return Json(new
             {
