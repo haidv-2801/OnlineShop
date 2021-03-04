@@ -1683,6 +1683,7 @@
     <Content Include="Assets\Client\css\easy-responsive-tabs.css" />
     <Content Include="Assets\Client\css\flexslider.css" />
     <Content Include="Assets\Client\css\fontawesome-all.css" />
+    <Content Include="Assets\Client\css\fontawesome.css" />
     <Content Include="Assets\Client\css\menu.css" />
     <Content Include="Assets\Client\css\popuo-box.css" />
     <Content Include="Assets\Client\css\style.css" />
