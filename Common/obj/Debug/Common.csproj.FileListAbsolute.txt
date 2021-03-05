@@ -10,3 +10,9 @@ C:\Users\Admin\Desktop\New folder\OnlineShop\Common\obj\Debug\Common.csprojAssem
 C:\Users\Admin\Desktop\New folder\OnlineShop\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
 C:\Users\Admin\Desktop\New folder\OnlineShop\Common\obj\Debug\Common.dll
 C:\Users\Admin\Desktop\New folder\OnlineShop\Common\obj\Debug\Common.pdb
+D:\C# ASP.NET MVC\BTL\Common\bin\Debug\Common.dll
+D:\C# ASP.NET MVC\BTL\Common\bin\Debug\Common.pdb
+D:\C# ASP.NET MVC\BTL\Common\obj\Debug\Common.csprojAssemblyReference.cache
+D:\C# ASP.NET MVC\BTL\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
+D:\C# ASP.NET MVC\BTL\Common\obj\Debug\Common.dll
+D:\C# ASP.NET MVC\BTL\Common\obj\Debug\Common.pdb
