@@ -26,10 +26,15 @@ namespace OnlineShop.Areas.Admin.Controllers
                 if (result == 1)
                 {
                     var user = dao.GetById(model.UserName);
+                 
                     var userSession = new UserLogin();
+
                     userSession.UserName = user.UserName;
                     userSession.UserID = user.ID;
                     userSession.GroupID = user.GroupID;
+                    userSession.Avatar = user.Avatar;
+                    userSession.Email = user.Email;
+
                     var listCredentials = dao.GetListCredential(model.UserName);
                     Session.Add(CommonConstants.SESSION_CREDENTIALS, listCredentials);
                     Session.Add(CommonConstants.USER_SESSION, userSession);

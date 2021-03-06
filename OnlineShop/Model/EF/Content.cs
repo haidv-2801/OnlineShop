@@ -60,6 +60,8 @@ namespace Model.EF
 
         [StringLength(500)]
         public string Tags { get; set; }
+
+        [StringLength(2)]
         public string Language { get; set; }
     }
 }
