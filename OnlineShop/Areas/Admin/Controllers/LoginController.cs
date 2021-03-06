@@ -22,14 +22,19 @@ namespace OnlineShop.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 var dao = new UserDao();
-                var result = dao.Login(model.UserName, Encryptor.MD5Hash(model.Password),true);
+                var result = dao.Login(model.UserName, Encryptor.MD5Hash(model.Password), true);
                 if (result == 1)
                 {
                     var user = dao.GetById(model.UserName);
+
                     var userSession = new UserLogin();
+
                     userSession.UserName = user.UserName;
                     userSession.UserID = user.ID;
                     userSession.GroupID = user.GroupID;
+                    userSession.Avatar = user.Avatar;
+                    userSession.Email = user.Email;
+
                     var listCredentials = dao.GetListCredential(model.UserName);
                     Session.Add(CommonConstants.SESSION_CREDENTIALS, listCredentials);
                     Session.Add(CommonConstants.USER_SESSION, userSession);

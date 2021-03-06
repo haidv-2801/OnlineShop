@@ -2280,6 +2280,7 @@
     <Content Include="Assets\Admin\fontawesome-free-5.15.2-web\webfonts\fa-brands-400.svg" />
     <Content Include="Assets\Admin\fontawesome-free-5.15.2-web\webfonts\fa-regular-400.svg" />
     <Content Include="Assets\Admin\fontawesome-free-5.15.2-web\webfonts\fa-solid-900.svg" />
+    <Content Include="Assets\Admin\images\unnamed-svg.svg" />
     <Content Include="Assets\Admin\js\controller\productCategoryController.js" />
     <Content Include="Assets\Admin\js\controller\productController.js" />
     <Content Include="Assets\Admin\js\controller\feedBackController.js" />

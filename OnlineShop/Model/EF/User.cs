@@ -20,6 +20,9 @@ namespace Model.EF
         [StringLength(20)]
         public string GroupID { get; set; }
 
+        [StringLength(100)]
+        public string Avatar { get; set; }
+
         [StringLength(50)]
         public string Name { get; set; }
 
