@@ -7,7 +7,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.html">SB Admin v2.0</a>
+        <a class="navbar-brand" href="index.html">Admin</a>
     </div>
     <!-- /.navbar-header -->
     <ul class="nav navbar-top-links navbar-right">
@@ -227,7 +227,6 @@
                 </li>
                 <li class="divider"></li>
                 <li>
-                    @*<a href="/Admin/Login"><i class="fa fa-sign-out fa-fw"></i> Logout</a>*@
                     @Html.ActionLink("Logout", "Logout", "Login", new { hidefocus = "hidefocus" }, new { })
                 </li>
             </ul>
@@ -251,10 +250,16 @@
                     <!-- /input-group -->
                 </li>
                 <li>
+                    <img href="" style="border-radius:50px;"/>
+                    <a href="/Admin/Home/Index">
+
+                    </a>
+                </li>
+                <li>
                     <a href="/Admin/Home/Index"><i class="fas fa-tachometer-alt fa-fw"></i> Trang chủ</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fa fa-user fa-fw"></i> Hệ thống<span class="fa arrow"></span></a>
+                    <a href="#"><i class="fas fa-cog"></i> Hệ thống<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
                             <a href="/Admin/UserGroup/Index">Nhóm người dùng</a>
@@ -281,10 +286,22 @@
                     <a href="#"><i class="fa fa-desktop fa-fw"></i> Sản phẩm<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="/Admin/ProductCategory/Index">Danh mục</a>
+                            <a href="/Admin/ProductCategory/Index">Thể loại</a>
                         </li>
                         <li>
                             <a href="/Admin/Product/Index">Sản phẩm</a>
+                        </li>
+                    </ul>
+                    <!-- /.nav-second-level -->
+                </li>
+                <li>
+                    <a href="#"><i class="fas fa-users"></i> Khách hàng<span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li>
+                            <a href="/Admin/ProductCategory/Index">Khách hàng</a>
+                        </li>
+                        <li>
+                            <a href="/Admin/Product/Index">Khách hàng</a>
                         </li>
                     </ul>
                     <!-- /.nav-second-level -->
