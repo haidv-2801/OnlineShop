@@ -1,9 +1,4 @@
-﻿@using OnlineShop.Common
-
-@{
-    var user = (UserLogin)Session[CommonConstants.USER_SESSION];
-}
-
+﻿
 <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
     <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -12,7 +7,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.html">Admin</a>
+        <a class="navbar-brand" href="index.html">SB Admin v2.0</a>
     </div>
     <!-- /.navbar-header -->
     <ul class="nav navbar-top-links navbar-right">
@@ -219,11 +214,9 @@
             <!-- /.dropdown-alerts -->
         </li>
         <!-- /.dropdown -->
-       
         <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                <img class="fa-fw" src="@user.Avatar" style="width:2rem; height:2rem; border-radius: 50%;" />
-                <span>@user.UserName</span>  <i class="fa fa-caret-down"></i>
+                <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
             </a>
             <ul class="dropdown-menu dropdown-user">
                 <li>
@@ -234,6 +227,7 @@
                 </li>
                 <li class="divider"></li>
                 <li>
+                    @*<a href="/Admin/Login"><i class="fa fa-sign-out fa-fw"></i> Logout</a>*@
                     @Html.ActionLink("Logout", "Logout", "Login", new { hidefocus = "hidefocus" }, new { })
                 </li>
             </ul>
@@ -257,16 +251,10 @@
                     <!-- /input-group -->
                 </li>
                 <li>
-                    <img href="" style="border-radius:50px;" />
-                    <a href="/Admin/Home/Index">
-
-                    </a>
-                </li>
-                <li>
                     <a href="/Admin/Home/Index"><i class="fas fa-tachometer-alt fa-fw"></i> Trang chủ</a>
                 </li>
                 <li>
-                    <a href="#"><i class="fas fa-cog"></i> Hệ thống<span class="fa arrow"></span></a>
+                    <a href="#"><i class="fa fa-user fa-fw"></i> Hệ thống<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
                             <a href="/Admin/UserGroup/Index">Nhóm người dùng</a>
@@ -293,22 +281,10 @@
                     <a href="#"><i class="fa fa-desktop fa-fw"></i> Sản phẩm<span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         <li>
-                            <a href="/Admin/ProductCategory/Index">Thể loại</a>
+                            <a href="/Admin/ProductCategory/Index">Danh mục</a>
                         </li>
                         <li>
                             <a href="/Admin/Product/Index">Sản phẩm</a>
-                        </li>
-                    </ul>
-                    <!-- /.nav-second-level -->
-                </li>
-                <li>
-                    <a href="#"><i class="fas fa-users"></i> Khách hàng<span class="fa arrow"></span></a>
-                    <ul class="nav nav-second-level">
-                        <li>
-                            <a href="/Admin/ProductCategory/Index">Khách hàng</a>
-                        </li>
-                        <li>
-                            <a href="/Admin/Product/Index">Khách hàng</a>
                         </li>
                     </ul>
                     <!-- /.nav-second-level -->
