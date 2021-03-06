@@ -1,10 +1,10 @@
-using System;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Data.Entity;
-using System.Linq;
-
 namespace Model.EF
 {
+    using System;
+    using System.Data.Entity;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Linq;
+
     public partial class OnlineShopDbContext : DbContext
     {
         public OnlineShopDbContext()
@@ -17,21 +17,21 @@ namespace Model.EF
         public virtual DbSet<Contact> Contacts { get; set; }
         public virtual DbSet<Content> Contents { get; set; }
         public virtual DbSet<ContentTag> ContentTags { get; set; }
-        public virtual DbSet<Credential> Credentials { get; set; }
         public virtual DbSet<FeedBack> FeedBacks { get; set; }
         public virtual DbSet<Footer> Footers { get; set; }
-        public virtual DbSet<Language> Languages { get; set; }
         public virtual DbSet<Menu> Menus { get; set; }
         public virtual DbSet<MenuType> MenuTypes { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<OrderDetail> OrderDetails { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<ProductCategory> ProductCategories { get; set; }
-        public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<Slide> Slides { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<SystemConfig> SystemConfigs { get; set; }
         public virtual DbSet<Tag> Tags { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Role> Roles { get; set; }
+        public virtual DbSet<Credential> Credentials { get; set; }
         public virtual DbSet<UserGroup> UserGroups { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -60,10 +60,6 @@ namespace Model.EF
                 .Property(e => e.ModifiedBy)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Category>()
-                .Property(e => e.Language)
-                .IsUnicode(false);
-
             modelBuilder.Entity<Content>()
                 .Property(e => e.Code)
                 .IsUnicode(false);
@@ -80,27 +76,11 @@ namespace Model.EF
                 .Property(e => e.ModifiedBy)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Content>()
-                .Property(e => e.Language)
-                .IsUnicode(false);
-
             modelBuilder.Entity<ContentTag>()
                 .Property(e => e.TagID)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Credential>()
-                .Property(e => e.UserGroupID)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Credential>()
-                .Property(e => e.RoleID)
-                .IsUnicode(false);
-
             modelBuilder.Entity<Footer>()
-                .Property(e => e.ID)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Language>()
                 .Property(e => e.ID)
                 .IsUnicode(false);
 
@@ -148,10 +128,6 @@ namespace Model.EF
                 .Property(e => e.ModifiedBy)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Role>()
-                .Property(e => e.ID)
-                .IsUnicode(false);
-
             modelBuilder.Entity<Slide>()
                 .Property(e => e.CreatedBy)
                 .IsUnicode(false);
@@ -177,20 +153,14 @@ namespace Model.EF
                 .IsUnicode(false);
 
             modelBuilder.Entity<User>()
-                .Property(e => e.GroupID)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<User>()
                 .Property(e => e.CreatedBy)
                 .IsUnicode(false);
 
             modelBuilder.Entity<User>()
                 .Property(e => e.ModifiedBy)
                 .IsUnicode(false);
-
-            modelBuilder.Entity<UserGroup>()
-                .Property(e => e.ID)
-                .IsUnicode(false);
         }
+
+  
     }
 }
