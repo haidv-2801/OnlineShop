@@ -1,4 +1,6 @@
-﻿using Model.Dao;
+﻿using OnlineShop.Common;
+using Model.Dao;
+using Model.EF;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +14,6 @@ namespace OnlineShop.Areas.Admin.Controllers
     public class ProductController : BaseController
     {
         // GET: Admin/Product
-        // GET: Admin/Content
         public ActionResult Index(string searchString, int page = 1, int pageSize = 10)
         {
             var dao = new ProductDao();
@@ -28,7 +29,67 @@ namespace OnlineShop.Areas.Admin.Controllers
             SetViewBag();
             return View();
         }
-       
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult Create(Product model)
+        {
+            if (ModelState.IsValid)
+            {
+                var session = (UserLogin)Session[CommonConstants.USER_SESSION];
+                model.CreatedBy = session.UserName;
+                var culture = Session[CommonConstants.CurrentCulture];
+                model.CreatedDate = DateTime.Now;
+                model.Quantity = 0;
+                model.IncludedVAT = false;
+                new ProductDao().Create(model);
+                return RedirectToAction("Index");
+            }
+            SetViewBag();
+            return View();
+        }
+        [HttpGet]
+        public ActionResult Edit(long id)
+        {
+            var dao = new ProductDao();
+            var product = dao.GetById(id);
+            SetViewBag(product.CategoryID);
+            return View(product);
+        }
+        [HttpPost]
+        public ActionResult Edit(Product model)
+        {
+            if (ModelState.IsValid)
+            {
+                var dao = new ProductDao();
+                var result = dao.Update(model);
+                if (result)
+                {
+                    return RedirectToAction("Index", "Product");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Cập Nhật Sản Phẩm K Thành Công");
+                }
+            }
+            SetViewBag(model.CategoryID);
+            return View();
+        }
+        [HttpDelete]
+        public ActionResult Delete(long id)
+        {
+            new ProductDao().Delete(id);
+            return RedirectToAction("Index");
+        }
+        [HttpPost]
+        public JsonResult ChangeStatus(long id)
+        {
+            var result = new ProductDao().ChangeStatus(id);
+            // trả ra đối tg có thuộc tính status
+            return Json(new
+            {
+                status = result
+            });
+        }
         public JsonResult LoadImages(long id)
         {
             ProductDao dao = new ProductDao();

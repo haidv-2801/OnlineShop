@@ -21,7 +21,7 @@ namespace Model.Dao
             IQueryable<Product> model = db.Products;
             if (!string.IsNullOrEmpty(searchString))
             {
-                model = model.Where(x => x.Name.Contains(searchString) || x.Name.Contains(searchString));
+                model = model.Where(x => x.Name.Contains(searchString));
             }
 
             return model.OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
@@ -61,6 +61,72 @@ namespace Model.Dao
             model.OrderByDescending(x => x.CreatedDate).Skip((pageIndex - 1) * pageSize).Take(pageSize);
             return model.ToList();
         }
+
+        public bool Update(Product entity)
+        {
+            try
+            {
+                var product = db.Products.Find(entity.ID);
+                product.Name = entity.Name;
+                product.Code = entity.Code;
+                product.MetaTitle = entity.MetaTitle;
+                product.Description = entity.Description;
+                product.Image = entity.Image;
+                product.CategoryID = entity.CategoryID;
+                product.ModifiedBy = entity.ModifiedBy;
+                product.ModifiedDate = DateTime.Now;
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public bool ChangeStatus(long id)
+        {
+            var product = db.Products.Find(id);
+            product.Status = !product.Status; // true thành false, flase thành true
+            db.SaveChanges();
+            return product.Status;    // lấy kqua hiện tại
+        }
+
+        public bool Delete(long id)
+        {
+            try
+            {
+                var product = db.Products.Find(id);
+                db.Products.Remove(product);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public Product GetById(long id)
+        {
+            return db.Products.Find(id);
+        }
+    
+        public long Create(Product entity)
+        {
+            long result = db.Products.Count(x => x.MetaTitle == entity.MetaTitle);
+            if (result == 1)
+            {
+                return -1;
+            }
+            else
+            {
+                db.Products.Add(entity);
+                db.SaveChanges();
+                return entity.ID;
+            }
+        }
+
         public List<ProductViewModel> Search(string keyword, ref int totalRecord, int pageIndex = 1, int pageSize = 2)
         {
             // skip lấy từ bản ghi đến bản ghi nào
