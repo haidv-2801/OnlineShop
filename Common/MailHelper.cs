@@ -26,7 +26,7 @@ namespace Common
             message.Subject = subject;
             message.IsBodyHtml = true;
             message.Body = body;
-
+            var t;
             var client = new SmtpClient();
             client.Credentials = new NetworkCredential(fromEmailAddress, fromEmailPassword);
             client.Host = smtpHost;
