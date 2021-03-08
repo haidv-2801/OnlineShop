@@ -81,7 +81,7 @@ namespace OnlineShop.Areas.Admin.Controllers
         public ActionResult Delete(int id)
         {
             new CategoryDao().Delete(id);
-            SetAlert("Xóa liên hệ thành công", "success");
+            SetAlert("Xóa danh mục thành công", "success");
             return RedirectToAction("Index");
         }
     }
