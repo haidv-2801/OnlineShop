@@ -13,7 +13,7 @@ namespace Common
     {
         public void SendMail(string toEmailAddress, string subject, string content)
         {
-            var fromEmailAddress = ConfigurationManager.AppSettings["FromEmailAddress"].ToString();
+            @*var fromEmailAddress = ConfigurationManager.AppSettings["FromEmailAddress"].ToString();*@
             var fromEmailDisplayName = ConfigurationManager.AppSettings["FromEmailDisplayName"].ToString();
             var fromEmailPassword = ConfigurationManager.AppSettings["FromEmailPassword"].ToString();
             var smtpHost = ConfigurationManager.AppSettings["SMTPHost"].ToString();
