@@ -1,4 +1,5 @@
 ﻿using Model.EF;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,11 +15,37 @@ namespace Model.Dao
         {
             db = new OnlineShopDbContext();
         }
+
+        public IEnumerable<Order> ListAllPaging(string searchString, int curIndex, int pageSize)
+        {
+            IQueryable<Order> model = db.Orders;
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                model = model.Where(x => x.ShipName.Contains(searchString) || x.ShipEmail.Contains(searchString));
+            }
+            return model.OrderByDescending(x => x.CreatedDate).ToPagedList(curIndex, pageSize);
+        }
         public long Insert(Order order)
         {
             db.Orders.Add(order);
             db.SaveChanges();
             return order.ID;
+        }
+
+        public bool Delete(long id)
+        {
+            try
+            {
+                var entity = db.Orders.Find(id);
+                db.Orders.Remove(entity);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+           
         }
     }
 }
