@@ -58,8 +58,15 @@ namespace OnlineShop.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Edit(long id)
         {
+            var model = new OrderDao().Find(id);
+            return View(model);
+        }
 
-            return View();
+        [HttpPost]
+        public JsonResult ChangeStatus(long id)
+        {
+            var result = new OrderDao().ChangeStatus(id);
+            return Json(new { status = result });
         }
     }
 }

@@ -16,6 +16,11 @@ namespace Model.Dao
             db = new OnlineShopDbContext();
         }
 
+        public Order Find(long id)
+        {
+            return db.Orders.Find(id);
+        }
+
         public IEnumerable<Order> ListAllPaging(string searchString, int curIndex, int pageSize)
         {
             IQueryable<Order> model = db.Orders;
@@ -46,6 +51,14 @@ namespace Model.Dao
                 return false;
             }
            
+        }
+
+        public bool ChangeStatus(long id)
+        {
+            var entity = db.Orders.Find(id);
+            entity.Status = !entity.Status;
+            db.SaveChanges();
+            return (bool)entity.Status;
         }
     }
 }
