@@ -55,7 +55,7 @@ namespace Model.Dao
 
                 return true;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 //logging
                 return false;

@@ -2281,6 +2281,7 @@
     <Content Include="Assets\Admin\fontawesome-free-5.15.2-web\webfonts\fa-regular-400.svg" />
     <Content Include="Assets\Admin\fontawesome-free-5.15.2-web\webfonts\fa-solid-900.svg" />
     <Content Include="Assets\Admin\images\unnamed-svg.svg" />
+    <Content Include="Assets\Admin\js\controller\orderController.js" />
     <Content Include="Assets\Admin\js\controller\productCategoryController.js" />
     <Content Include="Assets\Admin\js\controller\productController.js" />
     <Content Include="Assets\Admin\js\controller\feedBackController.js" />
@@ -3932,6 +3933,7 @@
     <Content Include="Areas\Admin\Views\ProductCategory\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Order\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Order\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\Edit.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
