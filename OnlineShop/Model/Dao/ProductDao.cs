@@ -84,6 +84,7 @@ namespace Model.Dao
                 product.MetaTitle = entity.MetaTitle;
                 product.Description = entity.Description;
                 product.Image = entity.Image;
+                product.Detail = entity.Detail;
                 product.CategoryID = entity.CategoryID;
                 product.ModifiedBy = entity.ModifiedBy;
                 product.ModifiedDate = DateTime.Now;
