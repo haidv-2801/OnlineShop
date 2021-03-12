@@ -523,13 +523,13 @@
     <!-- //header-bottom -->
     <!-- navigation -->
     <div class="navbar-inner">
-        @Html.Partial("_navbar_inner")
+        @Html.Action("NavBarInner","Home")
     </div>
     <!-- //navigation -->
     <!-- banner -->
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <!-- Indicators-->
-        @Html.Partial("_slider")
+        @Html.Action("Slide", "Home")
     </div>
     <!-- //banner -->
     <!-- top Products -->
@@ -676,6 +676,13 @@
                 easingType: 'easeOutQuart'
             });
 
+        });
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('.carousel').carousel({
+                interval: 1200
+            })
         });
     </script>
     <!-- //smooth-scrolling-of-move-up -->

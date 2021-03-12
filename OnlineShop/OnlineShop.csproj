@@ -3398,6 +3398,7 @@
     <Content Include="Assets\Client\images\pay8.png" />
     <Content Include="Assets\Client\images\pay9.png" />
     <Content Include="Assets\Client\images\paypal.png" />
+    <Content Include="Assets\Client\images\saas.png" />
     <Content Include="Assets\Client\images\search.png" />
     <Content Include="Assets\Client\images\si1.jpg" />
     <Content Include="Assets\Client\images\si2.jpg" />
@@ -3406,6 +3407,8 @@
     <Content Include="Assets\Client\images\sii2.jpg" />
     <Content Include="Assets\Client\images\sii3.jpg" />
     <Content Include="Assets\Client\images\user.jpg" />
+    <Content Include="Assets\Client\images\win10_blue_1.jpg" />
+    <Content Include="Assets\Client\images\win10_purple.jpg" />
     <Content Include="Assets\Client\js\bootstrap.js" />
     <Content Include="Assets\Client\js\creditly.js" />
     <Content Include="Assets\Client\js\creditly2.js" />

@@ -15,10 +15,10 @@ namespace OnlineShop.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Slides = new SlideDao().ListAll();
+            /*ViewBag.Slides = new SlideDao().ListAll();
             var productDao = new ProductDao();
             ViewBag.NewProducts = productDao.ListNewProduct(4);
-            ViewBag.ListFeatureProducts = productDao.ListFeatureProduct(4);
+            ViewBag.ListFeatureProducts = productDao.ListFeatureProduct(4);*/
 
             //set SEO title
             ViewBag.Title = ConfigurationManager.AppSettings["HomeTitle"];
@@ -27,17 +27,17 @@ namespace OnlineShop.Controllers
             return View();
         }
         [ChildActionOnly]   // trên view con
-        // OutputCacheLocation :cache bên server hoặc client
-        // duration: (cache bn giây)
-       // partial view k support location
-        [OutputCache( Duration = 3600*24,VaryByParam = "None")]
+                            // OutputCacheLocation :cache bên server hoặc client
+                            // duration: (cache bn giây)
+                            // partial view k support location
+        [OutputCache(Duration = 3600 * 24, VaryByParam = "None")]
         public ActionResult MainMenu()
         {
             var model = new MenuDao().ListByGroupId(1);
             return PartialView(model);
         }
         [ChildActionOnly]   // trên view con
-        [OutputCache(Duration = 3600 * 24)]
+        //[OutputCache(Duration = 3600 * 24)]
         public ActionResult TopMenu()
         {
             var model = new MenuDao().ListByGroupId(2);
@@ -60,6 +60,20 @@ namespace OnlineShop.Controllers
                 list = (List<CartItem>)cart;
             }
             return PartialView(list);
+        }
+        // new code
+        [ChildActionOnly]
+        public PartialViewResult Slide()
+        {
+            var model = new SlideDao().ListAll();
+            return PartialView("~/Views/Shared/_slider.cshtml", model);
+        }
+        [ChildActionOnly]
+        public PartialViewResult NavBarInner()
+        {
+            TempData["MenuNavBarInner"] = new MenuDao().ListByGroupId(1);
+            var productCategories = new ProductCategoryDao().ListAll();
+            return PartialView("~/Views/Shared/_navbar_inner.cshtml", productCategories);
         }
     }
 }

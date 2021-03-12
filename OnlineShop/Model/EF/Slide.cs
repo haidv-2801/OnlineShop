@@ -19,7 +19,10 @@ namespace Model.EF
         [StringLength(250)]
         public string Link { get; set; }
 
-        [StringLength(50)]
+        [Column(TypeName = "ntext")]
+        public string Title { get; set; }
+
+        [Column(TypeName ="ntext")]
         public string Description { get; set; }
 
         public DateTime? CreatedDate { get; set; }
