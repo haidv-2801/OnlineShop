@@ -62,5 +62,19 @@ namespace OnlineShop.Controllers
             }
             return PartialView(list);
         }
+        // new code
+        [ChildActionOnly]
+        public PartialViewResult Slide()
+        {
+            var model = new SlideDao().ListAll();
+            return PartialView("~/Views/Shared/_slider.cshtml", model);
+        }
+        [ChildActionOnly]
+        public PartialViewResult NavBarInner()
+        {
+            TempData["MenuNavBarInner"] = new MenuDao().ListByGroupId(1);
+            var productCategories = new ProductCategoryDao().ListAll();
+            return PartialView("~/Views/Shared/_navbar_inner.cshtml", productCategories);
+        }
     }
 }
