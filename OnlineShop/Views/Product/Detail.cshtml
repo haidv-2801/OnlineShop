@@ -1,161 +1,119 @@
-﻿@model Model.EF.Product
-@{
-    ViewBag.Title = Model.Name;
-    ViewBag.Keywords = Model.MetaKeywords;
-    ViewBag.Descriptions = Model.MetaDescriptions;
+﻿﻿@model Model.EF.Product
 
-    Layout = "~/Views/Shared/_Layout.cshtml";
-    var category = (Model.EF.ProductCategory)ViewBag.Category;
-    var relatedProducts = (List<Model.EF.Product>)ViewBag.RelatedProducts;
+@{ Layout = "~/Views/Shared/_Layout.cshtml";
+                var category = (Model.EF.ProductCategory)ViewBag.Category;
+                var relatedProducts = (List<Model.EF.Product>)ViewBag.RelatedProducts; }
+
+@section Scripts {
+    <script src="/Assets/Client/js/imagezoom.js"></script>
+    <!-- //imagezoom -->
+    <!-- flexslider -->
+    <link rel="stylesheet" href="/Assets/Client/css/flexslider.css" type="text/css" media="screen" />
+
+    <script src="/Assets/Client/js/jquery.flexslider.js"></script>
+    <script>
+        // Can also be used with $(document).ready()
+        $(window).load(function () {
+            $('.flexslider').flexslider({
+                animation: "slide",
+                controlNav: "thumbnails"
+            });
+        });
+    </script>
 }
-<div class="content">
-    <div class="content_top">
-        <div class="back-links">
-            <p><a href="index.html">Home</a> >>>> <a href="/san-pham/@category.MetaTitle-@category.ID">@category.Name</a></p>
+
+<div id="breadCumb" class="services-breadcrumb">
+    <div class="agile_inner_breadcrumb">
+        <div class="container">
+            <ul class="w3_short">
+                <li>
+                    <a href="/">Home</a>
+                    <i>|</i>
+                </li>
+                <li>@Model.MetaTitle</li>
+            </ul>
         </div>
-        <div class="clear"></div>
     </div>
-    <div class="section group">
-        <div class="cont-desc span_1_of_2">
-            <div class="product-details">
+</div>
+
+<div class="banner-bootom-w3-agileits py-5">
+    <div class="container py-xl-4 py-lg-2">
+
+        <!-- tittle heading -->
+        <h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
+            <span>S</span>ingle
+            <span>P</span>age
+        </h3>
+        <!-- //tittle heading -->
+        <div class="row">
+            <div class="col-lg-5 col-md-8 single-right-left ">
                 <div class="grid images_3_of_2">
-                    <div id="container">
-                        <div id="products_example">
-                            <div id="products">
-                                <div class="slides_container">
-                                    <a href="#" target="_blank"><img src="@Model.Image" alt="@Model.Name" /></a>
+                    <div class="flexslider">
+                        <ul class="slides">
+                            <li data-thumb="@Model.Image">
+                                <div class="thumb-image">
+                                    <img src="@Model.Image" data-imagezoom="true" class="img-fluid" alt="">
                                 </div>
-                                <ul class="pagination">
-                                    <li><a href="#"><img src="images/thumbnailslide-1.jpg" alt=" " /></a></li>
-                                    <li><a href="#"><img src="images/thumbnailslide-2.jpg" alt=" " /></a></li>
-                                    <li><a href="#"><img src="images/thumbnailslide-3.jpg" alt=" " /></a></li>
-                                    <li><a href="#"><img src="images/thumbnailslide-4.jpg" alt=" " /></a></li>
-                                    <li><a href="#"><img src="images/thumbnailslide-5.jpg" alt=" " /></a></li>
-                                    <li><a href="#"><img src="images/thumbnailslide-6.jpg" alt=" " /></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="desc span_3_of_2">
-                    <h2>@Model.Name</h2>
-                    <p>@Model.Description</p>
-                    <div class="price">
-                        <p>Price: <span>@(Model.Price.HasValue ? Model.Price.Value.ToString("N0") : "Liên Hệ")</span></p>
-                    </div>
-                    <div class="share-desc">
-                        <div class="share">
-                            <p>Chia sẻ:</p>
-                            <ul>
-                                <li><a href="#"><img src="images/facebook.png" alt="" /></a></li>
-                                <li><a href="#"><img src="images/twitter.png" alt="" /></a></li>
-                            </ul>
-                            <div class="addthis_native_toolbox"></div>
-                        </div>
-                        <div class="button"><span><a href="#">Thêm Vào Giỏ</a></span></div>
-                        <div class="clear"></div>
-                    </div>
-                    <div class="wish-list">
-                        <ul>
-                            <li class="wish"><a href="#">Thêm Vào Giỏ</a></li>
-                            <li class="compare"><a href="#">So Sánh</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="clear"></div>
-            </div>
-            <div class="product_desc">
-                <div id="horizontalTab">
-                    <ul class="resp-tabs-list">
-                        <li>Product Details</li>
-                        <div class="clear"></div>
-                    </ul>
-                    <div class="resp-tabs-container">
-                        <div class="product-desc">
-                            @Html.Raw(Model.Detail)
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <script type="text/javascript">
-                $(document).ready(function () {
-                    $('#horizontalTab').easyResponsiveTabs({
-                        type: 'default', //Types: default, vertical, accordion
-                        width: 'auto', //auto or any width like 600px
-                        fit: true   // 100% fit in a container
-                    });
-                });</script>
-            <div class="content_bottom">
-                <div class="heading">
-                    <h3>Sản Phẩm Liên Quan</h3>
-                </div>
-                <div class="see">
-                    <p><a href="#">Xem Tất Cả</a></p>
-                </div>
-                <div class="clear"></div>
-            </div>
-            <div class="section group">
-                @foreach (var item in relatedProducts)
-                {
-                    var url = "/chi-tiet/" + item.MetaTitle + "-" + item.ID;
-                    <div class="grid_1_of_4 images_1_of_4">
-                        <a href="@url"><img src="@item.Image" alt=""></a>
-                        <div class="price" style="border:none">
-                            <div class="add-cart" style="float:none">
-                                <h4><a href="@url">Add to Cart</a></h4>
-                            </div>
-                            <div class="clear"></div>
-                        </div>
-                    </div>
-                }
-            </div>
-        </div>
-        <div class="rightsidebar span_3_of_1">
-            @{Html.RenderAction("ProductCategory", "Product");}
-            <div class="subscribe">
-                <h2>Newsletters Signup</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.......</p>
-                <div class="signup">
-                    <form>
-                        <input type="text" value="E-mail address" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'E-mail address';"><input type="submit" value="Sign up">
-                    </form>
-                </div>
-            </div>
-            <div class="community-poll">
-                <h2>Community POll</h2>
-                <p>What is the main reason for you to purchase products online?</p>
-                <div class="poll">
-                    <form>
-                        <ul>
-                            <li>
-                                <input type="radio" name="vote" class="radio" value="1">
-                                <span class="label"><label>More convenient shipping and delivery </label></span>
                             </li>
-                            <li>
-                                <input type="radio" name="vote" class="radio" value="2">
-                                <span class="label"><label for="vote_2">Lower price</label></span>
+                            <li data-thumb="@Model.Image">
+                                <div class="thumb-image">
+                                    <img src="@Model.Image" data-imagezoom="true" class="img-fluid" alt="">
+                                </div>
                             </li>
-                            <li>
-                                <input type="radio" name="vote" class="radio" value="3">
-                                <span class="label"><label for="vote_3">Bigger choice</label></span>
-                            </li>
-                            <li>
-                                <input type="radio" name="vote" class="radio" value="5">
-                                <span class="label"><label for="vote_5">Payments security </label></span>
-                            </li>
-                            <li>
-                                <input type="radio" name="vote" class="radio" value="6">
-                                <span class="label"><label for="vote_6">30-day Money Back Guarantee </label></span>
-                            </li>
-                            <li>
-                                <input type="radio" name="vote" class="radio" value="7">
-                                <span class="label"><label for="vote_7">Other.</label></span>
+                            <li data-thumb="@Model.Image">
+                                <div class="thumb-image">
+                                    <img src="@Model.Image" data-imagezoom="true" class="img-fluid" alt="">
+                                </div>
                             </li>
                         </ul>
-                    </form>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-7 single-right-left simpleCart_shelfItem">
+                <h3 class="mb-3">@Model.MetaDescriptions</h3>
+                <p class="mb-3">
+                    @{ var price = "";
+                                    var promotionPrice = "";
+                                    if (Model.Price.HasValue)
+                                    {
+                                        price = Model.Price.Value.ToString("N0") + "Vnđ";
+                                    }
+                                    if (Model.PromotionPrice.HasValue)
+                                    {
+                                        promotionPrice = Model.PromotionPrice.Value.ToString("N0") + "Vnđ";
+                                    } }
+                    <span class="item_price">@promotionPrice</span>
+                    <del class="mx-2 font-weight-light">@price</del>
+                    <label>Free delivery</label>
+                </p>
+                <div class="product-single-w3l">
+                    @Model.Detail
+                    <p class="my-sm-4 my-3">
+                        <i class="fas fa-retweet mr-3"></i>Net banking & Credit/ Debit/ ATM card
+                    </p>
+                </div>
+                <div class="occasion-cart">
+                    <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+                        <form action="#" method="post">
+                            <fieldset>
+                                <input type="hidden" name="cmd" value="_cart" />
+                                <input type="hidden" name="add" value="1" />
+                                <input type="hidden" name="business" value=" " />
+                                <input type="hidden" name="item_name" value="Samsung Galaxy J7 Prime" />
+                                <input type="hidden" name="amount" value="200.00" />
+                                <input type="hidden" name="discount_amount" value="1.00" />
+                                <input type="hidden" name="currency_code" value="USD" />
+                                <input type="hidden" name="return" value=" " />
+                                <input type="hidden" name="cancel_return" value=" " />
+                                <input type="submit" name="submit" value="Add to cart" class="button" />
+                            </fieldset>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-    </div>
+
