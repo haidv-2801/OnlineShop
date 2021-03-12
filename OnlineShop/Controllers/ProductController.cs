@@ -1,10 +1,8 @@
 ﻿using Model.Dao;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.UI;
+using Model.ViewModel;
+using System.Collections.Generic;
 
 namespace OnlineShop.Controllers
 {
@@ -21,7 +19,9 @@ namespace OnlineShop.Controllers
             var model = new ProductCategoryDao().ListAll();
             return PartialView(model);
         }
-        public ActionResult Category(long cateId, int page = 1, int pageSize = 2)
+
+ 
+        /*public ActionResult Category(long cateId, int page = 1, int pageSize = 2)
         {
             var category = new CategoryDao().ViewDetail(cateId);
             ViewBag.Category = category;
@@ -29,17 +29,16 @@ namespace OnlineShop.Controllers
             var model = new ProductDao().ListByCategoryId(cateId, ref totalRecord, page, pageSize);
             ViewBag.Total = totalRecord;
             ViewBag.Page = page;
-            int maxPage = 5;
+            ViewBag.Last = totalPage;
+            ViewBag.Next = page + 1;
+            ViewBag.Prev = page - 1;xPage = 5;
             int totalPage = 0;
             totalPage = (int)Math.Ceiling((double)(totalRecord / pageSize));
             ViewBag.TotalPage = totalPage;
             ViewBag.MaxPage = maxPage;
             ViewBag.First = 1;
-            ViewBag.Last = totalPage;
-            ViewBag.Next = page + 1;
-            ViewBag.Prev = page - 1;
             return View(model);
-        }
+        }*/
         // cache trên từng id khác nhau
         // có thể sử dụng với config trong web.config
         [OutputCache(CacheProfile = "Cache1DayForProduct")]
