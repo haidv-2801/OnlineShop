@@ -15,11 +15,12 @@ namespace OnlineShop.Controllers
     {
         public ActionResult Index()
         {
-            /*ViewBag.Slides = new SlideDao().ListAll();
+            ViewBag.Slides = new SlideDao().ListAll();
             var productDao = new ProductDao();
-            ViewBag.NewProducts = productDao.ListNewProduct(4);
-            ViewBag.ListFeatureProducts = productDao.ListFeatureProduct(4);*/
-
+            /*       ViewBag.NewProducts = productDao.ListNewProduct(4);
+                   ViewBag.ListFeatureProducts = productDao.ListFeatureProduct(4);*/
+            ViewBag.NewProducts = productDao.ProductsByCate(1, 3);
+            ViewBag.ListFeatureProducts = productDao.ProductsByCate(2, 3);
             //set SEO title
             ViewBag.Title = ConfigurationManager.AppSettings["HomeTitle"];
             ViewBag.Keywords = ConfigurationManager.AppSettings["HomeKeyword"];

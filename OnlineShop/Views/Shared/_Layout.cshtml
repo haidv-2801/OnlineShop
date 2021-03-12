@@ -523,7 +523,7 @@
     <!-- //header-bottom -->
     <!-- navigation -->
     <div class="navbar-inner">
-        @Html.Action("NavBarInner","Home")
+        @Html.Action("NavBarInner", "Home")
     </div>
     <!-- //navigation -->
     <!-- banner -->
@@ -533,9 +533,9 @@
     </div>
     <!-- //banner -->
     <!-- top Products -->
-    <div class="ads-grid py-sm-5 py-4">
-        @RenderBody()
-    </div>
+    @*<div class="ads-grid py-sm-5 py-4">*@
+    @RenderBody()
+    @* </div>*@
     <!-- //top products -->
     <!-- middle section -->
     <div class="join-w3l1 py-sm-5 py-4">
@@ -690,6 +690,7 @@
     <script src=" /Assets/Client/js/bootstrap.js"></script>
     <!-- //for bootstrap working -->
     <!-- //js-files -->
+    @RenderSection("Scripts", false)
 </body>
 </html>
 

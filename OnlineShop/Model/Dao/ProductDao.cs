@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Model.ViewModel;
 
 namespace Model.Dao
 {
@@ -26,6 +27,20 @@ namespace Model.Dao
 
             return model.OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
         }
+
+        // Lấy danh sách product theo category dùng viewmodel   
+        public ProductCategoryViewModel ProductsByCate(long cateID, int takeNum)
+        {
+            ProductCategory cate = db.ProductCategories.Find(cateID);
+            List<Product> products = db.Products.Where(x => x.CategoryID == cateID && x.Status).Take(takeNum).ToList();
+            ProductCategoryViewModel productCategoryViewModel = new ProductCategoryViewModel
+            {
+                Cate = cate,
+                Products = products
+            };
+            return productCategoryViewModel;
+        }
+
         // lấy danh sách theo id
         public List<ProductViewModel> ListByCategoryId(long categoryId, ref int totalRecord, int pageIndex = 1, int pageSize = 2)
         {
@@ -72,6 +87,7 @@ namespace Model.Dao
                 product.MetaTitle = entity.MetaTitle;
                 product.Description = entity.Description;
                 product.Image = entity.Image;
+                product.Detail = entity.Detail;
                 product.CategoryID = entity.CategoryID;
                 product.ModifiedBy = entity.ModifiedBy;
                 product.ModifiedDate = DateTime.Now;
