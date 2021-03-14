@@ -3960,6 +3960,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_middle_section.cshtml" />
     <Content Include="Views\Shared\_navbar_inner.cshtml" />
+    <Content Include="Views\Shared\_filter_right.cshtml" />
     <None Include="Views\Shared\_product.cshtml" />
     <Content Include="Views\Shared\_slider.cshtml" />
     <Content Include="Web.config" />
