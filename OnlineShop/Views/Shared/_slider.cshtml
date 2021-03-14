@@ -1,10 +1,17 @@
 ﻿@model List<Model.EF.Slide>
 
-<ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+<ol class="carousel-indicators"> 
+    @for (var j = 0; j < Model.Count; ++j)
+    {
+        if (j == 0)
+        {
+            <li data-target="#carouselExampleIndicators" data-slide-to="@j" class="active"></li>
+        }
+        else
+        {
+            <li data-target="#carouselExampleIndicators" data-slide-to="@j"></li>
+        }
+    }
 </ol>
 <div class="carousel-inner">
     @{ int i = 0;}
