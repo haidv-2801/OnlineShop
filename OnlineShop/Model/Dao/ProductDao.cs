@@ -4,9 +4,6 @@ using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Model.ViewModel;
 
 namespace Model.Dao
 {
@@ -85,6 +82,7 @@ namespace Model.Dao
                 product.Name = entity.Name;
                 product.Code = entity.Code;
                 product.MetaTitle = entity.MetaTitle;
+                product.PromotionPrice = entity.PromotionPrice;
                 product.Description = entity.Description;
                 product.Image = entity.Image;
                 product.Detail = entity.Detail;

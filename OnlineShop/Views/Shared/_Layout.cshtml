@@ -15,6 +15,8 @@
     <meta charset="UTF-8" />
     <meta name="keywords" content="Electro Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
     <script>
+        import { json } from "modernizr";
+
         addEventListener("load", function () {
             setTimeout(hideURLbar, 0);
         }, false);
@@ -22,15 +24,154 @@
         function hideURLbar() {
             window.scrollTo(0, 1);
         }
-    </script>
+
+        /* END EXTERNAL SOURCE */
+        /* BEGIN EXTERNAL SOURCE */
+
+        ///<reference path="C:\Users\Admin\Desktop\main1\OnlineShop\OnlineShop\Views\Shared\ \Assets\Client\js\jquery-2.2.3.min.js" />
+
+        /* END EXTERNAL SOURCE */
+        /* BEGIN EXTERNAL SOURCE */
+
+        $(document).ready(function () {
+            $(".dropdown").hover(
+                function () {
+                    $('.dropdown-menu', this).stop(true, true).slideDown("fast");
+                    $(this).toggleClass('open');
+                },
+                function () {
+                    $('.dropdown-menu', this).stop(true, true).slideUp("fast");
+                    $(this).toggleClass('open');
+                }
+            );
+        });
+
+        /* END EXTERNAL SOURCE */
+        /* BEGIN EXTERNAL SOURCE */
+
+        ///<reference path="C:\Users\Admin\Desktop\main1\OnlineShop\OnlineShop\Views\Shared\ \Assets\Client\js\jquery.magnific-popup.js" />
+
+        /* END EXTERNAL SOURCE */
+        /* BEGIN EXTERNAL SOURCE */
+
+        $(document).ready(function () {
+            $('.popup-with-zoom-anim').magnificPopup({
+                type: 'inline',
+                fixedContentPos: false,
+                fixedBgPos: true,
+                overflowY: 'auto',
+                closeBtnInside: true,
+                preloader: false,
+                midClick: true,
+                removalDelay: 300,
+                mainClass: 'my-mfp-zoom-in'
+            });
+
+        });
+
+        /* END EXTERNAL SOURCE */
+        /* BEGIN EXTERNAL SOURCE */
+
+        ///<reference path="C:\Users\Admin\Desktop\main1\OnlineShop\OnlineShop\Views\Shared\ \Assets\Client\js\minicart.js" />
+
+        /* END EXTERNAL SOURCE */
+        /* BEGIN EXTERNAL SOURCE */
+
+        paypals.minicarts.render(); //use only unique class names other than paypals.minicarts.Also Replace same class name in css and minicart.min.js
+
+        paypals.minicarts.cart.on('checkout', function (evt) {
+            var items = this.items(),
+                len = items.length,
+                total = 0,
+                i;
+
+            // Count the number of each item in the cart
+            for (i = 0; i < len; i++) {
+                total += items[i].get('quantity');
+            }
+
+            if (total < 3) {
+                alert('The minimum order quantity is 3. Please add more to your shopping cart before checking out');
+                evt.preventDefault();
+            }
+        });
+
+        /* END EXTERNAL SOURCE */
+        /* BEGIN EXTERNAL SOURCE */
+
+        window.onload = function () {
+            document.getElementById("password1").onchange = validatePassword;
+            document.getElementById("password2").onchange = validatePassword;
+        }
+
+        function validatePassword() {
+            var pass2 = document.getElementById("password2").value;
+            var pass1 = document.getElementById("password1").value;
+            if (pass1 != pass2)
+                document.getElementById("password2").setCustomValidity("Passwords Don't Match");
+            else
+                document.getElementById("password2").setCustomValidity('');
+            //empty string means no validation error
+        }
+
+        /* END EXTERNAL SOURCE */
+        /* BEGIN EXTERNAL SOURCE */
+
+        ///<reference path="C:\Users\Admin\Desktop\main1\OnlineShop\OnlineShop\Views\Shared\ \Assets\Client\js\scroll.js" />
+
+        /* END EXTERNAL SOURCE */
+        /* BEGIN EXTERNAL SOURCE */
+
+        ///<reference path="C:\Users\Admin\Desktop\main1\OnlineShop\OnlineShop\Views\Shared\ \Assets\Client\js\SmoothScroll.min.js" />
+
+        /* END EXTERNAL SOURCE */
+        /* BEGIN EXTERNAL SOURCE */
+
+        ///<reference path="C:\Users\Admin\Desktop\main1\OnlineShop\OnlineShop\Views\Shared\ \Assets\Client\js\move-top.js" />
+
+        /* END EXTERNAL SOURCE */
+        /* BEGIN EXTERNAL SOURCE */
+
+        ///<reference path="C:\Users\Admin\Desktop\main1\OnlineShop\OnlineShop\Views\Shared\ \Assets\Client\js\easing.js" />
+
+        /* END EXTERNAL SOURCE */
+        /* BEGIN EXTERNAL SOURCE */
+
+        jquery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+
+                $('html,body').animate({
+                    scrollTop: $(this.hash).offset().top
+                }, 1000);
+            });
+        });
+
+        /* END EXTERNAL SOURCE */
+        /* BEGIN EXTERNAL SOURCE */
+
+        $(document).ready(function () {
+            /*
+            var defaults = {
+                containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear'
+            };
+            */
+            $().UItoTop({
+                easingType: 'easeOutQuart'
+            });
+
+        }</script>
     <!-- //Meta tag Keywords -->
     <!-- Custom-Files -->
     <link href=" /Assets/Client/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
     <!-- Bootstrap css -->
     <link href=" /Assets/Client/css/style.css" rel="stylesheet" type="text/css" media="all" />
     <!-- Main css -->
-    <link rel="stylesheet" href="/Assets/Client/css/all.min.css"  />
-    <link rel="stylesheet" href="/Assets/Client/css/fontawesome.min.css"  />
+    <link rel="stylesheet" href="/Assets/Client/css/all.min.css" />
+    <link rel="stylesheet" href="/Assets/Client/css/fontawesome.min.css" />
     <!-- Font-Awesome-Icons-CSS -->
     <link href=" /Assets/Client/css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
     <!-- pop-up-box -->
@@ -565,80 +706,18 @@
     <script src=" /Assets/Client/js/jquery-2.2.3.min.js"></script>
     <!-- //jquery -->
     <!-- nav smooth scroll -->
-    <script>
-        $(document).ready(function () {
-            $(".dropdown").hover(
-                function () {
-                    $('.dropdown-menu', this).stop(true, true).slideDown("fast");
-                    $(this).toggleClass('open');
-                },
-                function () {
-                    $('.dropdown-menu', this).stop(true, true).slideUp("fast");
-                    $(this).toggleClass('open');
-                }
-            );
-        });
-    </script>
+    <script></script>
     <!-- //nav smooth scroll -->
     <!-- popup modal (for location)-->
     <script src=" /Assets/Client/js/jquery.magnific-popup.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('.popup-with-zoom-anim').magnificPopup({
-                type: 'inline',
-                fixedContentPos: false,
-                fixedBgPos: true,
-                overflowY: 'auto',
-                closeBtnInside: true,
-                preloader: false,
-                midClick: true,
-                removalDelay: 300,
-                mainClass: 'my-mfp-zoom-in'
-            });
-
-        });
-    </script>
+    <script></script>
     <!-- //popup modal (for location)-->
     <!-- cart-js -->
     <script src=" /Assets/Client/js/minicart.js"></script>
-    <script>
-        paypals.minicarts.render(); //use only unique class names other than paypals.minicarts.Also Replace same class name in css and minicart.min.js
-
-        paypals.minicarts.cart.on('checkout', function (evt) {
-            var items = this.items(),
-                len = items.length,
-                total = 0,
-                i;
-
-            // Count the number of each item in the cart
-            for (i = 0; i < len; i++) {
-                total += items[i].get('quantity');
-            }
-
-            if (total < 3) {
-                alert('The minimum order quantity is 3. Please add more to your shopping cart before checking out');
-                evt.preventDefault();
-            }
-        });
-    </script>
+    <script></script>
     <!-- //cart-js -->
     <!-- password-script -->
-    <script>
-        window.onload = function () {
-            document.getElementById("password1").onchange = validatePassword;
-            document.getElementById("password2").onchange = validatePassword;
-        }
-
-        function validatePassword() {
-            var pass2 = document.getElementById("password2").value;
-            var pass1 = document.getElementById("password1").value;
-            if (pass1 != pass2)
-                document.getElementById("password2").setCustomValidity("Passwords Don't Match");
-            else
-                document.getElementById("password2").setCustomValidity('');
-            //empty string means no validation error
-        }
-    </script>
+    <script></script>
     <!-- //password-script -->
     <!-- scroll seller -->
     <script src=" /Assets/Client/js/scroll.js"></script>
@@ -649,40 +728,37 @@
     <!-- start-smooth-scrolling -->
     <script src=" /Assets/Client/js/move-top.js"></script>
     <script src=" /Assets/Client/js/easing.js"></script>
-    <script>
-        jquery(document).ready(function ($) {
-            $(".scroll").click(function (event) {
-                event.preventDefault();
-
-                $('html,body').animate({
-                    scrollTop: $(this.hash).offset().top
-                }, 1000);
-            });
-        });
-    </script>
+    <script></script>
     <!-- //end-smooth-scrolling -->
     <!-- smooth-scrolling-of-move-up -->
+    <script></script>
     <script>
+
         $(document).ready(function () {
-            /*
-            var defaults = {
-                containerID: 'toTop', // fading element id
-                containerHoverID: 'toTopHover', // fading element hover id
-                scrollSpeed: 1200,
-                easingType: 'linear'
-            };
-            */
-            $().UItoTop({
-                easingType: 'easeOutQuart'
+            //product  by price filtering
+
+            $('.price-filtering').on('click', function (e) {
+                e.preventDefault();
+                var curBtn = $(this);
+                var rangePrice = curBtn.data('price').split(':');
+                var l = parseFloat(rangePrice[0]) * 1000000;
+                var h = parseFloat(rangePrice[1]) * 1000000;
+
+                var cards = $('.product-men');
+                $.each(cards, function (index, value) {
+                   var p = parseFloat($(value).data('price'));
+                    if (p >= l && p <= h) {
+                        $(value).delay(100).slideDown();
+                    } else {
+                        $(value).delay(100).slideUp();
+                    }
+                });
             });
 
-        });
-    </script>
-    <script>
-        $(document).ready(function () {
+            //carousel
             $('.carousel').carousel({
                 interval: 1200
-            })
+            });
         });
     </script>
     <!-- //smooth-scrolling-of-move-up -->

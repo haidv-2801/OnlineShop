@@ -3991,6 +3991,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Views\Base\" />
+    <Folder Include="Assets\Client\js\controllers\" />
     <Folder Include="Data\" />
   </ItemGroup>
   <ItemGroup>
