@@ -670,7 +670,7 @@
     <!-- banner -->
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <!-- Indicators-->
-        @Html.Action("Slide", "Home")
+        @RenderSection("Slider", required: false)
     </div>
     <!-- //banner -->
     <!-- top Products -->
@@ -733,10 +733,10 @@
     <!-- smooth-scrolling-of-move-up -->
     <script></script>
     <script>
-
-        $(document).ready(function () {
+        $(document).ready(
+            function ()
+            {
             //product  by price filtering
-
             $('.price-filtering').on('click', function (e) {
                 e.preventDefault();
                 var curBtn = $(this);
@@ -758,6 +758,13 @@
             //carousel
             $('.carousel').carousel({
                 interval: 1200
+            });
+
+            $("#agileinfo-nav_search").change(function () {
+                var selectedItem = $("#agileinfo-nav_search option:selected").attr("id");
+                var metatitle = $("#agileinfo-nav_search option:selected").attr("value");
+                var redirectURL = '@Url.Action("Category","Product")';
+                window.location.href = "/san-pham/" + metatitle + "-" +  selectedItem;
             });
         });
     </script>

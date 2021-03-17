@@ -10,7 +10,7 @@
                     <option value="">All Categories</option>
                     @foreach (var item in Model)
                     {
-                        <option value="@item.ID">@item.Name</option>
+                        <option value="@item.MetaTitle" id="@item.ID">@item.Name</option>
                     }
                 </select>
             </form>
