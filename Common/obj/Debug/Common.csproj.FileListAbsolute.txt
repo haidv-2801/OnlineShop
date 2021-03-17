@@ -28,3 +28,9 @@ C:\Users\Admin\Desktop\main\OnlineShop\Common\obj\Debug\Common.csprojAssemblyRef
 C:\Users\Admin\Desktop\main\OnlineShop\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
 C:\Users\Admin\Desktop\main\OnlineShop\Common\obj\Debug\Common.dll
 C:\Users\Admin\Desktop\main\OnlineShop\Common\obj\Debug\Common.pdb
+C:\Users\Admin\Desktop\OnlineShop\Common\bin\Debug\Common.dll
+C:\Users\Admin\Desktop\OnlineShop\Common\bin\Debug\Common.pdb
+C:\Users\Admin\Desktop\OnlineShop\Common\obj\Debug\Common.csprojAssemblyReference.cache
+C:\Users\Admin\Desktop\OnlineShop\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\OnlineShop\Common\obj\Debug\Common.dll
+C:\Users\Admin\Desktop\OnlineShop\Common\obj\Debug\Common.pdb
