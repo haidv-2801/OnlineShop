@@ -1,4 +1,6 @@
 ﻿using Model.Dao;
+using Model.EF;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,12 +23,21 @@ namespace OnlineShop.Controllers
             var model = new ProductCategoryDao().ListAll();
             return PartialView(model);
         }
-        public ActionResult Category(long cateId, int page = 1, int pageSize = 2)
+        public ActionResult Category(long cateId, int page = 2,int pageSize = 6)
         {
+            /*if (page == null)
+            {
+                page = 1;
+            }*/
+            // sql
             var category = new CategoryDao().ViewDetail(cateId);
             ViewBag.Category = category;
-            int totalRecord = 0;
+            int totalRecord = 100;
+            //var model = new ProductDao().ListByCategoryId(cateId);
+            /*int pageSize = 12;
+            int pageNumber = (page ?? 1);*/
             var model = new ProductDao().ListByCategoryId(cateId, ref totalRecord, page, pageSize);
+            // handling paged
             ViewBag.Total = totalRecord;
             ViewBag.Page = page;
             int maxPage = 5;

@@ -1,7 +1,15 @@
 ﻿@model List<Model.EF.ProductCategory>
 @{
     var menuNavBarInners = (List<Model.EF.Menu>)TempData["MenuNavBarInner"];
+    @*var productCategories = (List<Model.EF.ProductCategory>)TempData["productCategories"];
+        IEnumerable<SelectListItem> myCollection = productCategories
+                                               .Select(z => new SelectListItem()
+                                               {
+                                                   Text = z.Name,
+                                                   Value = z.ID.ToString(),
+                                               });*@
 }
+
 <div class="container">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="agileits-navi_search">
@@ -10,7 +18,7 @@
                     <option value="">All Categories</option>
                     @foreach (var item in Model)
                     {
-                        <option value="@item.ID">@item.Name</option>
+                        <option value="@item.MetaTitle" id="@item.ID">@item.Name</option>
                     }
                 </select>
             </form>

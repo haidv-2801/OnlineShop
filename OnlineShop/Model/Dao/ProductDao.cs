@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Model.ViewModel;
 
 namespace Model.Dao
 {
@@ -42,7 +41,7 @@ namespace Model.Dao
         }
 
         // lấy danh sách theo id
-        public List<ProductViewModel> ListByCategoryId(long categoryId, ref int totalRecord, int pageIndex = 1, int pageSize = 2)
+        public List<ProductViewModel> ListByCategoryId(long categoryId,ref int totalRecord,int pageIndex = 1,int pageSize = 2)
         {
             // skip lấy từ bản ghi đến bản ghi nào
             // take lấy bn
@@ -73,7 +72,9 @@ namespace Model.Dao
                     Price = x.Price
                 });
             // equals : trường làm column nối nhau
+
             model.OrderByDescending(x => x.CreatedDate).Skip((pageIndex - 1) * pageSize).Take(pageSize);
+            //model.OrderByDescending(x => x.CreatedDate);
             return model.ToList();
         }
 

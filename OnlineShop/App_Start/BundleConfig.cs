@@ -8,6 +8,10 @@ namespace OnlineShop
         // For more information on bundling, visit https://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
+                "~/Scripts/jquery-{version}.js",
+                "~/Scripts/jquery.unobtrusive-ajax.min.js"
+                ));
             bundles.Add(new ScriptBundle("~/bundles/jscore").Include(
                         "~/Assets/Client/js/jquery-1.11.3.min.js",
                         "~/Assets/Client/js/jquery-ui.js",
@@ -29,6 +33,9 @@ namespace OnlineShop
                       "~/Assets/Client/css/bootstrap.css",
                       "~/Assets/Client/css/bootstrap-theme.css"
                       ));
+            bundles.Add(new StyleBundle("~/Content/css").Include(
+                "~/Content/PagedList.css"
+                ));
             BundleTable.EnableOptimizations = true;
         }
     }

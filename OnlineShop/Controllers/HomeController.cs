@@ -73,8 +73,9 @@ namespace OnlineShop.Controllers
         public PartialViewResult NavBarInner()
         {
             TempData["MenuNavBarInner"] = new MenuDao().ListByGroupId(1);
-            var productCategories = new ProductCategoryDao().ListAll();
-            return PartialView("~/Views/Shared/_navbar_inner.cshtml", productCategories);
+            //TempData["productCategories"] = new ProductCategoryDao().ListAll();
+            var model = new ProductCategoryDao().ListAll();
+            return PartialView("~/Views/Shared/_navbar_inner.cshtml",model);
         }
     }
 }

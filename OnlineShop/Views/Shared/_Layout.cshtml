@@ -529,7 +529,7 @@
     <!-- banner -->
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <!-- Indicators-->
-        @Html.Action("Slide", "Home")
+        @RenderSection("Slider", required: false)
     </div>
     <!-- //banner -->
     <!-- top Products -->
@@ -557,7 +557,6 @@
     <!-- copyright -->
     <div class="copy-right py-3">
         @Html.Partial("_copyright")
-
     </div>
     <!-- //copyright -->
     <!-- js-files -->
@@ -683,7 +682,15 @@
             $('.carousel').carousel({
                 interval: 1200
             })
+            $("#agileinfo-nav_search").change(function () {
+                var selectedItem = $("#agileinfo-nav_search option:selected").attr("id");
+                var selectedItemWithMeta = $("#agileinfo-nav_search option:selected").attr("value");
+                var redirectURL = '@Url.Action("Category","Product")';
+                window.location.href = "/san-pham/" + selectedItemWithMeta + "-" + selectedItem;
+                console.log(selectedItem);
+    });
         });
+
     </script>
     <!-- //smooth-scrolling-of-move-up -->
     <!-- for bootstrap working -->
