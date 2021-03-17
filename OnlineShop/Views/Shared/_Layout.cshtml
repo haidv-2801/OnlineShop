@@ -15,7 +15,7 @@
     <meta charset="UTF-8" />
     <meta name="keywords" content="Electro Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
     <script>
-import { json } from "modernizr";
+        import { json } from "modernizr";
 
         addEventListener("load", function () {
             setTimeout(hideURLbar, 0);
@@ -24,14 +24,14 @@ import { json } from "modernizr";
         function hideURLbar() {
             window.scrollTo(0, 1);
         }
-    
-/* END EXTERNAL SOURCE */
-/* BEGIN EXTERNAL SOURCE */
 
-///<reference path="C:\Users\Admin\Desktop\main1\OnlineShop\OnlineShop\Views\Shared\ \Assets\Client\js\jquery-2.2.3.min.js" />
+        /* END EXTERNAL SOURCE */
+        /* BEGIN EXTERNAL SOURCE */
 
-/* END EXTERNAL SOURCE */
-/* BEGIN EXTERNAL SOURCE */
+        ///<reference path="C:\Users\Admin\Desktop\main1\OnlineShop\OnlineShop\Views\Shared\ \Assets\Client\js\jquery-2.2.3.min.js" />
+
+        /* END EXTERNAL SOURCE */
+        /* BEGIN EXTERNAL SOURCE */
 
         $(document).ready(function () {
             $(".dropdown").hover(
@@ -45,14 +45,14 @@ import { json } from "modernizr";
                 }
             );
         });
-    
-/* END EXTERNAL SOURCE */
-/* BEGIN EXTERNAL SOURCE */
 
-///<reference path="C:\Users\Admin\Desktop\main1\OnlineShop\OnlineShop\Views\Shared\ \Assets\Client\js\jquery.magnific-popup.js" />
+        /* END EXTERNAL SOURCE */
+        /* BEGIN EXTERNAL SOURCE */
 
-/* END EXTERNAL SOURCE */
-/* BEGIN EXTERNAL SOURCE */
+        ///<reference path="C:\Users\Admin\Desktop\main1\OnlineShop\OnlineShop\Views\Shared\ \Assets\Client\js\jquery.magnific-popup.js" />
+
+        /* END EXTERNAL SOURCE */
+        /* BEGIN EXTERNAL SOURCE */
 
         $(document).ready(function () {
             $('.popup-with-zoom-anim').magnificPopup({
@@ -68,14 +68,14 @@ import { json } from "modernizr";
             });
 
         });
-    
-/* END EXTERNAL SOURCE */
-/* BEGIN EXTERNAL SOURCE */
 
-///<reference path="C:\Users\Admin\Desktop\main1\OnlineShop\OnlineShop\Views\Shared\ \Assets\Client\js\minicart.js" />
+        /* END EXTERNAL SOURCE */
+        /* BEGIN EXTERNAL SOURCE */
 
-/* END EXTERNAL SOURCE */
-/* BEGIN EXTERNAL SOURCE */
+        ///<reference path="C:\Users\Admin\Desktop\main1\OnlineShop\OnlineShop\Views\Shared\ \Assets\Client\js\minicart.js" />
+
+        /* END EXTERNAL SOURCE */
+        /* BEGIN EXTERNAL SOURCE */
 
         paypals.minicarts.render(); //use only unique class names other than paypals.minicarts.Also Replace same class name in css and minicart.min.js
 
@@ -95,9 +95,9 @@ import { json } from "modernizr";
                 evt.preventDefault();
             }
         });
-    
-/* END EXTERNAL SOURCE */
-/* BEGIN EXTERNAL SOURCE */
+
+        /* END EXTERNAL SOURCE */
+        /* BEGIN EXTERNAL SOURCE */
 
         window.onload = function () {
             document.getElementById("password1").onchange = validatePassword;
@@ -113,29 +113,29 @@ import { json } from "modernizr";
                 document.getElementById("password2").setCustomValidity('');
             //empty string means no validation error
         }
-    
-/* END EXTERNAL SOURCE */
-/* BEGIN EXTERNAL SOURCE */
 
-///<reference path="C:\Users\Admin\Desktop\main1\OnlineShop\OnlineShop\Views\Shared\ \Assets\Client\js\scroll.js" />
+        /* END EXTERNAL SOURCE */
+        /* BEGIN EXTERNAL SOURCE */
 
-/* END EXTERNAL SOURCE */
-/* BEGIN EXTERNAL SOURCE */
+        ///<reference path="C:\Users\Admin\Desktop\main1\OnlineShop\OnlineShop\Views\Shared\ \Assets\Client\js\scroll.js" />
 
-///<reference path="C:\Users\Admin\Desktop\main1\OnlineShop\OnlineShop\Views\Shared\ \Assets\Client\js\SmoothScroll.min.js" />
+        /* END EXTERNAL SOURCE */
+        /* BEGIN EXTERNAL SOURCE */
 
-/* END EXTERNAL SOURCE */
-/* BEGIN EXTERNAL SOURCE */
+        ///<reference path="C:\Users\Admin\Desktop\main1\OnlineShop\OnlineShop\Views\Shared\ \Assets\Client\js\SmoothScroll.min.js" />
 
-///<reference path="C:\Users\Admin\Desktop\main1\OnlineShop\OnlineShop\Views\Shared\ \Assets\Client\js\move-top.js" />
+        /* END EXTERNAL SOURCE */
+        /* BEGIN EXTERNAL SOURCE */
 
-/* END EXTERNAL SOURCE */
-/* BEGIN EXTERNAL SOURCE */
+        ///<reference path="C:\Users\Admin\Desktop\main1\OnlineShop\OnlineShop\Views\Shared\ \Assets\Client\js\move-top.js" />
 
-///<reference path="C:\Users\Admin\Desktop\main1\OnlineShop\OnlineShop\Views\Shared\ \Assets\Client\js\easing.js" />
+        /* END EXTERNAL SOURCE */
+        /* BEGIN EXTERNAL SOURCE */
 
-/* END EXTERNAL SOURCE */
-/* BEGIN EXTERNAL SOURCE */
+        ///<reference path="C:\Users\Admin\Desktop\main1\OnlineShop\OnlineShop\Views\Shared\ \Assets\Client\js\easing.js" />
+
+        /* END EXTERNAL SOURCE */
+        /* BEGIN EXTERNAL SOURCE */
 
         jquery(document).ready(function ($) {
             $(".scroll").click(function (event) {
@@ -146,9 +146,9 @@ import { json } from "modernizr";
                 }, 1000);
             });
         });
-    
-/* END EXTERNAL SOURCE */
-/* BEGIN EXTERNAL SOURCE */
+
+        /* END EXTERNAL SOURCE */
+        /* BEGIN EXTERNAL SOURCE */
 
         $(document).ready(function () {
             /*
@@ -745,17 +745,14 @@ import { json } from "modernizr";
                 var h = parseFloat(rangePrice[1]) * 1000000;
 
                 var cards = $('.product-men');
-               @* console.log(cards);*@
-               $.each(cards, function (index, value) {
+                $.each(cards, function (index, value) {
                    var p = parseFloat($(value).data('price'));
-                   if (p >= l && p <= h) {
-                       $(value).show();
-                   } else {
-                       console.log($(value).data('price'))
-                        $(value).hide();
+                    if (p >= l && p <= h) {
+                        $(value).delay(100).slideDown();
+                    } else {
+                        $(value).delay(100).slideUp();
                     }
                 });
-
             });
 
             //carousel
