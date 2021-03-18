@@ -44,7 +44,7 @@
                             <div class="row">
                                 @foreach (var item in Model)
                                 {
-                                    <div class="col-md-4 product-men" data-price="@item.PromotionPrice" style="margin-top:25px">
+                                    <div class="col-md-4 product-men" data-price="@item.PromotionPrice" data-name="@item.Name @item.MetaTitle"style="margin-top:25px">
                                         <div class="men-pro-item simpleCart_shelfItem">
                                             <div class="men-thumb-item text-center">
                                                 <img src="@item.Images" alt="@item.MetaTitle" style="max-width:200px; min-height: 200px;">
