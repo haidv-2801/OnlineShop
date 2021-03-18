@@ -29,6 +29,9 @@ namespace OnlineShop
                       "~/Assets/Client/css/bootstrap.css",
                       "~/Assets/Client/css/bootstrap-theme.css"
                       ));
+            bundles.Add(new StyleBundle("~/Content/css").Include(
+                "~/Content/PagedList.css"
+                ));
             BundleTable.EnableOptimizations = true;
         }
     }
