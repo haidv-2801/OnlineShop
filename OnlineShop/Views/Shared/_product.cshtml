@@ -2,13 +2,13 @@
 
 <div class="product-sec1 px-sm-4 px-3 py-sm-5  py-3 mb-4">
     <h3 class="heading-tittle text-center font-italic">@Model.Cate.Name</h3>
-    <div class="row">
+    <div class="row d-flex justify-content-around">
         @foreach (var item in Model.Products)
         {
-            <div class="col-md-4 product-men mt-5" data-price="@item.PromotionPrice">
+            <div class="col-md-4 product-men mt-5" data-price="@item.PromotionPrice" data-name="@item.Name">
                 <div class="men-pro-item simpleCart_shelfItem">
                     <div class="men-thumb-item text-center">
-                        <img src="@item.Image" alt="@item.MetaTitle" style="width:200px; height:200px;">
+                        <img src="@item.Image" alt="@item.MetaTitle" style="max-width: 200px; min-height: 200px;">
                         <div class="men-cart-pro">
                             <div class="inner-men-cart-pro">
                                 <a href="/chi-tiet/@item.MetaTitle-@item.ID" class="link-product-add-cart">Xem chi tiết</a>

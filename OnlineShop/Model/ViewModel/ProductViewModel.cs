@@ -12,6 +12,7 @@ namespace Model.ViewModel
         public string Images { get; set; }
         public string Name { get; set; }
         public decimal? Price { get; set; } 
+        public decimal? PromotionPrice { get; set; }
         public string CateName { get; set; }
         public string CateMetaTitle { get; set; }
         public string MetaTitle { get; set; }
