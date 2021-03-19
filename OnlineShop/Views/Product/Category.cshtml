@@ -50,10 +50,10 @@
                             <div class="row">
                                 @foreach (var item in Model)
                                 {
-                                    <div class="col-md-4 product-men" data-name="@item.Name @item.MetaTitle" style="margin-top:25px">
+                                    <div class="col-md-4 product-men" data-price="@item.PromotionPrice" data-name="@item.Name @item.MetaTitle" style="margin-top:25px">
                                         <div class="men-pro-item simpleCart_shelfItem">
                                             <div class="men-thumb-item text-center">
-                                                <img src="@item.Images" alt="@item.MetaTitle" style="max-width:200px; min-height: 200px;">
+                                                <img src="@item.Image" alt="@item.MetaTitle" style="max-width:200px; min-height: 200px;">
                                                 <div class="men-cart-pro">
                                                     <div class="inner-men-cart-pro">
                                                         <a href="/chi-tiet/@item.MetaTitle-@item.ID" class="link-product-add-cart">Quick View</a>
@@ -70,11 +70,11 @@
                                                         var promotionPrice = "";
                                                         if (item.Price.HasValue)
                                                         {
-                                                            price = item.Price.Value.ToString("N0") + "Vnđ";
+                                                            price = item.Price.Value.ToString("N0") + " VND";
                                                         }
                                                         if (item.PromotionPrice.HasValue)
                                                         {
-                                                            promotionPrice = item.PromotionPrice.Value.ToString("N0") + "Vnđ";
+                                                            promotionPrice = item.PromotionPrice.Value.ToString("N0") + " VND";
                                                         }
                                                     }
                                                     <span class="item_price">@promotionPrice</span>
