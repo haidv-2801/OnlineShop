@@ -53,7 +53,7 @@
                                     <div class="col-md-4 product-men" data-name="@item.Name @item.MetaTitle" style="margin-top:25px">
                                         <div class="men-pro-item simpleCart_shelfItem">
                                             <div class="men-thumb-item text-center">
-                                                <img src="@item.Image" alt="">
+                                                <img src="@item.Images" alt="@item.MetaTitle" style="max-width:200px; min-height: 200px;">
                                                 <div class="men-cart-pro">
                                                     <div class="inner-men-cart-pro">
                                                         <a href="/chi-tiet/@item.MetaTitle-@item.ID" class="link-product-add-cart">Quick View</a>
@@ -65,8 +65,20 @@
                                                     <a href="/chi-tiet/@item.MetaTitle-@item.ID">@item.Name</a>
                                                 </h4>
                                                 <div class="info-product-price my-2">
-                                                    <span class="item_price">@item.Price</span>
-                                                    <del>@item.PromotionPrice</del>
+                                                     @{
+                                                        var price = "";
+                                                        var promotionPrice = "";
+                                                        if (item.Price.HasValue)
+                                                        {
+                                                            price = item.Price.Value.ToString("N0") + "Vnđ";
+                                                        }
+                                                        if (item.PromotionPrice.HasValue)
+                                                        {
+                                                            promotionPrice = item.PromotionPrice.Value.ToString("N0") + "Vnđ";
+                                                        }
+                                                    }
+                                                    <span class="item_price">@promotionPrice</span>
+                                                    <del>@price</del>
                                                 </div>
                                                 <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
                                                     <form action="#" method="post">
@@ -94,6 +106,7 @@
                         <!-- //first section -->
                     </div>
                 </div>
+                @Html.Partial("_filter_right")
                 <!-- //product left -->
             </div>
 
