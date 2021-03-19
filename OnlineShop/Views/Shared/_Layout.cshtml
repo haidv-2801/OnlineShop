@@ -738,8 +738,18 @@
             {
             // searching products by name
                 $('#productsSearch').on('keyup', function () {
-                    $('.wrapper.product-men').filter(function () {
-                        $(this).toggle($(this).data('name').);
+                    var searchContent = $(this).val().trim().toLowerCase();
+                    var items = $('.product-men');
+                    console.log(searchContent);
+                    $.each(items, function (index, value) {
+                        var nameofProduct = "";
+                        nameofProduct = $(value).data('name').toLowerCase();
+                        if (nameofProduct.indexOf(searchContent) > -1) {
+                            $(value).delay(100).slideDown();
+                            console.log(nameofProduct);
+                        } else {
+                            $(value).delay(100).slideUp();
+                        }
                     });
                 });
 
