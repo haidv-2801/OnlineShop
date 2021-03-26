@@ -7,71 +7,42 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace OnlineShop.Areas.Admin.Controllers
+namespace OnlineShop.Controllers
 {
-    public class ContactController : BaseController
+    public class ContactController : Controller
     {
-        // GET: Admin/Contact
-        public ActionResult Index(string Search, int page = 1, int pageSize = 2)
+        // GET: Contact
+        public ActionResult Index()
         {
-            var dao = new ContactDao();
-            ViewBag.Search = Search;
-            var model = dao.ListAllPaging(Search, page, pageSize);
+            var model = new ContactDao().GetListActiveContact();
             return View(model);
         }
-        public ActionResult Create()
-        {
-            return View();
-        }
         [HttpPost]
-        [ValidateInput(false)]
-        public ActionResult Create(Contact model)
+        public JsonResult Send(string name, string mobile, string address, string email, string content)
         {
-            if (ModelState.IsValid)
+            var feedback = new FeedBack();
+            feedback.Name = name;
+            feedback.Email = email;
+            feedback.CreatedDate = DateTime.Now;
+            feedback.Phone = mobile;
+            feedback.Content = content;
+            feedback.Address = address;
+            feedback.Status = true;
+            var id = new ContactDao().InsertFeedBack(feedback);
+            if (id > 0)
             {
-                
-
-                new ContactDao().Create(model);
-                return RedirectToAction("Index");
-
+                return Json(new
+                {
+                    status = true
+                });
             }
-            return View();
-        }
-        [HttpGet]
-        public ActionResult Edit(long id)
-        {
-            var dao = new ContactDao();
-            var contact = dao.GetByID(id);
-
-            return View(contact);
-        }
-        [HttpPost]
-        [ValidateInput(false)]
-        public ActionResult Edit(Contact model)
-        {
-            if (ModelState.IsValid)
+            else
             {
-
-                new ContactDao().Edit(model);
-                return RedirectToAction("Index");
+                return Json(new
+                {
+                    status = false
+                });
             }
-
-            return View();
-        }
-        [HttpGet]
-        public ActionResult Delete(int id)
-        {
-            new ContactDao().Delete(id);
-            SetAlert("Xóa liên hệ thành công", "success");
-            return RedirectToAction("Index");
-        }
-        public JsonResult ChangeStatus(long id)
-        {
-            var result = new ContactDao().ChangeStatus(id);
-            return Json(new
-            {
-                status = result
-            });
         }
     }
 }
