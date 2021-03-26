@@ -19,6 +19,10 @@ namespace Model.Dao
         {
             return db.Contacts.Single(x =>x.Status == true);
         }
+        public List<Contact> GetListActiveContact()
+        {
+            return db.Contacts.Where(x=>x.Status == true).ToList();
+        }
         public int InsertFeedBack(FeedBack fb)
         {
             db.FeedBacks.Add(fb);

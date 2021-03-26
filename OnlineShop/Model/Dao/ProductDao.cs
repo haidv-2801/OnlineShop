@@ -24,7 +24,11 @@ namespace Model.Dao
 
             return model.OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
         }
-
+        public IEnumerable<Product> ListAllPaging(int page, int pageSize)
+        {
+            IQueryable<Product> model = db.Products;
+            return model.OrderByDescending(x => x.CreatedDate).ToPagedList(page, pageSize);
+        }
         // Lấy danh sách product theo category dùng viewmodel   
         public ProductCategoryViewModel ProductsByCate(long cateID, int takeNum)
         {

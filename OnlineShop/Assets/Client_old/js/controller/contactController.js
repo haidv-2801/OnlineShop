@@ -22,7 +22,7 @@
                 },
                 success: function (res) {
                     if (res.status == true) {
-                        window.alert('Gửi Thành Công');
+                        alert('Gửi Thành Công');
                         contact.resetForm();
                     }
                 }

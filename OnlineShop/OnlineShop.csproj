@@ -3505,6 +3505,7 @@
     <Content Include="Assets\Client_old\js\slides.min.jquery.js" />
     <Content Include="Assets\Client_old\js\startstop-slider.js" />
     <Content Include="Assets\Client_old\template\neworder.html" />
+    <Content Include="Assets\Client_Plus\css\blog-home.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -3961,6 +3962,8 @@
     <Content Include="Views\Shared\_middle_section.cshtml" />
     <Content Include="Views\Shared\_navbar_inner.cshtml" />
     <Content Include="Views\Shared\_filter_right.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Shared\_filter_tag.cshtml" />
     <None Include="Views\Shared\_product.cshtml" />
     <Content Include="Views\Shared\_slider.cshtml" />
     <Content Include="Web.config" />

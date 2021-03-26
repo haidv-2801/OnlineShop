@@ -14,9 +14,12 @@ namespace OnlineShop.Controllers
     {
         private OnlineShopDbContext db = new OnlineShopDbContext();
         // GET: Product
-        public ActionResult Index()
+        public ActionResult Index(int page = 1, int pageSize = 10)
         {
-            return View();
+            var dao = new ProductDao();
+            var model = dao.ListAllPaging(page, pageSize);
+
+            return View(model);
         }
         [ChildActionOnly]
         public PartialViewResult ProductCategory()
@@ -26,7 +29,7 @@ namespace OnlineShop.Controllers
         }
         public ActionResult Category(long cateId, int? page)
         {
-             var category = new CategoryDao().ViewDetail(cateId);
+            var category = new CategoryDao().ViewDetail(cateId);
             ViewBag.Category = category;
             if (page == null) page = 1;
 
