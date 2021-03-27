@@ -15,8 +15,6 @@
     <meta charset="UTF-8" />
     <meta name="keywords" content="Electro Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
     <script>
-        import { json } from "modernizr";
-
         addEventListener("load", function () {
             setTimeout(hideURLbar, 0);
         }, false);
@@ -166,9 +164,9 @@
         }</script>
     <!-- //Meta tag Keywords -->
     <!-- Custom-Files -->
-    <link href=" /Assets/Client/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/Assets/Client/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
     <!-- Bootstrap css -->
-    <link href=" /Assets/Client/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/Assets/Client/css/style.css" rel="stylesheet" type="text/css" media="all" />
     <!-- Main css -->
     <link rel="stylesheet" href="/Assets/Client/css/all.min.css" />
     <link rel="stylesheet" href="/Assets/Client/css/fontawesome.min.css" />
@@ -176,6 +174,11 @@
     <link href=" /Assets/Client/css/popuo-box.css" rel="stylesheet" type="text/css" media="all" />
     <!-- pop-up-box -->
     <link href=" /Assets/Client/css/menu.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="/Assets/Client/css/toastr.css" rel="stylesheet" />
+    <link href="/Assets/Client/css/toastr.min.css" rel="stylesheet" />
+
+    <link href="/Assets/Client/css/easy-responsive-tabs.css" rel="stylesheet" />
+    <link href="/Assets/Client/css/creditly.css" rel="stylesheet" />
     <!-- menu style -->
     <!-- //Custom-Files -->
     <!-- web fonts -->
@@ -658,7 +661,7 @@
     <!-- //top-header -->
     <!-- header-bottom-->
     <div class="header-bot">
-        @Html.Partial("_header_bottom")
+        @{ Html.RenderAction("HeaderBottom", "Home");}
     </div>
     <!-- shop locator (popup) -->
     <!-- //header-bottom -->
@@ -703,7 +706,7 @@
     <!-- //copyright -->
     <!-- js-files -->
     <!-- jquery -->
-    <script src=" /Assets/Client/js/jquery-2.2.3.min.js"></script>
+    <script src="/Assets/Client/js/jquery-2.2.3.min.js"></script>
     <!-- //jquery -->
     <!-- nav smooth scroll -->
     <script></script>
@@ -728,55 +731,75 @@
     <!-- start-smooth-scrolling -->
     <script src=" /Assets/Client/js/move-top.js"></script>
     <script src=" /Assets/Client/js/easing.js"></script>
-    <script></script>
     <!-- //end-smooth-scrolling -->
     <!-- smooth-scrolling-of-move-up -->
-    <script></script>
     <script>
-        $(document).ready(
-            function ()
-            {
-            // searching products by name
-                $('#productsSearch').on('keyup', function () {
-                    var searchContent = $(this).val().trim().toLowerCase();
-                    var items = $('.product-men');
-                    console.log(searchContent);
-                    $.each(items, function (index, value) {
-                        var nameofProduct = "";
-                        nameofProduct = $(value).data('name').toLowerCase();
-                        if (nameofProduct.indexOf(searchContent) > -1) {
-                            $(value).delay(100).slideDown();
-                            console.log(nameofProduct);
-                        } else {
-                            $(value).delay(100).slideUp();
-                        }
+                $(document).ready(
+                function () {
+                    //add to cart
+                    $('.btnaddtocart').on('click', function (e) {
+                        e.preventDefault();
+                        var curbtn = $(this);
+                        var cartSize = $('#cartSize');
+
+                        console.log('test');
+                        $.ajax({
+                            url: '/them-vao-gio',
+                            type: 'Post',
+                            dataType: 'Json',
+                            data: {
+                                id: curbtn.data('id'),
+                                quantity: curbtn.data('quantity')
+                            },
+                            success: function (res) {
+                                if (res.status == true) {
+                                    toastr.success(res.message, "Thông báo", { timeOut: 3000, "closeButton": true });
+                                    cartSize.text(parseInt(cartSize.text()) + 1);
+                                }
+                            }
+                        });
                     });
-                });
+                    // searching products by name
+                    $('#productsSearch').on('keyup', function () {
+                        var searchContent = $(this).val().trim().toLowerCase();
+                        var items = $('.product-men');
+                        console.log(searchContent);
+                        $.each(items, function (index, value) {
+                            var nameofProduct = "";
+                            nameofProduct = $(value).data('name').toLowerCase();
+                            if (nameofProduct.indexOf(searchContent) > -1) {
+                                $(value).delay(100).slideDown();
+                                console.log(nameofProduct);
+                            } else {
+                                $(value).delay(100).slideUp();
+                            }
+                        });
+                    });
 
 
-            //product  by price filtering
-            $('.price-filtering').on('click', function (e) {
-                e.preventDefault();
-                var curBtn = $(this);
-                var rangePrice = curBtn.data('price').split(':');
-                var l = parseFloat(rangePrice[0]) * 1000000;
-                var h = parseFloat(rangePrice[1]) * 1000000;
+                    //product  by price filtering
+                    $('.price-filtering').on('click', function (e) {
+                        e.preventDefault();
+                        var curBtn = $(this);
+                        var rangePrice = curBtn.data('price').split(':');
+                        var l = parseFloat(rangePrice[0]) * 1000000;
+                        var h = parseFloat(rangePrice[1]) * 1000000;
 
-                var cards = $('.product-men');
-                $.each(cards, function (index, value) {
-                   var p = parseFloat($(value).data('price'));
-                    if (p >= l && p <= h) {
-                        $(value).delay(100).slideDown();
-                    } else {
-                        $(value).delay(100).slideUp();
-                    }
-                });
-            });
+                        var cards = $('.product-men');
+                        $.each(cards, function (index, value) {
+                            var p = parseFloat($(value).data('price'));
+                            if (p >= l && p <= h) {
+                                $(value).delay(100).slideDown();
+                            } else {
+                                $(value).delay(100).slideUp();
+                            }
+                        });
+                    });
 
-            //carousel
-            $('.carousel').carousel({
-                interval: 1200
-            });
+                    //carousel
+                    $('.carousel').carousel({
+                        interval: 1200
+                    });
 
             $("#agileinfo-nav_search").change(function () {
                 var selectedItem = $("#agileinfo-nav_search option:selected").attr("id");
@@ -788,10 +811,23 @@
     </script>
     <!-- //smooth-scrolling-of-move-up -->
     <!-- for bootstrap working -->
+
     <script src="/Assets/Client/js/bootstrap.js"></script>
+    <script src="/Assets/Client/js/jquery-3.4.1.min.js"></script>
+    <script src="/Assets/Client/js/toastr.min.js"></script>
+    <script src="/Assets/Client/js/bootbox.min.js"></script>
+
+    <script src="Assets/Client/js/creditly.js"></script>
+    <script src="/Assets/Client/js/creditly2.js"></script>
+    <script src="/Assets/Client/js/controllers/Payment.js"></script>
+    <script src="/Assets/Client/js/jquery.magnific-popup.js"></script>
+    <script src="/Assets/Client/js/easyResponsiveTabs.js"></script>
+
+    @RenderSection("jsFooter", false);
     <!-- //for bootstrap working -->
     <!-- //js-files -->
     @RenderSection("Scripts", false)
+
     @Scripts.Render("~/bundles/controller")
 </body>
 </html>

@@ -54,7 +54,7 @@ namespace OnlineShop.Controllers
         [ChildActionOnly]   // trên view con
         public PartialViewResult HeaderCart()
         {
-            var cart = Session[CommonConstants.CartSession];
+            var cart = Session[CommonConstants.CART_SESSION];
             var list = new List<CartItem>();
             if (cart != null)
             {
@@ -75,6 +75,18 @@ namespace OnlineShop.Controllers
             TempData["MenuNavBarInner"] = new MenuDao().ListByGroupId(1);
             var productCategories = new ProductCategoryDao().ListAll();
             return PartialView("~/Views/Shared/_navbar_inner.cshtml", productCategories);
+        }
+
+        [ChildActionOnly]
+        public PartialViewResult HeaderBottom()
+        {
+            var cart = Session[Common.CommonConstants.CART_SESSION];
+            var list = new List<CartItem>();
+            if (cart != null)
+            {
+                list = cart as List<CartItem>;
+            }
+            return PartialView("_header_bottom", list);
         }
     }
 }
