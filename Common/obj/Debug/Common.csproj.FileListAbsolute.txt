@@ -45,3 +45,9 @@ C:\Users\Admin\Desktop\main2\OnlineShop\Common\bin\Debug\Common.pdb
 C:\Users\Admin\Desktop\main2\OnlineShop\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
 C:\Users\Admin\Desktop\main2\OnlineShop\Common\obj\Debug\Common.dll
 C:\Users\Admin\Desktop\main2\OnlineShop\Common\obj\Debug\Common.pdb
+C:\Users\Admin\Desktop\main2\OnlineShop\haibr\Common\bin\Debug\Common.dll
+C:\Users\Admin\Desktop\main2\OnlineShop\haibr\Common\bin\Debug\Common.pdb
+C:\Users\Admin\Desktop\main2\OnlineShop\haibr\Common\obj\Debug\Common.csprojAssemblyReference.cache
+C:\Users\Admin\Desktop\main2\OnlineShop\haibr\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\main2\OnlineShop\haibr\Common\obj\Debug\Common.dll
+C:\Users\Admin\Desktop\main2\OnlineShop\haibr\Common\obj\Debug\Common.pdb
