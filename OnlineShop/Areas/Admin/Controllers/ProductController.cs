@@ -55,6 +55,7 @@ namespace OnlineShop.Areas.Admin.Controllers
             SetViewBag(product.CategoryID);
             return View(product);
         }
+
         [HttpPost]
         public ActionResult Edit(Product model)
         {

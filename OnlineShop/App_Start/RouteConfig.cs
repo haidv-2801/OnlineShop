@@ -84,7 +84,7 @@ namespace OnlineShop
             routes.MapRoute(
                 name: "Payment",
                 url: "thanh-toan",
-                defaults: new { controller = "Cart", action = "Payment", id = UrlParameter.Optional },
+                defaults: new { controller = "Cart1", action = "Payment", id = UrlParameter.Optional },
                 namespaces: new[] { "OnlineShop.Controllers" }
             );
             routes.MapRoute(

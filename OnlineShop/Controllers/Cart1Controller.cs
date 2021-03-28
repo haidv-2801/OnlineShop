@@ -7,6 +7,9 @@ using System.Web.Mvc;
 using Model.Dao;
 using PagedList;
 using System.Web.Script.Serialization;
+using Model.EF;
+using System.Configuration;
+using Common;
 
 namespace OnlineShop.Controllers
 {
@@ -97,9 +100,52 @@ namespace OnlineShop.Controllers
             return Json(new { status=true,message="Cập nhật thành công!" });
         }
 
-        public ActionResult Payment()
+        [HttpPost]
+        public JsonResult Payment(string shipName, string mobile, string address, string email)
         {
-            return View();
+            var order = new Order();
+            order.CreatedDate = DateTime.Now;
+            order.ShipAddress = address;
+            order.ShipMobile = mobile;
+            order.ShipName = shipName;
+            order.ShipEmail = email;
+
+            try
+            {
+                var id = new OrderDao().Insert(order);
+                var cart = (List<CartItem>)Session[Common.CommonConstants.CART_SESSION];
+                var detailDao = new OrderDetailDao();
+                decimal total = 0;
+                foreach (var item in cart)
+                {
+                    var orderDetail = new OrderDetail();
+                    orderDetail.ProductID = item.Product.ID;
+                    orderDetail.OrderID = id;
+                    orderDetail.Price = item.Product.Price;
+                    // tính theo promotion price khi code đã đầy đủ
+                    orderDetail.Quantity = item.Quantity;
+                    detailDao.Insert(orderDetail);
+                    total += (item.Product.Price.GetValueOrDefault(0) * item.Quantity);
+                }
+                string content = System.IO.File.ReadAllText(Server.MapPath("~/Assets/Client/template/neworder.html"));
+
+                content = content.Replace("{{CustomerName}}", shipName);
+                content = content.Replace("{{Phone}}", mobile);
+                content = content.Replace("{{Email}}", email);
+                content = content.Replace("{{Address}}", address);
+                content = content.Replace("{{Total}}", total.ToString("N0"));
+                // email quản trị
+                var toEmail = ConfigurationManager.AppSettings["ToEmailAddress"].ToString();
+
+              /*  new MailHelper().SendMail(email, "Đơn hàng mới từ OnlineShop", content);
+                new MailHelper().SendMail(toEmail, "Đơn hàng mới từ OnlineShop", content);*/
+            }
+            catch (Exception ex)
+            {
+                string t = ex.Message;
+                return Json(new { status = false, message = t } , JsonRequestBehavior.AllowGet);
+            }
+            return Json(new { status = true, message = "Đặt hàng thành công!" }, JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -78,27 +78,26 @@
         <div class="checkout-left">
             <div class="address_form_agile mt-sm-5 mt-4">
                 <h4 class="mb-sm-4 mb-3">Thông tin chi tiết</h4>
-                <form action="payment.html" method="post" class="creditly-card-form agileinfo_form">
                     <div class="creditly-wrapper wthree, w3_agileits_wrapper">
                         <div class="information-wrapper">
                             <div class="first-row">
                                 <div class="controls form-group">
-                                    <input class="billing-address-name form-control" type="text" name="name" placeholder="Họ tên" required="required">
+                                    <input class="billing-address-name form-control" type="text" name="shipName" placeholder="Họ tên" required="required">
                                 </div>
                                 <div class="w3_agileits_card_number_grids">
                                     <div class="w3_agileits_card_number_grid_left form-group">
                                         <div class="controls">
-                                            <input type="text" class="form-control" placeholder="Số điện thoại" name="number" required="required">
+                                            <input type="text" class="form-control" placeholder="Số điện thoại" name="mobile" required="required">
                                         </div>
                                     </div>
                                     <div class="w3_agileits_card_number_grid_right form-group">
                                         <div class="controls">
-                                            <input type="text" class="form-control" placeholder="Email" name="landmark" required="">
+                                            <input type="text" class="form-control" placeholder="email" name="landmark" required="">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="controls form-group">
-                                    <input type="text" class="form-control" placeholder="Địa chỉ nhận hàng" name="city" required="required">
+                                    <input type="text" class="form-control" placeholder="Địa chỉ nhận hàng" name="address" required="required">
                                 </div>
                                 <div class="controls form-group">
                                     <select class="option-w3ls">
@@ -106,14 +105,12 @@
                                         <option>Thanh toán khi nhận hàng</option>
                                         <option>Momo</option>
                                         <option>Paypal</option>
-
                                     </select>
                                 </div>
                             </div>
-                            <button class="submit check_out btn">Đặt hàng</button>
+                            <div id="btnPayment" class="btn btn-secondary">Đặt hàng</div>
                         </div>
                     </div>
-                </form>
                 <div class="checkout-right-basket">
                     <a href="/Cart1Controller/Payment">
                         Thanh toán ngay

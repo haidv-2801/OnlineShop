@@ -5,15 +5,47 @@ var cart = {
     },
     main: function () {
 
+        //payment
+       $('#btnPayment').on('click', function () {
+            var shipName = $('input[name="shipName"]').val();
+            var mobile = $('input[name="mobile"]').val();
+            var email = $('input[name="email"]').val();
+           var address = $('input[name="address"]').val();
+           
+           $.ajax({
+               url: '/thanh-toan',
+               data: {
+                   shipName: shipName,
+                   mobile: mobile,
+                   address: address,
+                   email: email
+               },
+               type: 'Post',
+               dataType: 'Json',
+               success: function (res) {
+                  /* if (res.status == true) {
+                       toastr.success(res.message, "Thông báo", { timeOut: 3000, "closeButton": true);
+                   } else {
+                       toastr.warning(res.message, "Lỗi", { timeOut: 3000, "closeButton": true);
+                   }
+                 */
+                   console.log("es");
+               }
+           });
+        });
+
+       /* $('#btnPayment').on('click', function () {
+            var mobile = $('input[name="mobile"]').val();
+            console.log(mobile);
+        });*/
+
         $('#cartSize').css('color', 'red');
 
         //click tất cả sẽ cập nhật lại giỏ hàng
 
         $('.quantityDecre').on('click', function () {
-            console.log("tesst");
             var current = $(this);
             var quantity = current.parent().find('span:first');
-
             if (parseInt(quantity.text()) > 1) {
                 quantity.text(parseInt(quantity.text()) - 1); 
             }  
