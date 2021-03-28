@@ -65,7 +65,7 @@ namespace OnlineShop
             routes.MapRoute(
                 name: "Cart",
                 url: "gio-hang",
-                defaults: new { controller = "Cart", action = "Index", id = UrlParameter.Optional },
+                defaults: new { controller = "Cart1", action = "Index", id = UrlParameter.Optional },
                 namespaces: new[] { "OnlineShop.Controllers" }
             );
             routes.MapRoute(
@@ -89,13 +89,13 @@ namespace OnlineShop
             routes.MapRoute(
                 name: "Payment",
                 url: "thanh-toan",
-                defaults: new { controller = "Cart", action = "Payment", id = UrlParameter.Optional },
+                defaults: new { controller = "Cart1", action = "Payment", id = UrlParameter.Optional },
                 namespaces: new[] { "OnlineShop.Controllers" }
             );
             routes.MapRoute(
                 name: "Add Cart",
-                url: "them-gio-hang",
-                defaults: new { controller = "Cart", action = "AddItem", id = UrlParameter.Optional },
+                url: "them-vao-gio",
+                defaults: new { controller = "Cart1", action = "AddToCart", id = UrlParameter.Optional },
                 namespaces: new[] { "OnlineShop.Controllers" }
             );
             routes.MapRoute(

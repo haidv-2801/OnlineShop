@@ -9,7 +9,6 @@
     <!-- //imagezoom -->
     <!-- flexslider -->
     <link rel="stylesheet" href="/Assets/Client/css/flexslider.css" type="text/css" media="screen" />
-
     <script src="/Assets/Client/js/jquery.flexslider.js"></script>
     <script>
         // Can also be used with $(document).ready()
@@ -38,11 +37,10 @@
 
 <div class="banner-bootom-w3-agileits py-5">
     <div class="container py-xl-4 py-lg-2">
-
         <!-- tittle heading -->
         <h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
-            <span>S</span>ingle
-            <span>P</span>age
+            <span>C</span>hi
+            <span>T</span>iết
         </h3>
         <!-- //tittle heading -->
         <div class="row">
@@ -52,17 +50,17 @@
                         <ul class="slides">
                             <li data-thumb="@Model.Image">
                                 <div class="thumb-image">
-                                    <img src="@Model.Image" data-imagezoom="true" class="img-fluid" alt="">
+                                    <img src="@Model.Image" data-imagezoom="true" class="img-fluid" alt="@Model.MetaTitle">
                                 </div>
                             </li>
                             <li data-thumb="@Model.Image">
                                 <div class="thumb-image">
-                                    <img src="@Model.Image" data-imagezoom="true" class="img-fluid" alt="">
+                                    <img src="@Model.Image" data-imagezoom="true" class="img-fluid" alt="@Model.MetaTitle">
                                 </div>
                             </li>
                             <li data-thumb="@Model.Image">
                                 <div class="thumb-image">
-                                    <img src="@Model.Image" data-imagezoom="true" class="img-fluid" alt="">
+                                    <img src="@Model.Image" data-imagezoom="true" class="img-fluid" alt="@Model.MetaTitle">
                                 </div>
                             </li>
                         </ul>
@@ -74,19 +72,21 @@
             <div class="col-lg-7 single-right-left simpleCart_shelfItem">
                 <h3 class="mb-3">@Model.MetaDescriptions</h3>
                 <p class="mb-3">
-                    @{ var price = "";
-                                    var promotionPrice = "";
-                                    if (Model.Price.HasValue)
-                                    {
-                                        price = Model.Price.Value.ToString("N0") + "Vnđ";
-                                    }
-                                    if (Model.PromotionPrice.HasValue)
-                                    {
-                                        promotionPrice = Model.PromotionPrice.Value.ToString("N0") + "Vnđ";
-                                    } }
+                    @{ 
+                        var price = "";
+                        var promotionPrice = "";
+                        if (Model.Price.HasValue)
+                        {
+                            price = Model.Price.Value.ToString("N0") + "Vnđ";
+                        }
+                        if (Model.PromotionPrice.HasValue)
+                        {
+                            promotionPrice = Model.PromotionPrice.Value.ToString("N0") + "Vnđ";
+                        } 
+                    }
                     <span class="item_price">@promotionPrice</span>
                     <del class="mx-2 font-weight-light">@price</del>
-                    <label>Free delivery</label>
+                    <label>Miễn phí vận chuyển</label>
                 </p>
                 <div class="product-single-w3l">
                     @Model.Detail
@@ -96,20 +96,7 @@
                 </div>
                 <div class="occasion-cart">
                     <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
-                        <form action="#" method="post">
-                            <fieldset>
-                                <input type="hidden" name="cmd" value="_cart" />
-                                <input type="hidden" name="add" value="1" />
-                                <input type="hidden" name="business" value=" " />
-                                <input type="hidden" name="item_name" value="Samsung Galaxy J7 Prime" />
-                                <input type="hidden" name="amount" value="200.00" />
-                                <input type="hidden" name="discount_amount" value="1.00" />
-                                <input type="hidden" name="currency_code" value="USD" />
-                                <input type="hidden" name="return" value=" " />
-                                <input type="hidden" name="cancel_return" value=" " />
-                                <input type="submit" name="submit" value="Add to cart" class="button" />
-                            </fieldset>
-                        </form>
+                        <a href="#" class="btn btn-primary btnaddtocart" data-id="@Model.ID" data-quantity="1">Thêm vào giỏ</a>
                     </div>
                 </div>
             </div>

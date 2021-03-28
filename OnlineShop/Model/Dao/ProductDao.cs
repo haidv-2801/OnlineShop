@@ -94,6 +94,7 @@ namespace Model.Dao
                 product.Detail = entity.Detail;
                 product.CategoryID = entity.CategoryID;
                 product.ModifiedBy = entity.ModifiedBy;
+                product.Warranty = entity.Warranty;
                 product.ModifiedDate = DateTime.Now;
                 db.SaveChanges();
                 return true;

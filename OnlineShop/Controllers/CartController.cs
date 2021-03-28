@@ -14,7 +14,7 @@ namespace OnlineShop.Controllers
 {
     public class CartController : Controller
     {
-        private const string CartSession = "CartSession";
+        private const string CartSession = "CART_SESSION";
         // GET: Cart
         public ActionResult Index()
         {
@@ -26,6 +26,7 @@ namespace OnlineShop.Controllers
             }
             return View(list);
         }
+        
         public ActionResult AddItem(long productId, int quantity)
         {
             var product = new ProductDao().ViewDetail(productId);
