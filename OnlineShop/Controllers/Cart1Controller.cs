@@ -24,12 +24,14 @@ namespace OnlineShop.Controllers
             int pageSize = 5;
             int pageNumber = (page ?? 1);
 
-            if(cart != null)
+            if (cart != null)
             {
                 list = cart as List<CartItem>;
             }
             return View(list.ToPagedList(pageNumber, pageSize));
         }
+
+       
  
         public JsonResult AddToCart(long id, int quantity)
         {
@@ -101,15 +103,14 @@ namespace OnlineShop.Controllers
         }
 
         [HttpPost]
-        public JsonResult Payment(string shipName, string mobile, string address, string email)
-        {
+        public ActionResult Payment(string shipName, string mobile, string address, string email)
+         {
             var order = new Order();
             order.CreatedDate = DateTime.Now;
             order.ShipAddress = address;
             order.ShipMobile = mobile;
             order.ShipName = shipName;
             order.ShipEmail = email;
-
             try
             {
                 var id = new OrderDao().Insert(order);
@@ -122,6 +123,7 @@ namespace OnlineShop.Controllers
                     orderDetail.ProductID = item.Product.ID;
                     orderDetail.OrderID = id;
                     orderDetail.Price = item.Product.Price;
+
                     // tính theo promotion price khi code đã đầy đủ
                     orderDetail.Quantity = item.Quantity;
                     detailDao.Insert(orderDetail);
@@ -136,16 +138,26 @@ namespace OnlineShop.Controllers
                 content = content.Replace("{{Total}}", total.ToString("N0"));
                 // email quản trị
                 var toEmail = ConfigurationManager.AppSettings["ToEmailAddress"].ToString();
+               /*  new MailHelper().SendMail(email, "Đơn hàng mới từ OnlineShop", content);
+                  new MailHelper().SendMail(toEmail, "Đơn hàng mới từ OnlineShop", content);*/
 
-              /*  new MailHelper().SendMail(email, "Đơn hàng mới từ OnlineShop", content);
-                new MailHelper().SendMail(toEmail, "Đơn hàng mới từ OnlineShop", content);*/
+                return RedirectToAction("Success");
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
-                string t = ex.Message;
-                return Json(new { status = false, message = t } , JsonRequestBehavior.AllowGet);
+                string er = ex.Message;
+                return RedirectToAction("Fail");
             }
-            return Json(new { status = true, message = "Đặt hàng thành công!" }, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult Success()
+        {
+            return View();
+        }
+
+        public ActionResult Fail()
+        {
+            return View();
         }
     }
 }

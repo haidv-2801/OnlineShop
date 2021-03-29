@@ -100,8 +100,15 @@ namespace OnlineShop
             );
             routes.MapRoute(
                 name: "Payment Success",
-                url: "hoan-thanh",
-                defaults: new { controller = "Cart", action = "Success", id = UrlParameter.Optional },
+                url: "dathang-thanhcong",
+                defaults: new { controller = "Cart1", action = "Success", id = UrlParameter.Optional },
+                namespaces: new[] { "OnlineShop.Controllers" }
+            );
+
+            routes.MapRoute(
+                name: "Payment Fail",
+                url: "dathang-thatbai",
+                defaults: new { controller = "Cart1", action = "Fail", id = UrlParameter.Optional },
                 namespaces: new[] { "OnlineShop.Controllers" }
             );
             routes.MapRoute(

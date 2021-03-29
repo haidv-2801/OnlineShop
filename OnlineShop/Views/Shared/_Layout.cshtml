@@ -161,7 +161,8 @@
                 easingType: 'easeOutQuart'
             });
 
-        }</script>
+        });
+    </script>
     <!-- //Meta tag Keywords -->
     <!-- Custom-Files -->
     <link href="/Assets/Client/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
@@ -734,81 +735,79 @@
     <!-- //end-smooth-scrolling -->
     <!-- smooth-scrolling-of-move-up -->
     <script>
-                $(document).ready(
-                    function () {
-                        $("#agileinfo-nav_search").change(function () {
-                var selectedItem = $("#agileinfo-nav_search option:selected").attr("id");
-                var metatitle = $("#agileinfo-nav_search option:selected").attr("value");
-                var redirectURL = '@Url.Action("Category","Product")';
-                window.location.href = "/san-pham/" + metatitle + "-" +  selectedItem;
-            });
-                    //add to cart
-                    $('.btnaddtocart').on('click', function (e) {
-                        e.preventDefault();
-                        var curbtn = $(this);
-                        var cartSize = $('#cartSize');
+           $(function () {
+               $("#agileinfo-nav_search").change(function () {
+                    var selectedItem = $("#agileinfo-nav_search option:selected").attr("id");
+                    var metatitle = $("#agileinfo-nav_search option:selected").attr("value");
+                    var redirectURL = '@Url.Action("Category","Product")';
+                    window.location.href = "/san-pham/" + metatitle + "-" + selectedItem;
+                });
+                //add to cart
+                $('.btnaddtocart').on('click', function (e) {
+                    e.preventDefault();
+                    var curbtn = $(this);
+                    var cartSize = $('#cartSize');
 
-                        console.log('test');
-                        $.ajax({
-                            url: '/them-vao-gio',
-                            type: 'Post',
-                            dataType: 'Json',
-                            data: {
-                                id: curbtn.data('id'),
-                                quantity: curbtn.data('quantity')
-                            },
-                            success: function (res) {
-                                if (res.status == true) {
-                                    toastr.success(res.message, "Thông báo", { timeOut: 3000, "closeButton": true });
-                                    cartSize.text(parseInt(cartSize.text()) + 1);
-                                }
+                    console.log('test');
+                    $.ajax({
+                        url: '/them-vao-gio',
+                        type: 'Post',
+                        dataType: 'Json',
+                        data: {
+                            id: curbtn.data('id'),
+                            quantity: curbtn.data('quantity')
+                        },
+                        success: function (res) {
+                            if (res.status == true) {
+                                toastr.success(res.message, "Thông báo", { timeOut: 3000, "closeButton": true });
+                                cartSize.text(parseInt(cartSize.text()) + 1);
                             }
-                        });
+                        }
                     });
-                    // searching products by name
-                    $('#productsSearch').on('keyup', function () {
-                        var searchContent = $(this).val().trim().toLowerCase();
-                        var items = $('.product-men');
-                        console.log(searchContent);
-                        $.each(items, function (index, value) {
-                            var nameofProduct = "";
-                            nameofProduct = $(value).data('name').toLowerCase();
-                            if (nameofProduct.indexOf(searchContent) > -1) {
-                                $(value).delay(100).slideDown();
-                                console.log(nameofProduct);
-                            } else {
-                                $(value).delay(100).slideUp();
-                            }
-                        });
+                });
+                // searching products by name
+                $('#productsSearch').on('keyup', function () {
+                    var searchContent = $(this).val().trim().toLowerCase();
+                    var items = $('.product-men');
+                    console.log(searchContent);
+                    $.each(items, function (index, value) {
+                        var nameofProduct = "";
+                        nameofProduct = $(value).data('name').toLowerCase();
+                        if (nameofProduct.indexOf(searchContent) > -1) {
+                            $(value).delay(100).slideDown();
+                            console.log(nameofProduct);
+                        } else {
+                            $(value).delay(100).slideUp();
+                        }
                     });
+                });
 
 
-                    //product  by price filtering
-                    $('.price-filtering').on('click', function (e) {
-                        e.preventDefault();
-                        var curBtn = $(this);
-                        var rangePrice = curBtn.data('price').split(':');
-                        var l = parseFloat(rangePrice[0]) * 1000000;
-                        var h = parseFloat(rangePrice[1]) * 1000000;
+                //product  by price filtering
+                $('.price-filtering').on('click', function (e) {
+                    e.preventDefault();
+                    var curBtn = $(this);
+                    var rangePrice = curBtn.data('price').split(':');
+                    var l = parseFloat(rangePrice[0]) * 1000000;
+                    var h = parseFloat(rangePrice[1]) * 1000000;
 
-                        var cards = $('.product-men');
-                        $.each(cards, function (index, value) {
-                            var p = parseFloat($(value).data('price'));
-                            if (p >= l && p <= h) {
-                                $(value).delay(100).slideDown();
-                            } else {
-                                $(value).delay(100).slideUp();
-                            }
-                        });
+                    var cards = $('.product-men');
+                    $.each(cards, function (index, value) {
+                        var p = parseFloat($(value).data('price'));
+                        if (p >= l && p <= h) {
+                            $(value).delay(100).slideDown();
+                        } else {
+                            $(value).delay(100).slideUp();
+                        }
                     });
+                });
 
-                    //carousel
-                    $('.carousel').carousel({
-                        interval: 1200
-                    });
+                //carousel
+                $('.carousel').carousel({
+                    interval: 1200
+                });
+           });
 
-
-        });
     </script>
     <!-- //smooth-scrolling-of-move-up -->
     <!-- for bootstrap working -->

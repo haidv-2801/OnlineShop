@@ -13,6 +13,8 @@
 }
 
 <div class="privacy py-sm-5 py-4">
+    @if(Model.Count > 0)
+    {
     <div class="container py-xl-4 py-lg-2">
         <!-- tittle heading -->
         <h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
@@ -78,9 +80,11 @@
         <div class="checkout-left">
             <div class="address_form_agile mt-sm-5 mt-4">
                 <h4 class="mb-sm-4 mb-3">Thông tin chi tiết</h4>
-                    <div class="creditly-wrapper wthree, w3_agileits_wrapper">
-                        <div class="information-wrapper">
-                            <div class="first-row">
+                <div class="creditly-wrapper wthree, w3_agileits_wrapper">
+                    <div class="information-wrapper">
+                        <div class="first-row">
+                            @using (Html.BeginForm("Payment", "Cart1", FormMethod.Post))
+                            {
                                 <div class="controls form-group">
                                     <input class="billing-address-name form-control" type="text" name="shipName" placeholder="Họ tên" required="required">
                                 </div>
@@ -92,7 +96,7 @@
                                     </div>
                                     <div class="w3_agileits_card_number_grid_right form-group">
                                         <div class="controls">
-                                            <input type="text" class="form-control" placeholder="email" name="landmark" required="">
+                                            <input type="text" class="form-control" placeholder="email" name="email" required="">
                                         </div>
                                     </div>
                                 </div>
@@ -107,10 +111,14 @@
                                         <option>Paypal</option>
                                     </select>
                                 </div>
-                            </div>
-                            <div id="btnPayment" class="btn btn-secondary">Đặt hàng</div>
+                                @*<div id="btnPayment" class="btn btn-secondary">Đặt hàng</div>*@
+                                <button type="submit" class="btn">Đặt hàng</button>
+                            }
+
                         </div>
+                       
                     </div>
+                </div>
                 <div class="checkout-right-basket">
                     <a href="/Cart1Controller/Payment">
                         Thanh toán ngay
@@ -120,4 +128,11 @@
             </div>
         </div>
     </div>
+    }
+    else
+    {
+        <p class="text-uppercase ml-5">
+            No items
+        </p>
+    }
 </div>

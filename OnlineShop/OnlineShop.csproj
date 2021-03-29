@@ -3432,6 +3432,7 @@
     <Content Include="Assets\Client\js\SmoothScroll.min.js" />
     <Content Include="Assets\Client\js\toastr.js" />
     <Content Include="Assets\Client\js\toastr.min.js" />
+    <Content Include="Assets\Client\template\neworder.html" />
     <Content Include="Assets\Client\webfonts\fa-brands-400.svg" />
     <Content Include="Assets\Client\webfonts\fa-regular-400.svg" />
     <Content Include="Assets\Client\webfonts\fa-solid-900.svg" />
@@ -3981,13 +3982,11 @@
     <Content Include="Views\Shared\_middle_section.cshtml" />
     <Content Include="Views\Shared\_navbar_inner.cshtml" />
     <Content Include="Views\Shared\_filter_right.cshtml" />
-
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Shared\_filter_tag.cshtml" />
-
     <Content Include="Views\Cart1\Index.cshtml" />
-    <Content Include="Views\Cart1\Payment.cshtml" />
-
+    <Content Include="Views\Cart1\Success.cshtml" />
+    <Content Include="Views\Cart1\Fail.cshtml" />
     <None Include="Views\Shared\_product.cshtml" />
     <Content Include="Views\Shared\_slider.cshtml" />
     <Content Include="Web.config" />

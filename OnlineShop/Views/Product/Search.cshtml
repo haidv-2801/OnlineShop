@@ -41,7 +41,7 @@
                             <p><span class="rupees">@(item.Price.HasValue ? item.Price.Value.ToString("N0") : "Liên hệ")</span></p>
                         </div>
                         <div class="add-cart">
-                            <h4><a href="/gio-hang/@item.ID">Thêm vào giỏ</a></h4>
+                            <a href="#" class="btn btn-primary btnaddtocart" data-id="@item.ID" data-quantity="1">Thêm vào giỏ</a>
                         </div>
                         <div class="clear"></div>
                     </div>
