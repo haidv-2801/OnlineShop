@@ -6,12 +6,13 @@ var cart = {
     main: function () {
 
         //payment
-       $('#btnPayment').on('click', function () {
+        $('#btnPayment').on('click', function () {
+            
             var shipName = $('input[name="shipName"]').val();
             var mobile = $('input[name="mobile"]').val();
             var email = $('input[name="email"]').val();
-           var address = $('input[name="address"]').val();
-           
+            var address = $('input[name="address"]').val();
+            console.log(shipName + " " + mobile + " " + email + " " + address);
            $.ajax({
                url: '/thanh-toan',
                data: {
@@ -22,15 +23,10 @@ var cart = {
                },
                type: 'Post',
                dataType: 'Json',
-               success: function (res) {
-                  /* if (res.status == true) {
-                       toastr.success(res.message, "Thông báo", { timeOut: 3000, "closeButton": true);
-                   } else {
-                       toastr.warning(res.message, "Lỗi", { timeOut: 3000, "closeButton": true);
-                   }
-                 */
-                   console.log("es");
-               }
+           }).done(function (res) {
+               console.log(res.message);
+           }).fail(function (er) {
+               console.log(er.message);
            });
         });
 
