@@ -1,0 +1,103 @@
+﻿﻿@using OnlineShop.Common;
+@{
+    var user = (UserLogin)Session[CommonConstants.USER_SESSION];
+    var cookiesUserName = Request.Cookies["username"];
+    var cookiesPassword = Request.Cookies["password"];
+}
+@using Model.Dao;
+<div class="container-fluid">
+    <div class="row main-top-w3l py-2">
+        <div class="col-lg-4 header-most-top">
+            <p class="text-white text-lg-left text-center">
+                Offer Zone Top Deals & Discounts
+                <i class="fas fa-shopping-cart ml-1"></i>
+            </p>
+        </div>
+        <div class="col-lg-8 header-right mt-lg-0 mt-2">
+            <!-- header lists -->
+            <ul>
+                <li class="text-center border-right text-white">
+                    <a class="play-icon popup-with-zoom-anim text-white" href="#small-dialog1">
+                        <i class="fas fa-map-marker mr-2"></i>Select Location
+                    </a>
+                </li>
+                <li class="text-center border-right text-white">
+                    <a href="#" data-toggle="modal" data-target="#exampleModal" class="text-white">
+                        <i class="fas fa-truck mr-2"></i>Track Order
+                    </a>
+                </li>
+                <li class="text-center border-right text-white">
+                    <i class="fas fa-phone mr-2"></i> 001 234 5678
+                </li>
+                @if (user == null && cookiesUserName == null)
+                {
+                    <li class="text-center border-right text-white">
+                        <a href="/User/Login" class="text-white">
+                            @*onclick="complete('@Url.Action("Login", "User")')"*@
+                            <i class="fas fa-sign-in-alt mr-2"></i> Log In
+                        </a>
+                    </li>
+                    <li class="text-center text-white">
+                        <a href="/User/Register" class="text-white">
+                            <i class="fas fa-sign-out-alt mr-2"></i>Register
+                        </a>
+                    </li>
+                }
+                else
+                {
+                    if (user != null)
+                    {
+                        <li class="text-center border-right text-white dropdown">
+                            <a class="text-white" href="#">
+                                <img src="@user.Avatar" width="10">
+                                Welcome @user.UserName
+                            </a>
+                            @*<ul class="dropdown-menu">
+
+                        <li class="dropdown-item">
+                            @Html.ActionLink("Đăng xuất", "Logout", "User")
+                        </li>
+                    </ul>*@
+
+                        </li>
+                        <li class="text-center border-right text-white dropdown">
+                            <a class="text-white" href="#">
+                                @Html.ActionLink("Đăng xuất", "Logout", "User")
+                            </a>
+
+
+                        </li>
+                    }
+                    else if (cookiesUserName != null)
+                    {
+                        var userIn4 = new UserDao().GetById(cookiesUserName.Value);
+                        <li class="text-center border-right text-white dropdown">
+                            <a class="text-white" href="#">
+                                <img src="@userIn4.Avatar" width="10">
+                                Welcome @userIn4.UserName
+                            </a>
+                            @*<ul class="dropdown-menu">
+
+                                <li class="dropdown-item">
+                                    @Html.ActionLink("Đăng xuất", "Logout", "User")
+                                </li>
+                            </ul>*@
+
+                        </li>
+                        <li class="text-center border-right text-white dropdown">
+                            <a class="text-white" href="#">
+                                @Html.ActionLink("Đăng xuất", "Logout", "User")
+                            </a>
+
+
+                        </li>
+                    }
+
+                }
+
+            </ul>
+            <!-- //header lists -->
+        </div>
+    </div>
+</div>
+

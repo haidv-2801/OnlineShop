@@ -1,0 +1,48 @@
+﻿@using Model.ViewModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var newProducts = (ProductCategoryViewModel)ViewBag.NewProducts;
+    var featureProducts = (ProductCategoryViewModel)ViewBag.ListFeatureProducts;
+}
+@section Slider{
+    @Html.Action("Slide", "Home")}
+<div class="container py-xl-4 py-lg-2">
+    <!-- tittle heading -->
+    <h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
+        <span>O</span>ur
+        <span>N</span>ew
+        <span>P</span>roducts
+    </h3>
+    <!-- //tittle heading -->
+    <div class="row">
+        <!-- product left -->
+        <div class="agileinfo-ads-display col-lg-9">
+            <div class="wrapper">
+                <!-- first section -->
+                @Html.Partial("_product", newProducts)
+                <!-- //first section -->
+                <!-- second section -->
+                @Html.Partial("_product", featureProducts)
+                <!-- //second section -->
+                <!-- third section -->
+                <div class="product-sec1 product-sec2 px-sm-5 px-3">
+                    <div class="row">
+                        <h3 class="col-md-4 effect-bg">Summer Carnival</h3>
+                        <p class="w3l-nut-middle">Get Extra 10% Off</p>
+                        <div class="col-md-8 bg-right-nut">
+                            <img src=" /Assets/Client/images/image1.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <!-- //third section -->
+                <!-- fourth section -->
+                @Html.Partial("_product", featureProducts)
+                <!-- //fourth section -->
+            </div>
+        </div>
+        <!-- //product left -->
+        <!-- product right -->
+        @Html.Partial("_filter_right")
+    </div>
+</div>

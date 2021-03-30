@@ -1,0 +1,122 @@
+﻿@model PagedList.IPagedList<OnlineShop.Models.CartItem>
+
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section jsFooter {
+    <script src="/Assets/Client/js/controllers/cartController.js"></script>
+}
+
+<div class="privacy py-sm-5 py-4">
+    <div class="container py-xl-4 py-lg-2">
+        <!-- tittle heading -->
+        <h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
+            <span>G</span>iỏ hàng
+        </h3>
+        <!-- //tittle heading -->
+        <div class="checkout-right">
+            <h4 class="mb-sm-4 mb-3">
+                Tổng:
+                <span id="totalItem">@Model.Count Sản phẩm</span>
+            </h4>
+
+            <a href="/san-pham" class="btn btn-success mb-2">Tiếp tục mua</a>
+            <a href="#" id="btnUpdateCart" class="btn btn-warning mb-2" style="color:white">Cập nhật giỏ</a>
+            <div class="table-responsive">
+                <table class="timetable_sub">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Sản phẩm</th>
+                            <th>Số lượng</th>
+                            <th>Tên</th>
+                            <th>Giá</th>
+                            <th>Xóa</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{ int i = 0; }
+                        @foreach (var item in Model)
+                        {
+                            i++;
+                            <tr class="rem1" data-id="@item.Product.ID">
+                                <td class="invert">@i</td>
+                                <td class="invert-image">
+                                    <a href="/chi-tiet/@item.Product.MetaTitle-@item.Product.ID">
+                                        <img src="@item.Product.Image" alt="@item.Product.MetaTitle" class="img-responsive" style="width:50px; height:50px">
+                                    </a>
+                                </td>
+                                <td class="invert">
+                                    <div class="quantity">
+                                        <div class="quantity-select">
+                                            <i class="fa fa-minus quantityDecre"></i>
+                                            <span>@item.Quantity</span>
+                                            <i class="fa fa-plus quantityIncre"></i>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="invert">@item.Product.Name</td>
+                                <td class="invert">@(item.Product.PromotionPrice.HasValue ? @item.Product.PromotionPrice.Value.ToString("N0") +" Vnđ" : "Liên hệ")</td>
+                                <td class="invert">
+                                    <div class="rem">
+                                        <div class="close1" data-id="@item.Product.ID"></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+            </div>
+        </div>
+        <div class="checkout-left">
+            <div class="address_form_agile mt-sm-5 mt-4">
+                <h4 class="mb-sm-4 mb-3">Thông tin chi tiết</h4>
+                <div class="creditly-wrapper wthree, w3_agileits_wrapper">
+                    <div class="information-wrapper">
+                        <div class="first-row">
+                            <div class="controls form-group">
+                                <input class="billing-address-name form-control" type="text" name="shipName" placeholder="Họ tên" required="required">
+                            </div>
+                            <div class="w3_agileits_card_number_grids">
+                                <div class="w3_agileits_card_number_grid_left form-group">
+                                    <div class="controls">
+                                        <input type="text" class="form-control" placeholder="Số điện thoại" name="mobile" required="required">
+                                    </div>
+                                </div>
+                                <div class="w3_agileits_card_number_grid_right form-group">
+                                    <div class="controls">
+                                        <input type="text" class="form-control" placeholder="email" name="landmark" required="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="controls form-group">
+                                <input type="text" class="form-control" placeholder="Địa chỉ nhận hàng" name="address" required="required">
+                            </div>
+                            <div class="controls form-group">
+                                <select class="option-w3ls">
+                                    <option>Phương thức thanh toán</option>
+                                    <option>Thanh toán khi nhận hàng</option>
+                                    <option>Momo</option>
+                                    <option>Paypal</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div id="btnPayment" class="btn btn-secondary">Đặt hàng</div>
+                    </div>
+                </div>
+                <div class="checkout-right-basket">
+                    <a href="/Cart1Controller/Payment">
+                        Thanh toán ngay
+                        <span class="far fa-hand-point-right"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
