@@ -110,7 +110,6 @@ C:\Users\Admin\Desktop\New folder (2)\OnlineShop\OnlineShop\StaticResources\obj\
 C:\Users\trant\OneDrive\Máy tính\WEB\OnlineShop\OnlineShop\StaticResources\bin\Debug\StaticResources.dll
 C:\Users\trant\OneDrive\Máy tính\WEB\OnlineShop\OnlineShop\StaticResources\bin\Debug\StaticResources.pdb
 C:\Users\trant\OneDrive\Máy tính\WEB\OnlineShop\OnlineShop\StaticResources\bin\Debug\en\StaticResources.resources.dll
-C:\Users\trant\OneDrive\Máy tính\WEB\OnlineShop\OnlineShop\StaticResources\obj\Debug\StaticResources.csprojAssemblyReference.cache
 C:\Users\trant\OneDrive\Máy tính\WEB\OnlineShop\OnlineShop\StaticResources\obj\Debug\StaticResources.Resources.resources
 C:\Users\trant\OneDrive\Máy tính\WEB\OnlineShop\OnlineShop\StaticResources\obj\Debug\StaticResources.Resources.en.resources
 C:\Users\trant\OneDrive\Máy tính\WEB\OnlineShop\OnlineShop\StaticResources\obj\Debug\StaticResources.csproj.GenerateResource.cache

@@ -52,12 +52,12 @@
                                 <img src="@user.Avatar" width="10">
                                 Welcome @user.UserName
                             </a>
-                            @*<ul class="dropdown-menu">
+                            <ul class="dropdown-menu">
 
-                        <li class="dropdown-item">
-                            @Html.ActionLink("Đăng xuất", "Logout", "User")
-                        </li>
-                    </ul>*@
+                                <li class="dropdown-item">
+                                    @Html.ActionLink("Đăng xuất", "Logout", "User")
+                                </li>
+                            </ul>
 
                         </li>
                         <li class="text-center border-right text-white dropdown">
@@ -76,21 +76,15 @@
                                 <img src="@userIn4.Avatar" width="10">
                                 Welcome @userIn4.UserName
                             </a>
-                            @*<ul class="dropdown-menu">
+                            <ul class="dropdown-menu">
 
                                 <li class="dropdown-item">
                                     @Html.ActionLink("Đăng xuất", "Logout", "User")
                                 </li>
-                            </ul>*@
+                            </ul>
 
                         </li>
-                        <li class="text-center border-right text-white dropdown">
-                            <a class="text-white" href="#">
-                                @Html.ActionLink("Đăng xuất", "Logout", "User")
-                            </a>
-
-
-                        </li>
+                        
                     }
 
                 }

@@ -3414,6 +3414,7 @@
     <Content Include="Assets\Client\images\win10_purple.jpg" />
     <Content Include="Assets\Client\js\bootbox.min.js" />
     <Content Include="Assets\Client\js\bootstrap.js" />
+    <Content Include="Assets\Client\js\controllers\cart1Controller.js" />
     <Content Include="Assets\Client\js\controllers\cartController.js" />
     <Content Include="Assets\Client\js\controllers\Payment.js" />
     <Content Include="Assets\Client\js\creditly.js" />

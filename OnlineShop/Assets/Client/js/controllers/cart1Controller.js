@@ -1,44 +1,42 @@
-﻿import { debug } from "console";
-
-var cart = {
+﻿var cart = {
     init: function () {
         cart.main();
     },
     main: function () {
 
         //payment
-       $('#btnPayment').on('click', function () {
+        $('#btnPayment').on('click', function () {
             var shipName = $('input[name="shipName"]').val();
             var mobile = $('input[name="mobile"]').val();
             var email = $('input[name="email"]').val();
-           var address = $('input[name="address"]').val();
-           
-           $.ajax({
-               url: '/thanh-toan',
-               data: {
-                   shipName: shipName,
-                   mobile: mobile,
-                   address: address,
-                   email: email
-               },
-               type: 'Post',
-               dataType: 'Json',
-               success: function (res) {
-                  /* if (res.status == true) {
-                       toastr.success(res.message, "Thông báo", { timeOut: 3000, "closeButton": true);
-                   } else {
-                       toastr.warning(res.message, "Lỗi", { timeOut: 3000, "closeButton": true);
-                   }
-                 */
-                   console.log("es");
-               }
-           });
+            var address = $('input[name="address"]').val();
+
+            $.ajax({
+                url: '/thanh-toan',
+                data: {
+                    shipName: shipName,
+                    mobile: mobile,
+                    address: address,
+                    email: email
+                },
+                type: 'Post',
+                dataType: 'Json',
+                success: function (res) {
+                    /* if (res.status == true) {
+                         toastr.success(res.message, "Thông báo", { timeOut: 3000, "closeButton": true);
+                     } else {
+                         toastr.warning(res.message, "Lỗi", { timeOut: 3000, "closeButton": true);
+                     }
+                   */
+                    console.log("es");
+                }
+            });
         });
 
-       /* $('#btnPayment').on('click', function () {
-            var mobile = $('input[name="mobile"]').val();
-            console.log(mobile);
-        });*/
+        /* $('#btnPayment').on('click', function () {
+             var mobile = $('input[name="mobile"]').val();
+             console.log(mobile);
+         });*/
 
         $('#cartSize').css('color', 'red');
 
@@ -48,8 +46,8 @@ var cart = {
             var current = $(this);
             var quantity = current.parent().find('span:first');
             if (parseInt(quantity.text()) > 1) {
-                quantity.text(parseInt(quantity.text()) - 1); 
-            }  
+                quantity.text(parseInt(quantity.text()) - 1);
+            }
         });
 
         $('.quantityIncre').on('click', function () {
@@ -58,7 +56,7 @@ var cart = {
             quantity.text(parseInt(quantity.text()) + 1);
         });
 
-        /*$('#btnUpdateCart').on('click', function (e) {
+        $('#btnUpdateCart').on('click', function (e) {
             e.preventDefault();
             alert("hg");
             var jsonList = [];
@@ -71,18 +69,17 @@ var cart = {
                     Quantity: $(value).find('span:first').text()
                 });
             });
-           
+
             //call ajax
             $.ajax({
                 url: '/Cart1/UpdateCart',
                 data: { contentJson: JSON.stringify(jsonList) },
                 dataType: 'Json',
-                type:'Post'
+                type: 'Post'
             }).done(function (res) {
-                toastr.success(res.message, "Thông báo", { timeOut: 3000, "closeButton":true });
+                toastr.success(res.message, "Thông báo", { timeOut: 3000, "closeButton": true });
             });
         });
-
         $('.close1').on('click', function () {
             var cur = $(this);
             var id = cur.data('id');
@@ -111,14 +108,14 @@ var cart = {
                             toastr.success(res.message, "Thông báo", { timeOut: 3000, "closeButton": true });
                             totalItem.text(parseInt(totalItem.text()) - 1);
                             cartSize.text(parseInt(cartSize.text()) - 1);
-                           // window.location.href = "/gio-hang";
-                            
+                            // window.location.href = "/gio-hang";
+
                         }
                     },
-                    
+
                 });
             }
-        });*/
+        });
     }
 }
 cart.init();

@@ -17,11 +17,11 @@ namespace OnlineShop.Controllers
     {
         private const string CartCoockies = "CartCoockies";
         // GET: Cart1
-        public ActionResult Index(int? page)
+        public ActionResult Index()
         {
             var list = new List<CartItem>();
-            int pageSize = 5;
-            int pageNumber = (page ?? 1);
+            /*int pageSize = 5;
+            int pageNumber = (page ?? 1);*/
             var cart = Request.Cookies[CartCoockies];
             if (cart != null)
             {
@@ -42,7 +42,7 @@ namespace OnlineShop.Controllers
                 }
 
             }
-            return View(list.ToPagedList(pageNumber, pageSize));
+            return View(list);
         }
         public JsonResult AddToCart(long productId, int quantity)
         {
@@ -103,7 +103,7 @@ namespace OnlineShop.Controllers
             return Json(new { status = true, message = "Thêm thành công!" });
         }
 
-        [HttpGet]
+        
         public JsonResult Delete(long id)
         {
             var cart = Request.Cookies[CartCoockies];
@@ -147,7 +147,7 @@ namespace OnlineShop.Controllers
             return Json(new { status = true, message = "Xóa thành công!" });
         }
 
-        [HttpPost]
+       
         public JsonResult UpdateCart(string contentJson)
         {
             var jsonCart = new JavaScriptSerializer().Deserialize<List<CartItem>>(contentJson);
