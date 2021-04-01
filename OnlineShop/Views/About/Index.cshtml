@@ -1,0 +1,80 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var about = (List<Model.EF.About>)ViewBag.About;
+    var founder = (List<Model.EF.About>)ViewBag.Founder;
+}
+@section Slider{
+    <!-- banner-2 -->
+    <div class="page-head_agile_info_w3l">
+
+    </div>
+    <!-- //banner-2 -->
+    <!-- page -->
+    <div class="services-breadcrumb">
+        <div class="agile_inner_breadcrumb">
+            <div class="container">
+                <ul class="w3_short">
+                    <li>
+                        <a href="index.html">Home</a>
+                        <i>|</i>
+                    </li>
+                    <li>@about.First().Name</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- //page -->
+}
+
+<!-- about -->
+<div class="welcome py-sm-5 py-4">
+    <div class="container py-xl-4 py-lg-2">
+        <!-- tittle heading -->
+        <h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
+            <span>@about.First().Name</span>
+            @*<span>U</span>s*@
+        </h3>
+        <!-- //tittle heading -->
+        <div class="row">
+            <div class="col-lg-6 welcome-left">
+                @Html.Raw(about.First().Detail)
+            </div>
+            <div class="col-lg-6 welcome-right-top mt-lg-0 mt-sm-5 mt-4">
+                <img src="@about.First().Image" class="img-fluid" alt=" ">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- //about -->
+<!-- testimonials -->
+<div class="testimonials py-sm-5 py-4">
+    <div class="container py-xl-4 py-lg-2">
+        <!-- tittle heading -->
+        <h3 class="tittle-w3l text-center text-white mb-lg-5 mb-sm-4 mb-3">
+            <span>O</span>ur
+            <span>C</span>ustomers
+            <span>S</span>ays
+        </h3>
+        <!-- tittle heading -->
+        <div class="row gallery-index">
+            @foreach (var item in founder)
+            {
+                <div class="col-sm-6 med-testi-grid">
+                    <div class="med-testi test-tooltip rounded p-4">
+                        @Html.Raw(item.Detail)
+                    </div>
+                    <div class="row med-testi-left my-5">
+                        <div class="col-lg-2 col-3 w3ls-med-testi-img">
+                            <img src="@item.Image" alt=" " class="img-fluid rounded-circle" />
+                        </div>
+                        <div class="col-lg-10 col-9 med-testi-txt">
+                            <h4 class="font-weight-bold mb-lg-1 mb-2">@item.Description</h4>
+                            <p>@item.Name</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<!-- //testimonials -->

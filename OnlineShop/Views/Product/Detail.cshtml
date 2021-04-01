@@ -1,0 +1,106 @@
+﻿﻿@model Model.EF.Product
+
+@{ Layout = "~/Views/Shared/_Layout.cshtml";
+                var category = (Model.EF.ProductCategory)ViewBag.Category;
+                var relatedProducts = (List<Model.EF.Product>)ViewBag.RelatedProducts; }
+
+@section Scripts {
+    <script src="/Assets/Client/js/imagezoom.js"></script>
+    <!-- //imagezoom -->
+    <!-- flexslider -->
+    <link rel="stylesheet" href="/Assets/Client/css/flexslider.css" type="text/css" media="screen" />
+    <script src="/Assets/Client/js/jquery.flexslider.js"></script>
+    <script>
+        // Can also be used with $(document).ready()
+        $(window).load(function () {
+            $('.flexslider').flexslider({
+                animation: "slide",
+                controlNav: "thumbnails"
+            });
+        });
+    </script>
+}
+
+<div id="breadCumb" class="services-breadcrumb">
+    <div class="agile_inner_breadcrumb">
+        <div class="container">
+            <ul class="w3_short">
+                <li>
+                    <a href="/">Home</a>
+                    <i>|</i>
+                </li>
+                <li>@Model.MetaTitle</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="banner-bootom-w3-agileits py-5">
+    <div class="container py-xl-4 py-lg-2">
+        <!-- tittle heading -->
+        <h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
+            <span>C</span>hi
+            <span>T</span>iết
+        </h3>
+        <!-- //tittle heading -->
+        <div class="row">
+            <div class="col-lg-5 col-md-8 single-right-left ">
+                <div class="grid images_3_of_2">
+                    <div class="flexslider">
+                        <ul class="slides">
+                            <li data-thumb="@Model.Image">
+                                <div class="thumb-image">
+                                    <img src="@Model.Image" data-imagezoom="true" class="img-fluid" alt="@Model.MetaTitle">
+                                </div>
+                            </li>
+                            <li data-thumb="@Model.Image">
+                                <div class="thumb-image">
+                                    <img src="@Model.Image" data-imagezoom="true" class="img-fluid" alt="@Model.MetaTitle">
+                                </div>
+                            </li>
+                            <li data-thumb="@Model.Image">
+                                <div class="thumb-image">
+                                    <img src="@Model.Image" data-imagezoom="true" class="img-fluid" alt="@Model.MetaTitle">
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-7 single-right-left simpleCart_shelfItem">
+                <h3 class="mb-3">@Model.MetaDescriptions</h3>
+                <p class="mb-3">
+                    @{ 
+                        var price = "";
+                        var promotionPrice = "";
+                        if (Model.Price.HasValue)
+                        {
+                            price = Model.Price.Value.ToString("N0") + "Vnđ";
+                        }
+                        if (Model.PromotionPrice.HasValue)
+                        {
+                            promotionPrice = Model.PromotionPrice.Value.ToString("N0") + "Vnđ";
+                        } 
+                    }
+                    <span class="item_price">@promotionPrice</span>
+                    <del class="mx-2 font-weight-light">@price</del>
+                    <label>Miễn phí vận chuyển</label>
+                </p>
+                <div class="product-single-w3l">
+                    @Model.Detail
+                    <p class="my-sm-4 my-3">
+                        <i class="fas fa-retweet mr-3"></i>Net banking & Credit/ Debit/ ATM card
+                    </p>
+                </div>
+                <div class="occasion-cart">
+                    <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+                        <a href="#" class="btn btn-primary btnaddtocart" data-id="@Model.ID" data-quantity="1">Thêm vào giỏ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

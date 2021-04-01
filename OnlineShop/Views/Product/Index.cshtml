@@ -1,0 +1,111 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<Model.EF.Product>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section Slider{
+    <!-- banner-2 -->
+    <div class="page-head_agile_info_w3l">
+
+    </div>
+    <!-- //banner-2 -->
+    <!-- page -->
+    <div class="services-breadcrumb">
+        <div class="agile_inner_breadcrumb">
+            <div class="container">
+                <ul class="w3_short">
+                    <li>
+                        <a href="index.html">Home</a>
+                        <i>|</i>
+                    </li>
+                    <li>Product</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- //page -->
+}
+<!-- top Products -->
+<div class="ads-grid py-sm-5 py-4">
+    <div class="container py-xl-4 py-lg-2">
+        <!-- tittle heading -->
+        <h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
+            <span>M</span>obiles
+            <span>&</span>
+            <span>C</span>omputers
+        </h3>
+        @if (Model.Count() > 0)
+        {
+            <!-- //tittle heading -->
+            <div class="row">
+                <!-- product left -->
+                <div class="agileinfo-ads-display col-lg-9">
+                    <div class="wrapper">
+                        <!-- first section -->
+                        <div class="product-sec1 px-sm-4 px-3 py-sm-5  py-3 mb-4">
+                            <div class="row">
+                                @foreach (var item in Model)
+                                {
+                                    <div class="col-md-4 product-men" data-price="@item.PromotionPrice" data-name="@item.Name @item.MetaTitle" style="margin-top:25px">
+                                        <div class="men-pro-item simpleCart_shelfItem">
+                                            <div class="men-thumb-item text-center">
+                                                <img src="@item.Image" alt="@item.MetaTitle" style="max-width:200px; min-height: 200px;">
+                                                <div class="men-cart-pro">
+                                                    <div class="inner-men-cart-pro">
+                                                        <a href="/chi-tiet/@item.MetaTitle-@item.ID" class="link-product-add-cart">Quick View</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="item-info-product text-center border-top mt-4">
+                                                <h4 class="pt-1">
+                                                    <a href="/chi-tiet/@item.MetaTitle-@item.ID">@item.Name</a>
+                                                </h4>
+                                                <div class="info-product-price my-2">
+                                                    @{
+                                                        var price = "";
+                                                        var promotionPrice = "";
+                                                        if (item.Price.HasValue)
+                                                        {
+                                                            price = item.Price.Value.ToString("N0") + " VND";
+                                                        }
+                                                        if (item.PromotionPrice.HasValue)
+                                                        {
+                                                            promotionPrice = item.PromotionPrice.Value.ToString("N0") + " VND";
+                                                        }
+                                                    }
+                                                    <span class="item_price">@promotionPrice</span>
+                                                    <del>@price</del>
+                                                </div>
+                                                <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+                                                    <a href="/Cart1/AddToCart?productId=@item.ID&quantity=1" class="btn btn-primary btnaddtocart" data-id="@item.ID" data-quantity="1">Thêm vào giỏ</a>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        <!-- //first section -->
+                    </div>
+                </div>
+                @Html.Partial("_filter_right")
+                <!-- //product left -->
+            </div>
+
+            <!-- Thêm mã phân trang -->
+            <div>
+                <br />
+                Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+                @Html.PagedListPager(Model, page => Url.Action("Index", "Product",
+                                 new { page }))
+            </div>
+            <!-- Kết thúc -->
+        }
+        else
+        {
+            <span>Không Có Sản Phẩm</span>
+        }
+    </div>
+</div>
+<!-- //top products -->

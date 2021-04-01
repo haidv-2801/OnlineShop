@@ -1,0 +1,51 @@
+﻿@model Model.ViewModel.ProductCategoryViewModel
+
+<div class="product-sec1 px-sm-4 px-3 py-sm-5  py-3 mb-4">
+    <h3 class="heading-tittle text-center font-italic">@Model.Cate.Name</h3>
+    <div class="row d-flex justify-content-around">
+        @foreach (var item in Model.Products)
+        {
+            <div class="col-md-4 product-men mt-5" data-price="@item.PromotionPrice" data-name="@item.Name @item.MetaTitle">
+                <div class="men-pro-item simpleCart_shelfItem">
+                    <div class="men-thumb-item text-center">
+                        <img src="@item.Image" alt="@item.MetaTitle" style="max-width: 200px; min-height: 200px;">
+                        <div class="men-cart-pro">
+                            <div class="inner-men-cart-pro">
+                                <a href="/chi-tiet/@item.MetaTitle-@item.ID" class="link-product-add-cart">Xem chi tiết</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item-info-product text-center border-top mt-4">
+                        <h4 class="pt-1">
+                            <a href="/chi-tiet/@item.MetaTitle-@item.ID">@item.Name</a>
+                        </h4>
+                        <div class="info-product-price my-2">
+                            @{
+                                var price = "";
+                                var promotionPrice = "";
+                                if (item.Price.HasValue)
+                                {
+                                    price = item.Price.Value.ToString("N0") + "Vnđ";
+                                }
+                                if (item.PromotionPrice.HasValue)
+                                {
+                                    promotionPrice = item.PromotionPrice.Value.ToString("N0") + "Vnđ";
+                                }
+                            }
+                            <span class="item_price">@promotionPrice</span>
+                            <del>@price</del>
+                        </div>
+                        <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+                            <a href="#" class="btn btn-primary btnaddtocart" data-id="@item.ID" data-quantity="1">Thêm vào giỏ</a>
+                        </div>
+                    </div>
+                    @*/Cart1/AddToCart?productId=@item.ID&quantity=1*@
+                </div>
+            </div>
+        }
+        
+
+    </div>
+</div>
+
+
