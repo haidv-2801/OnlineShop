@@ -15,7 +15,7 @@ namespace OnlineShop.Controllers
 {
     public class Cart1Controller : Controller
     {
-        private const string CartCoockies = "CartCoockies";
+        private readonly static string CartCoockies = (string)Common.CommonConstants.CART_COOKIES;
         // GET: Cart1
         public ActionResult Index()
         {
@@ -38,9 +38,7 @@ namespace OnlineShop.Controllers
                         item.Quantity = int.Parse(a[1]);
                         list.Add(item);
                     }
-
                 }
-
             }
             return View(list);
         }
@@ -49,8 +47,6 @@ namespace OnlineShop.Controllers
             var cart = Request.Cookies[CartCoockies];
             if (cart != null)
             {
-
-
                 var list = new List<CartItem>();
                 var it = cart.Value.Split(',').ToList();
 
@@ -65,8 +61,6 @@ namespace OnlineShop.Controllers
                         item.Quantity = int.Parse(a[1]);
                         list.Add(item);
                     }
-
-
                 }
                 if (list.Exists(x => x.Product.ID == productId))
                 {
@@ -79,19 +73,15 @@ namespace OnlineShop.Controllers
                             item.Quantity += quantity;
                         }
 
-                        Response.Cookies[CartCoockies].Value = Response.Cookies[CartCoockies].Value + "," + item.Product.ID + "-" + item.Quantity;
-                        Response.Cookies[CartCoockies].Expires = DateTime.Now.AddYears(1);
-                        Response.SetCookie(Response.Cookies[CartCoockies]);
+                        Response.Cookies[CartCoockies].Value = Response.Cookies[CartCoockies].Value + "," + item.Product.ID + "-" + item.Quantity; 
                     }
                 }
                 else
                 {
-
                     Response.Cookies[CartCoockies].Value = Request.Cookies[CartCoockies].Value + "," + productId + "-" + quantity;
-                    Response.Cookies[CartCoockies].Expires = DateTime.Now.AddYears(1);
-                    Response.SetCookie(Response.Cookies[CartCoockies]);
                 }
-
+                Response.Cookies[CartCoockies].Expires = DateTime.Now.AddYears(1);
+                Response.SetCookie(Response.Cookies[CartCoockies]);
             }
             else
             {

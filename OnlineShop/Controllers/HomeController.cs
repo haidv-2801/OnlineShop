@@ -80,11 +80,13 @@ namespace OnlineShop.Controllers
         [ChildActionOnly]
         public PartialViewResult HeaderBottom()
         {
-            var cart = Session[Common.CommonConstants.CART_SESSION];
-            var list = new List<CartItem>();
+            
+            var cart = Request.Cookies[Common.CommonConstants.CART_COOKIES];
+            var list = new List<string>();
             if (cart != null)
             {
-                list = cart as List<CartItem>;
+                var cartList = cart.Value.Split(',').ToList<string>();
+                list = cartList;
             }
             return PartialView("_header_bottom", list);
         }
