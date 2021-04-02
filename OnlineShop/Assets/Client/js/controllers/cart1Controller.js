@@ -58,7 +58,6 @@
 
         $('#btnUpdateCart').on('click', function (e) {
             e.preventDefault();
-            alert("hg");
             var jsonList = [];
             var items = $('.quantity');
             $.each(items, function (index, value) {
@@ -83,14 +82,12 @@
         $('.close1').on('click', function () {
             var cur = $(this);
             var id = cur.data('id');
-            alert("bb");
             var curQuantity = cur.closest('tr').find('#quantityOfItem').text();
             var totalItem = $('#totalItem');
             var cartSize = $('#cartSize');
 
             var cf = confirm("Bạn thực sự muốn xóa?");
             if (cf == true) {
-
                 $.ajax({
                     url: '/Cart1/Delete',
                     type: 'POST',
@@ -99,8 +96,6 @@
                     success: function (res) {
                         console.log("b");
                         if (res.status == true) {
-                            alert("a");
-
                             $(cur).closest('tr').css('background', 'tomato');
                             $(cur).closest('tr').fadeOut(800, function () {
                                 cur.closest('tr').remove();
@@ -108,8 +103,6 @@
                             toastr.success(res.message, "Thông báo", { timeOut: 3000, "closeButton": true });
                             totalItem.text(parseInt(totalItem.text()) - 1);
                             cartSize.text(parseInt(cartSize.text()) - 1);
-                            // window.location.href = "/gio-hang";
-
                         }
                     },
 

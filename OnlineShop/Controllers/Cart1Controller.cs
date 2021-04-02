@@ -275,17 +275,26 @@ namespace OnlineShop.Controllers
                 var toEmail = ConfigurationManager.AppSettings["ToEmailAddress"].ToString();
 
                 new MailHelper().SendMail(email, "Đơn hàng mới từ LearningWeb", content);
-
                 new MailHelper().SendMail(toEmail, "Đơn hàng mới từ LearningWeb", content);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 //ghi log
 
-                return Redirect("/loi-thanh-toan");
+                return RedirectToAction("Success");
 
             }
-            return Redirect("/hoan-thanh");
+            return RedirectToAction("Fail");
+        }
+
+        public ActionResult Success()
+        {
+            return View();
+        }
+
+        public ActionResult Fail()
+        {
+            return View();
         }
     }
 }
