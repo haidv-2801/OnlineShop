@@ -117,3 +117,14 @@ C:\Users\trant\OneDrive\Máy tính\WEB\OnlineShop\OnlineShop\StaticResources\obj
 C:\Users\trant\OneDrive\Máy tính\WEB\OnlineShop\OnlineShop\StaticResources\obj\Debug\en\StaticResources.resources.dll
 C:\Users\trant\OneDrive\Máy tính\WEB\OnlineShop\OnlineShop\StaticResources\obj\Debug\StaticResources.dll
 C:\Users\trant\OneDrive\Máy tính\WEB\OnlineShop\OnlineShop\StaticResources\obj\Debug\StaticResources.pdb
+D:\new 1\OnlineShop\OnlineShop\StaticResources\bin\Debug\StaticResources.dll
+D:\new 1\OnlineShop\OnlineShop\StaticResources\bin\Debug\StaticResources.pdb
+D:\new 1\OnlineShop\OnlineShop\StaticResources\bin\Debug\en\StaticResources.resources.dll
+D:\new 1\OnlineShop\OnlineShop\StaticResources\obj\Debug\StaticResources.csprojAssemblyReference.cache
+D:\new 1\OnlineShop\OnlineShop\StaticResources\obj\Debug\StaticResources.Resources.resources
+D:\new 1\OnlineShop\OnlineShop\StaticResources\obj\Debug\StaticResources.Resources.en.resources
+D:\new 1\OnlineShop\OnlineShop\StaticResources\obj\Debug\StaticResources.csproj.GenerateResource.cache
+D:\new 1\OnlineShop\OnlineShop\StaticResources\obj\Debug\StaticResources.csproj.CoreCompileInputs.cache
+D:\new 1\OnlineShop\OnlineShop\StaticResources\obj\Debug\en\StaticResources.resources.dll
+D:\new 1\OnlineShop\OnlineShop\StaticResources\obj\Debug\StaticResources.dll
+D:\new 1\OnlineShop\OnlineShop\StaticResources\obj\Debug\StaticResources.pdb

@@ -758,11 +758,9 @@
                             if (res.status == true) {
                                 toastr.success(res.message, "Thông báo", { timeOut: 3000, "closeButton": true });
                                 cartSize.text(parseInt(cartSize.text()) + 1);
-
                             }
                         }
                     });
-                    alert("a");
                 });
                 // searching products by name
                 $('#productsSearch').on('keyup', function () {
