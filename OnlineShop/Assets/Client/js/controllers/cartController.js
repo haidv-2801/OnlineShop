@@ -1,4 +1,4 @@
-﻿import { debug } from "console";
+﻿
 
 var cart = {
     init: function () {

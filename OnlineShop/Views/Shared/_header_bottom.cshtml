@@ -1,4 +1,4 @@
-﻿@model List<OnlineShop.Models.CartItem>
+﻿@model List<string>
 
 <div class="container">
     <div class="row header-bot_inner_wthreeinfo_header_mid">
@@ -28,7 +28,7 @@
                         <form action="/gio-hang" method="post" class="last">
                             <input type="hidden" name="cmd" value="_cart">
                             <input type="hidden" name="display" value="1">
-                            <span id="cartSize">@Model.Count </span>
+                            <span id="cartSize">@(Model.Count-1)</span>
                             <button class="btn w3view-cart" type="submit" name="submit" value="">
                                 <i class="fas fa-cart-arrow-down"></i>
                             </button>

@@ -4,8 +4,8 @@
     },
     main: function () {
 
-        //payment
-        $('#btnPayment').on('click', function () {
+        //payment sửa dụng form gọi trực tiếp nên chưa cần dùng cái này
+       /* $('#btnPayment').on('click', function () {
             var shipName = $('input[name="shipName"]').val();
             var mobile = $('input[name="mobile"]').val();
             var email = $('input[name="email"]').val();
@@ -22,21 +22,15 @@
                 type: 'Post',
                 dataType: 'Json',
                 success: function (res) {
-                    /* if (res.status == true) {
+                    *//* if (res.status == true) {
                          toastr.success(res.message, "Thông báo", { timeOut: 3000, "closeButton": true);
                      } else {
                          toastr.warning(res.message, "Lỗi", { timeOut: 3000, "closeButton": true);
                      }
-                   */
-                    console.log("es");
+                   *//*
                 }
             });
-        });
-
-        /* $('#btnPayment').on('click', function () {
-             var mobile = $('input[name="mobile"]').val();
-             console.log(mobile);
-         });*/
+        });*/
 
         $('#cartSize').css('color', 'red');
 
@@ -79,6 +73,7 @@
                 toastr.success(res.message, "Thông báo", { timeOut: 3000, "closeButton": true });
             });
         });
+
         $('.close1').on('click', function () {
             var cur = $(this);
             var id = cur.data('id');
@@ -102,10 +97,9 @@
                             });
                             toastr.success(res.message, "Thông báo", { timeOut: 3000, "closeButton": true });
                             totalItem.text(parseInt(totalItem.text()) - 1);
-                            cartSize.text(parseInt(cartSize.text()) - 1);
+                            cartSize.text(totalItem.text);
                         }
                     },
-
                 });
             }
         });
