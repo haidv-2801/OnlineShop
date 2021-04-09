@@ -167,6 +167,7 @@
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContentController.cs" />
+    <Compile Include="Areas\Admin\Controllers\FbApiController.cs" />
     <Compile Include="Areas\Admin\Controllers\FeedBackController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\LoginController.cs" />
@@ -174,7 +175,11 @@
     <Compile Include="Areas\Admin\Controllers\ProductCategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserController.cs" />
+    <Compile Include="Areas\Admin\Models\cursors.cs" />
+    <Compile Include="Areas\Admin\Models\data.cs" />
+    <Compile Include="Areas\Admin\Models\FBPostsModel.cs" />
     <Compile Include="Areas\Admin\Models\LoginModel.cs" />
+    <Compile Include="Areas\Admin\Models\paging.cs" />
     <Compile Include="Areas\Admin\Models\UserModel.cs" />
     <Compile Include="Common\CommonConstants.cs" />
     <Compile Include="Common\Encryptor.cs" />
@@ -4071,6 +4076,8 @@
     <Content Include="Content\toastr.less" />
     <Content Include="Assets\Client\css\toastr.less" />
     <Content Include="Assets\Client\css\toastr.scss" />
+    <Content Include="Areas\Admin\Views\FbApi\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\FbApi\GetMyFacebookPageFeeds.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

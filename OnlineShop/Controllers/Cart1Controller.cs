@@ -16,27 +16,49 @@ namespace OnlineShop.Controllers
     public class Cart1Controller : Controller
     {
         private readonly static string CartCoockies = (string)Common.CommonConstants.CART_COOKIES;
+        private readonly static string UserSession = OnlineShop.Common.CommonConstants.USER_SESSION;
         // GET: Cart1
         public ActionResult Index()
         {
+            
             var list = new List<CartItem>();
             /*int pageSize = 5;
             int pageNumber = (page ?? 1);*/
-            var cart = Request.Cookies[CartCoockies];
-            if (cart != null)
-            {
-                var it = cart.Value.Split(',').ToList();
 
-                for (int i = 0; i < it.Count(); i++)
+            if (Session[UserSession] != null)
+            {
+                var user = (UserLogin)Session[UserSession];
+                var cartDao = new CartDao().ListByUsername(user.UserName);
+                var cartItem = new CartItem();
+                foreach(var item in cartDao)
                 {
-                    if (it[i] != "")
+                    var product = new ProductDao().ViewDetail(item.PriductID);
+                    if(product != null)
                     {
-                        var a = it[i].Split('-').ToList();
-                        var product = new ProductDao().ViewDetail(long.Parse(a[0]));
-                        var item = new CartItem();
-                        item.Product = product;
-                        item.Quantity = int.Parse(a[1]);
-                        list.Add(item);
+                        cartItem.Product = product;
+                        cartItem.Quantity = item.Quantity;
+                        list.Add(cartItem);
+                    }
+                }
+            }
+            else
+            {
+                var cart = Request.Cookies[CartCoockies];
+                if (cart != null)
+                {
+                    var it = cart.Value.Split(',').ToList();
+
+                    for (int i = 0; i < it.Count(); i++)
+                    {
+                        if (it[i] != "")
+                        {
+                            var a = it[i].Split('-').ToList();
+                            var product = new ProductDao().ViewDetail(long.Parse(a[0]));
+                            var item = new CartItem();
+                            item.Product = product;
+                            item.Quantity = int.Parse(a[1]);
+                            list.Add(item);
+                        }
                     }
                 }
             }

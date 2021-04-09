@@ -80,15 +80,23 @@ namespace OnlineShop.Controllers
         [ChildActionOnly]
         public PartialViewResult HeaderBottom()
         {
-            
-            var cart = Request.Cookies[Common.CommonConstants.CART_COOKIES];
-            var list = new List<string>();
-            if (cart != null)
+            var cartSize = 0;
+    
+            if (Session[CommonConstants.USER_SESSION] != null)
             {
-                var cartList = cart.Value.Split(',').ToList<string>();
-                list = cartList;
+                var userSession = (UserLogin)Session[CommonConstants.USER_SESSION];
+                cartSize = new CartDao().getSize(userSession.UserName);
             }
-            return PartialView("_header_bottom", list);
+            else
+            {
+                if (Request.Cookies[Common.CommonConstants.CART_COOKIES] != null)
+                {
+                    var cart = Request.Cookies[Common.CommonConstants.CART_COOKIES];
+                    cartSize = cart.Value.Split(',').Length;
+                }
+            }
+            
+            return PartialView("_header_bottom", cartSize.ToString());
         }
     }
 }
