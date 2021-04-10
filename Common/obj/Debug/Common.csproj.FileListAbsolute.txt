@@ -63,3 +63,9 @@ C:\Users\trant\OneDrive\Máy tính\WEB\OnlineShop\Common\obj\Debug\Common.csproj
 C:\Users\trant\OneDrive\Máy tính\WEB\OnlineShop\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
 C:\Users\trant\OneDrive\Máy tính\WEB\OnlineShop\Common\obj\Debug\Common.dll
 C:\Users\trant\OneDrive\Máy tính\WEB\OnlineShop\Common\obj\Debug\Common.pdb
+C:\Users\Admin\Desktop\g\OnlineShop\Common\bin\Debug\Common.dll
+C:\Users\Admin\Desktop\g\OnlineShop\Common\bin\Debug\Common.pdb
+C:\Users\Admin\Desktop\g\OnlineShop\Common\obj\Debug\Common.csprojAssemblyReference.cache
+C:\Users\Admin\Desktop\g\OnlineShop\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\g\OnlineShop\Common\obj\Debug\Common.dll
+C:\Users\Admin\Desktop\g\OnlineShop\Common\obj\Debug\Common.pdb

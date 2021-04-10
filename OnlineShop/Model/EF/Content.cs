@@ -9,6 +9,12 @@ namespace Model.EF
     [Table("Content")]
     public partial class Content
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Content()
+        {
+            Comments = new HashSet<Comment>();
+        }
+
         public long ID { get; set; }
 
         [StringLength(250)]
@@ -60,6 +66,11 @@ namespace Model.EF
 
         [StringLength(500)]
         public string Tags { get; set; }
+
+        [StringLength(2)]
         public string Language { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Comment> Comments { get; set; }
     }
 }

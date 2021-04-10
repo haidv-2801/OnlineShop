@@ -1,8 +1,16 @@
-﻿@model Model.EF.Content
+﻿@model Model.ViewModel.PostsVM
 @{
     ViewBag.Title = "Detail";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<script>
+    // Reply box popup JS
+    $(document).ready(function () {
+        $(".reply-popup").click(function () {
+            $(".reply-box").toggle();
+        });
+    });
+</script>
 @section Slider{
     <!-- banner-2 -->
     <div class="page-head_agile_info_w3l">
@@ -46,7 +54,7 @@
                         <!-- Author -->
                         <p class="lead">
                             by
-                            <a href="#">@Model.CreatedBy</a>
+                            <a href="#">@Model.Author</a>
                         </p>
 
                         <hr>
@@ -82,59 +90,121 @@
 
                         <hr>
 
+                        <!-- -->
                         <!-- Comments Form -->
-                        <div class="card my-4">
+                        <div class="card my-4" id="@string.Format("{0}_{1}","commentsBlock", Model.PostID)">
                             <h5 class="card-header">Leave a Comment:</h5>
                             <div class="card-body">
-                                <form>
-                                    <div class="form-group">
-                                        <textarea class="form-control" rows="3"></textarea>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                </form>
-                            </div>
-                        </div>
 
-                        <!-- Single Comment -->
-                        <div class="media mb-4">
-                            <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-                            <div class="media-body">
-                                <h5 class="mt-0">Commenter Name</h5>
-                                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                            </div>
-                        </div>
-
-                        <!-- Comment with nested comments -->
-                        <div class="media mb-4">
-                            <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-                            <div class="media-body">
-                                <h5 class="mt-0">Commenter Name</h5>
-                                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-
-                                <div class="media mt-4">
-                                    <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-                                    <div class="media-body">
-                                        <h5 class="mt-0">Commenter Name</h5>
-                                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                                    </div>
+                                <div class="form-group">
+                                    <textarea class="form-control" rows="3" id="@string.Format("{0}_{1}", "comment", Model.PostID)"></textarea>
                                 </div>
-
-                                <div class="media mt-4">
-                                    <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-                                    <div class="media-body">
-                                        <h5 class="mt-0">Commenter Name</h5>
-                                        Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                                    </div>
-                                </div>
+                                <button type="submit" class="btn btn-outline-success addComment" data-id="@Model.PostID">Submit</button>
 
                             </div>
                         </div>
+
+                        <div class="panel-footer">
+                            <button type="button" class="btn btn-success Comment" data-id="@Model.PostID" value="Comment">
+                                <span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Comment
+                            </button>
+                        </div>
+                        <!-- -->
 
                     </div>
                 </div>
             </div>
-            @Html.Action("ContentTag", "Content", Model.ID)
+            @Html.Action("ContentTag", "Content", Model.PostID)
             <!-- //product left -->
         </div>
     </div>
 </div>
+
+@section Scripts
+{
+
+    <script type="text/javascript">
+
+
+        $(document).ready(function () {
+
+
+            //Click Comment
+            $('.Comment').on('click', function () {
+
+                var id = $(this).attr("data-id");
+                var allCommentsArea = $('<div>').addClass('allComments_' + id);
+
+                //function that allow us to get all comments related to post id
+                $.ajax({
+
+                    type: 'GET',
+                    url: '@Url.Action("GetComments", "Comment")',
+                    data: { postId: id },
+                    success: function (response) {
+
+                        if ($('div').hasClass('allComments_' + id + ''))
+                        {
+                            $('div[class=allComments_' + id + ']').remove();
+                        }
+                        //console.log(response);
+
+
+                        allCommentsArea.html(response);
+                        allCommentsArea.appendTo('#commentsBlock_' + id);
+
+
+                    },
+                    error: function (response) {
+                        alert('Sorry: Comments cannot be loaded !');
+                    }
+
+
+                })
+
+            });
+
+            //Add New Comment
+            $('.addComment').on('click', function () {
+
+                var postId = $(this).attr('data-id');
+                var commentMsg = $('#comment_' + postId).val();
+                var dateTimeNow = new Date();
+
+                //alert('Hello');
+                var comment = {
+                    CommentMsg: commentMsg,
+                    CommentedDate: dateTimeNow.toLocaleString()
+                };
+
+                $.ajax({
+
+                    type: 'POST',
+                    url: '@Url.Action("AddComment", "Comment")',
+                    data: { comment, postId },
+                    success: function (response) {
+
+                        $('div[class=allComments_' + postId + ']').remove();
+
+                        var allCommentsArea = $('<div>').addClass('allComments_' + postId);
+                        allCommentsArea.html(response);
+
+                        allCommentsArea.appendTo('#commentsBlock_' + postId);
+
+                    },
+                    error: function (response) {
+                        alert('Sorry: Something Wrong');
+                    }
+
+                });
+
+            });
+
+            jQuery("time.timeago").timeago();
+
+        });
+
+    </script>
+
+
+}  

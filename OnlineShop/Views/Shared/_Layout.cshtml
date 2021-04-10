@@ -14,6 +14,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8" />
     <meta name="keywords" content="Electro Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <script>
         addEventListener("load", function () {
             setTimeout(hideURLbar, 0);
@@ -22,14 +24,6 @@
         function hideURLbar() {
             window.scrollTo(0, 1);
         }
-
-        /* END EXTERNAL SOURCE */
-        /* BEGIN EXTERNAL SOURCE */
-
-        ///<reference path="C:\Users\Admin\Desktop\main1\OnlineShop\OnlineShop\Views\Shared\ \Assets\Client\js\jquery-2.2.3.min.js" />
-
-        /* END EXTERNAL SOURCE */
-        /* BEGIN EXTERNAL SOURCE */
 
         $(document).ready(function () {
             $(".dropdown").hover(
@@ -43,14 +37,6 @@
                 }
             );
         });
-
-        /* END EXTERNAL SOURCE */
-        /* BEGIN EXTERNAL SOURCE */
-
-        ///<reference path="C:\Users\Admin\Desktop\main1\OnlineShop\OnlineShop\Views\Shared\ \Assets\Client\js\jquery.magnific-popup.js" />
-
-        /* END EXTERNAL SOURCE */
-        /* BEGIN EXTERNAL SOURCE */
 
         $(document).ready(function () {
             $('.popup-with-zoom-anim').magnificPopup({
@@ -66,14 +52,6 @@
             });
 
         });
-
-        /* END EXTERNAL SOURCE */
-        /* BEGIN EXTERNAL SOURCE */
-
-        ///<reference path="C:\Users\Admin\Desktop\main1\OnlineShop\OnlineShop\Views\Shared\ \Assets\Client\js\minicart.js" />
-
-        /* END EXTERNAL SOURCE */
-        /* BEGIN EXTERNAL SOURCE */
 
         paypals.minicarts.render(); //use only unique class names other than paypals.minicarts.Also Replace same class name in css and minicart.min.js
 
@@ -112,29 +90,6 @@
             //empty string means no validation error
         }
 
-        /* END EXTERNAL SOURCE */
-        /* BEGIN EXTERNAL SOURCE */
-
-        ///<reference path="C:\Users\Admin\Desktop\main1\OnlineShop\OnlineShop\Views\Shared\ \Assets\Client\js\scroll.js" />
-
-        /* END EXTERNAL SOURCE */
-        /* BEGIN EXTERNAL SOURCE */
-
-        ///<reference path="C:\Users\Admin\Desktop\main1\OnlineShop\OnlineShop\Views\Shared\ \Assets\Client\js\SmoothScroll.min.js" />
-
-        /* END EXTERNAL SOURCE */
-        /* BEGIN EXTERNAL SOURCE */
-
-        ///<reference path="C:\Users\Admin\Desktop\main1\OnlineShop\OnlineShop\Views\Shared\ \Assets\Client\js\move-top.js" />
-
-        /* END EXTERNAL SOURCE */
-        /* BEGIN EXTERNAL SOURCE */
-
-        ///<reference path="C:\Users\Admin\Desktop\main1\OnlineShop\OnlineShop\Views\Shared\ \Assets\Client\js\easing.js" />
-
-        /* END EXTERNAL SOURCE */
-        /* BEGIN EXTERNAL SOURCE */
-
         jquery(document).ready(function ($) {
             $(".scroll").click(function (event) {
                 event.preventDefault();
@@ -144,9 +99,6 @@
                 }, 1000);
             });
         });
-
-        /* END EXTERNAL SOURCE */
-        /* BEGIN EXTERNAL SOURCE */
 
         $(document).ready(function () {
             /*
@@ -188,6 +140,9 @@
           rel="stylesheet">
     <!-- //web fonts -->
     @Styles.Render("~/Content/css")
+
+
+
 </head>
 
 <body>
@@ -706,8 +661,7 @@
     </div>
     <!-- //copyright -->
     <!-- js-files -->
-    <!-- jquery -->
-    <script src="/Assets/Client/js/jquery-2.2.3.min.js"></script>
+    <!-- jquery --> 
     <!-- //jquery -->
     <!-- nav smooth scroll -->
     <script></script>
@@ -737,11 +691,11 @@
     <script>
         $(document).ready(
             function () {
-               
+
                 //add to cart
                 $('.btnaddtocart').on('click', function (e) {
                     e.preventDefault();
-                    
+
                     var curbtn = $(this);
                     var cartSize = $('#cartSize');
                     console.log('test');
@@ -804,11 +758,12 @@
             }
         );
     </script>
+
     <!-- //smooth-scrolling-of-move-up -->
     <!-- for bootstrap working -->
 
     <script src="/Assets/Client/js/bootstrap.js"></script>
-    <script src="/Assets/Client/js/jquery-3.4.1.min.js"></script>
+
     <script src="/Assets/Client/js/toastr.min.js"></script>
     <script src="/Assets/Client/js/bootbox.min.js"></script>
 
@@ -823,6 +778,10 @@
     <!-- //js-files -->
     @RenderSection("Scripts", required: false)
     @Scripts.Render("~/bundles/controller")
+
+    @Scripts.Render("~/bundles/bootstrap")
+
+    
 </body>
 </html>
 

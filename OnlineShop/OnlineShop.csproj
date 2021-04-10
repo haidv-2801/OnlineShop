@@ -183,6 +183,7 @@
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\Cart1Controller.cs" />
     <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\ContentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -3416,11 +3417,13 @@
     <Content Include="Assets\Client\js\bootstrap.js" />
     <Content Include="Assets\Client\js\controllers\cart1Controller.js" />
     <Content Include="Assets\Client\js\controllers\cartController.js" />
+    <Content Include="Assets\Client\js\controllers\commentController.js" />
     <Content Include="Assets\Client\js\controllers\Payment.js" />
     <Content Include="Assets\Client\js\creditly.js" />
     <Content Include="Assets\Client\js\creditly2.js" />
     <Content Include="Assets\Client\js\easing.js" />
     <Content Include="Assets\Client\js\easyResponsiveTabs.js" />
+    <Content Include="Assets\Client\js\handlebars-v4.0.12.js" />
     <Content Include="Assets\Client\js\imagezoom.js" />
     <Content Include="Assets\Client\js\jquery-2.2.3.min.js" />
     <Content Include="Assets\Client\js\jquery-3.4.1.min.js" />
@@ -3429,6 +3432,11 @@
     <Content Include="Assets\Client\js\minicart.js" />
     <Content Include="Assets\Client\js\move-top.js" />
     <Content Include="Assets\Client\js\script.js" />
+    <Content Include="Assets\Client\js\old-jquery\handlebars-v4.0.12.js" />
+    <Content Include="Assets\Client\js\old-jquery\jquery.timeago.js" />
+    <Content Include="Assets\Client\js\old-jquery\respond.js" />
+    <Content Include="Assets\Client\js\old-jquery\respond.min.js" />
+    <None Include="Assets\Client\js\old-jquery\_references.js" />
     <Content Include="Assets\Client\js\scroll.js" />
     <Content Include="Assets\Client\js\SmoothScroll.min.js" />
     <Content Include="Assets\Client\js\toastr.js" />
@@ -3519,6 +3527,7 @@
     <Content Include="Assets\Client_old\template\neworder.html" />
     <Content Include="Assets\Client_Plus\css\blog-home.css" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\site.css" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
     <Content Include="favicon.ico" />
@@ -3986,6 +3995,8 @@
     <Content Include="Views\Shared\_filter_tag.cshtml" />
     <Content Include="Views\Cart1\Index.cshtml" />
     <Content Include="Views\Cart1\Payment.cshtml" />
+    <Content Include="Views\Shared\_MySubComments.cshtml" />
+    <Content Include="Views\Shared\_MyComments.cshtml" />
     <None Include="Views\Shared\_product.cshtml" />
     <Content Include="Views\Shared\_slider.cshtml" />
     <Content Include="Web.config" />
@@ -4017,6 +4028,7 @@
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Views\Base\" />
     <Folder Include="Data\" />
+    <Folder Include="Views\Comment\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

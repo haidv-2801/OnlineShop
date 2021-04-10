@@ -1,4 +1,5 @@
 ﻿using Model.Dao;
+using Model.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,8 +19,18 @@ namespace OnlineShop.Controllers
         public ActionResult Detail(long id)
         {
             var model = new ContentDao().GetById(id);
+            PostsVM post = new PostsVM
+            {
+                PostID = model.ID,
+                Name = model.Name,
+                Message = model.Description,
+                PostedDate = (DateTime)model.CreatedDate,
+                Author = model.CreatedBy,
+                Image = model.Image
+            };
+
             ViewBag.Tags = new ContentDao().ListTag(id);
-            return View(model);
+            return View(post);
         }
         public PartialViewResult ContentTag(long id)
         {
