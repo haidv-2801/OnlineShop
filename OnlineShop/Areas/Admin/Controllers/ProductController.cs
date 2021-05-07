@@ -55,7 +55,6 @@ namespace OnlineShop.Areas.Admin.Controllers
                 model.CreatedDate = DateTime.Now;
                 model.Quantity = 0;
                 model.IncludedVAT = false;
-                //new ProductDao().Create(model);
 
                 var respone = GlobalVariables.WebApiClient.PostAsJsonAsync("Products", model);
                 respone.Wait();
@@ -71,10 +70,18 @@ namespace OnlineShop.Areas.Admin.Controllers
         [HttpGet]
         public ActionResult Edit(long id)
         {
-            var dao = new ProductDao();
-            var product = dao.GetById(id);
-            SetViewBag(product.CategoryID);
-            return View(product);
+            Product model = null;
+            var respone = GlobalVariables.WebApiClient.GetAsync("Products/" + id.ToString());
+            respone.Wait();
+            var result = respone.Result;
+            if (result.IsSuccessStatusCode)
+            {
+                var resultRecord = result.Content.ReadAsAsync<Product>();
+                resultRecord.Wait();
+                model = resultRecord.Result;
+            }
+            SetViewBag(model.CategoryID);
+            return View(model);
         }
 
         [HttpPost]
@@ -83,9 +90,18 @@ namespace OnlineShop.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var dao = new ProductDao();
-                var result = dao.Update(model);
-                if (result)
+                var respone = GlobalVariables.WebApiClient.PutAsJsonAsync("Products/" + model.ID, model);
+                respone.Wait();
+                var result = respone.Result;
+                bool stt = false;
+                if (result.IsSuccessStatusCode)
+                {
+                    var resultRecord = result.Content.ReadAsAsync<bool>();
+                    resultRecord.Wait();
+                    stt = resultRecord.Result;
+                }
+
+                if (stt)
                 {
                     return RedirectToAction("Index", "Product");
                 }
@@ -100,8 +116,11 @@ namespace OnlineShop.Areas.Admin.Controllers
         [HttpDelete]
         public ActionResult Delete(long id)
         {
-            new ProductDao().Delete(id);
-            return RedirectToAction("Index");
+            var respone = GlobalVariables.WebApiClient.DeleteAsync("Products/" + id.ToString());
+            respone.Wait();
+            var result = respone.Result;
+            if (result.IsSuccessStatusCode) return RedirectToAction("Index");
+            else return Content("Not success");
         }
         [HttpPost]
         public JsonResult ChangeStatus(long id)

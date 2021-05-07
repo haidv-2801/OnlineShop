@@ -41,42 +41,6 @@ namespace API.Controllers.Admin
 
             return Ok(product);
         }
-
-        // PUT: api/Products/5
-        [ResponseType(typeof(void))]
-        public IHttpActionResult PutProduct(long id, Product product)
-        {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            if (id != product.ID)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(product).State = EntityState.Modified;
-
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ProductExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return StatusCode(HttpStatusCode.NoContent);
-        }
-
         // POST: api/Products
         [HttpPost]
         public IHttpActionResult PostProduct(Product entity)
@@ -98,7 +62,37 @@ namespace API.Controllers.Admin
                 return Ok(entity.ID);
             }
         }
+        // PUT: api/Products/5
+        [HttpPut]
+        public IHttpActionResult PutProduct(long id, Product entity)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
+            if (id != entity.ID)
+            {
+                return BadRequest();
+            }
+
+            var product = db.Products.Find(entity.ID);
+            product.Name = entity.Name;
+            product.Code = entity.Code;
+            product.MetaTitle = entity.MetaTitle;
+            product.PromotionPrice = entity.PromotionPrice;
+            product.Description = entity.Description;
+            product.Image = entity.Image;
+            product.Detail = entity.Detail;
+            product.CategoryID = entity.CategoryID;
+            product.ModifiedBy = entity.ModifiedBy;
+            product.Warranty = entity.Warranty;
+            product.ModifiedDate = DateTime.Now;
+            db.SaveChanges();
+            return Ok(true);
+        }
+
+        
         // DELETE: api/Products/5
         [HttpDelete]
         public IHttpActionResult DeleteProduct(long id)
@@ -113,20 +107,6 @@ namespace API.Controllers.Admin
             db.SaveChanges();
 
             return Ok(product);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
-
-        private bool ProductExists(long id)
-        {
-            return db.Products.Count(e => e.ID == id) > 0;
         }
     }
 }
