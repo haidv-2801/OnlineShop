@@ -527,6 +527,17 @@
     <script>
         $(document).ready(
             function () {
+
+
+                //dropdown category
+
+                $("#agileinfo-nav_search").change(function () {
+                    var selectedItem = $("#agileinfo-nav_search option:selected").attr("id");
+                    var metatitle = $("#agileinfo-nav_search option:selected").attr("value");
+                    var redirectURL = '@Url.Action("Category","Product")';
+                    window.location.href = "/san-pham/" + metatitle + "-" + selectedItem;
+                });
+
                 //add to cart
                 $('.btnaddtocart').on('click', function (e) {
                     e.preventDefault();
