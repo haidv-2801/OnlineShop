@@ -57,6 +57,7 @@ namespace OnlineShop.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult Edit(Product model)
         {
             if (ModelState.IsValid)
