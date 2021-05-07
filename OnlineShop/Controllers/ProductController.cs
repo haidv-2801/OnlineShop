@@ -14,10 +14,10 @@ namespace OnlineShop.Controllers
     {
         private OnlineShopDbContext db = new OnlineShopDbContext();
         // GET: Product
-        public ActionResult Index(int page = 1, int pageSize = 10)
+        public ActionResult Index(string search, int page = 1, int pageSize = 10)
         {
             var dao = new ProductDao();
-            var model = dao.ListAllPaging(page, pageSize);
+            var model = dao.ListAllPaging(search, page, pageSize);
 
             return View(model);
         }
@@ -77,7 +77,7 @@ namespace OnlineShop.Controllers
             ViewBag.Next = page + 1;
             ViewBag.Prev = page - 1;
 
-            return View(model);
+            return View(model.ToPagedList(page, pageSize));
         }
     }
 }

@@ -149,3 +149,14 @@ C:\Users\Admin\Desktop\api-br\OnlineShop\OnlineShop\StaticResources\obj\Debug\St
 C:\Users\Admin\Desktop\api-br\OnlineShop\OnlineShop\StaticResources\obj\Debug\en\StaticResources.resources.dll
 C:\Users\Admin\Desktop\api-br\OnlineShop\OnlineShop\StaticResources\obj\Debug\StaticResources.dll
 C:\Users\Admin\Desktop\api-br\OnlineShop\OnlineShop\StaticResources\obj\Debug\StaticResources.pdb
+C:\Users\Admin\Desktop\lastest_webnet\CLONE\OnlineShop\OnlineShop\StaticResources\bin\Debug\StaticResources.dll
+C:\Users\Admin\Desktop\lastest_webnet\CLONE\OnlineShop\OnlineShop\StaticResources\bin\Debug\StaticResources.pdb
+C:\Users\Admin\Desktop\lastest_webnet\CLONE\OnlineShop\OnlineShop\StaticResources\bin\Debug\en\StaticResources.resources.dll
+C:\Users\Admin\Desktop\lastest_webnet\CLONE\OnlineShop\OnlineShop\StaticResources\obj\Debug\StaticResources.csprojAssemblyReference.cache
+C:\Users\Admin\Desktop\lastest_webnet\CLONE\OnlineShop\OnlineShop\StaticResources\obj\Debug\StaticResources.Resources.resources
+C:\Users\Admin\Desktop\lastest_webnet\CLONE\OnlineShop\OnlineShop\StaticResources\obj\Debug\StaticResources.Resources.en.resources
+C:\Users\Admin\Desktop\lastest_webnet\CLONE\OnlineShop\OnlineShop\StaticResources\obj\Debug\StaticResources.csproj.GenerateResource.cache
+C:\Users\Admin\Desktop\lastest_webnet\CLONE\OnlineShop\OnlineShop\StaticResources\obj\Debug\StaticResources.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\lastest_webnet\CLONE\OnlineShop\OnlineShop\StaticResources\obj\Debug\en\StaticResources.resources.dll
+C:\Users\Admin\Desktop\lastest_webnet\CLONE\OnlineShop\OnlineShop\StaticResources\obj\Debug\StaticResources.dll
+C:\Users\Admin\Desktop\lastest_webnet\CLONE\OnlineShop\OnlineShop\StaticResources\obj\Debug\StaticResources.pdb

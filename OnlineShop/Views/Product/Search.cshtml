@@ -1,101 +1,115 @@
-﻿
-@model  List<Model.ViewModel.ProductViewModel>
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<Model.ViewModel.ProductViewModel>
 
 @{
     var category = (Model.EF.ProductCategory)ViewBag.Category;
     ViewBag.Title = "Kết Quả Tìm Kiếm";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@section slide{
-    <div class="header_slide">
-        <div class="header_bottom_left">
-            <div class="categories">
-                @{ Html.RenderAction("ProductCategory", "Product");}
+
+@section Slider{
+    <!-- banner-2 -->
+    <div class="page-head_agile_info_w3l">
+
+    </div>
+    <!-- //banner-2 -->
+    <!-- page -->
+    <div class="services-breadcrumb">
+        <div class="agile_inner_breadcrumb">
+            <div class="container">
+                <ul class="w3_short">
+                    <li>
+                        <a href="index.html">Home</a>
+                        <i>|</i>
+                    </li>
+                    <li>Product</li>
+                </ul>
             </div>
         </div>
-        <div class="clear"></div>
     </div>
+    <!-- //page -->
 }
-<div class="content">
-    <div class="content_top">
-        <div class="heading">
-            <h3>Kết Quả Tìm Kiếm Theo Từ Khóa: @ViewBag.Keyword</h3>
-        </div>
-        <div class="see">
-            <p><a href="#">See all Products</a></p>
-        </div>
-        <div class="clear"></div>
-    </div>
-    <div class="section group">
-        @if (Model.Count > 0)
+<!-- top Products -->
+<div class="ads-grid py-sm-5 py-4">
+    <div class="container py-xl-4 py-lg-2">
+        <!-- tittle heading -->
+        <h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
+            <span>M</span>obiles
+            <span>&</span>
+            <span>C</span>omputers
+        </h3>
+        @if (Model.Count() > 0)
         {
-            foreach (var item in Model)
-            {
-                var link = "/chi-tiet/" + item.MetaTitle + "-" + item.ID;
-                <div class="grid_1_of_4 images_1_of_4">
-                    <a href="@link"><img src="@item.Images" alt="" /></a>
-                    <h2>@item.Name</h2>
-                    <span>@item.CateName</span>
-                    <div class="price-details">
-                        <div class="price-number">
-                            <p><span class="rupees">@(item.Price.HasValue ? item.Price.Value.ToString("N0") : "Liên hệ")</span></p>
+            <!-- //tittle heading -->
+            <div class="row">
+                <!-- product left -->
+                <div class="agileinfo-ads-display col-lg-9">
+                    <div class="wrapper">
+                        <!-- first section -->
+                        <div class="product-sec1 px-sm-4 px-3 py-sm-5  py-3 mb-4">
+                            <div class="row">
+                                @foreach (var item in Model)
+                                {
+                                    <div class="col-md-4 product-men" data-price="@item.PromotionPrice" data-name="@item.Name @item.MetaTitle" style="margin-top:25px">
+                                        <div class="men-pro-item simpleCart_shelfItem">
+                                            <div class="men-thumb-item text-center">
+                                                <img src="@item.Images" alt="@item.MetaTitle" style="max-width:200px; min-height: 200px;">
+                                                <div class="men-cart-pro">
+                                                    <div class="inner-men-cart-pro">
+                                                        <a href="/chi-tiet/@item.MetaTitle-@item.ID" class="link-product-add-cart">Quick View</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="item-info-product text-center border-top mt-4">
+                                                <h4 class="pt-1">
+                                                    <a href="/chi-tiet/@item.MetaTitle-@item.ID">@item.Name</a>
+                                                </h4>
+                                                <div class="info-product-price my-2">
+                                                    @{
+                                                        var price = "";
+                                                        var promotionPrice = "";
+                                                        if (item.Price.HasValue)
+                                                        {
+                                                            price = item.Price.Value.ToString("N0") + " VND";
+                                                        }
+                                                        if (item.PromotionPrice.HasValue)
+                                                        {
+                                                            promotionPrice = item.PromotionPrice.Value.ToString("N0") + " VND";
+                                                        }
+                                                    }
+                                                    <span class="item_price">@promotionPrice</span>
+                                                    <del>@price</del>
+                                                </div>
+                                                <div class="snipcart-details top_brand_home_details item_add single-item hvr-outline-out">
+                                                    <a href="/Cart1/AddToCart?productId=@item.ID&quantity=1" class="btn btn-primary btnaddtocart" data-id="@item.ID" data-quantity="1">Thêm vào giỏ</a>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
                         </div>
-                        <div class="add-cart">
-                            <a href="#" class="btn btn-primary btnaddtocart" data-id="@item.ID" data-quantity="1">Thêm vào giỏ</a>
-                        </div>
-                        <div class="clear"></div>
+                        <!-- //first section -->
                     </div>
-
                 </div>
-            }
-            <div class="clear"></div>
-            <!--Phân trang-->
-            if (ViewBag.TotalPage > 1)
-            {
-                var pageDisplay = (int)ViewBag.MaxPage;
-                int totalPage = (int)ViewBag.TotalPage;
-                int currentPage = ((int)ViewBag.Page);
+                @Html.Partial("_filter_right")
+                <!-- //product left -->
+            </div>
 
-                // Create numeric links
-                var startPageIndex = Math.Max(1, currentPage - pageDisplay / 2);
-                var endPageIndex = Math.Min(totalPage, currentPage + pageDisplay / 2);
-                var link = "/tim-kiem?keyword=" + ViewBag.Keyword;
-                <nav>
-                    <ul class="pagination">
-                        @if (currentPage > ViewBag.First)
-                        {
-                            <li><a href="@link&page=@ViewBag.First" title="Trang đầu" class="first"><i class="fa fa-angle-double-left"></i></a></li>
-                            <li>
-                                <a href="@link&page=@ViewBag.Prev" title="Trang trước" class="prev"><i class="fa fa-angle-left"></i></a>
-                            </li>
-
-                        }
-                        @for (int i = startPageIndex; i <= endPageIndex; i++)
-                        {
-                            if (currentPage == i)
-                            {
-
-                                <li> <a href="@link&page=@i" class="active" title="Trang @i">@i</a></li>
-                            }
-                            else
-                            {
-                                <li><a href="@link&page=@i" title="Trang @i" class="pos">@i</a></li>
-                            }
-                        }
-                        @if (currentPage < totalPage)
-                        {
-                            <li><a href="@link&page=@ViewBag.Next" class="next" title="Trang sau"><i class="fa fa-angle-right"></i></a></li>
-                            <li> <a href="@link&page=@ViewBag.Last" class="last" title="Trang cuối"><i class="fa fa-angle-double-right"></i></a></li>
-                        }
-
-                    </ul>
-                </nav>
-
-            }
+            <!-- Thêm mã phân trang -->
+            <div>
+                <br />
+                Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+                @Html.PagedListPager(Model, page => Url.Action("Index", "Product",
+                                 new { page }))
+            </div>
+            <!-- Kết thúc -->
         }
         else
         {
-            <span>Không có bản ghi nào</span>
+            <span>Không Có Sản Phẩm</span>
         }
     </div>
 </div>
+<!-- //top products -->
