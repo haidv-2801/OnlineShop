@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
 using System.Xml.Linq;
+using System.Net.Http;
+using PagedList;
 
 namespace OnlineShop.Areas.Admin.Controllers
 {
@@ -16,11 +18,23 @@ namespace OnlineShop.Areas.Admin.Controllers
         // GET: Admin/Product
         public ActionResult Index(string searchString, int page = 1, int pageSize = 10)
         {
-            var dao = new ProductDao();
-            var model = dao.ListAllPaging(searchString, page, pageSize);
-
-            ViewBag.SearchString = searchString;
-            return View(model);
+            IEnumerable<Product> products;
+            var respone = GlobalVariables.WebApiClient.GetAsync("Products?search=" + searchString);
+            respone.Wait();
+            var result = respone.Result;
+            if (result.IsSuccessStatusCode)
+            {
+                var resultRecord = result.Content.ReadAsAsync<IEnumerable<Product>>();
+                resultRecord.Wait();
+                products = resultRecord.Result.ToPagedList(page, pageSize);
+                ViewBag.SearchString = searchString;
+            }
+            else
+            {
+                products = Enumerable.Empty<Product>();
+                ModelState.AddModelError(string.Empty, "No record found!");
+            }
+            return View(products);
         }
 
         [HttpGet]
@@ -41,8 +55,15 @@ namespace OnlineShop.Areas.Admin.Controllers
                 model.CreatedDate = DateTime.Now;
                 model.Quantity = 0;
                 model.IncludedVAT = false;
-                new ProductDao().Create(model);
-                return RedirectToAction("Index");
+                //new ProductDao().Create(model);
+
+                var respone = GlobalVariables.WebApiClient.PostAsJsonAsync("Products", model);
+                respone.Wait();
+                var result = respone.Result;
+                if (result.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index");
+                }
             }
             SetViewBag();
             return View();

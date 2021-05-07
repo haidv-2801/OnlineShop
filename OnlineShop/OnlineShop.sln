@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "..\Common\Common.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StaticResources", "StaticResources\StaticResources.csproj", "{A30D29B9-2B45-4F4E-B09F-2B2B1B8A0F19}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{81995BB3-403B-4B10-8065-72DFBEB4112D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{A30D29B9-2B45-4F4E-B09F-2B2B1B8A0F19}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A30D29B9-2B45-4F4E-B09F-2B2B1B8A0F19}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A30D29B9-2B45-4F4E-B09F-2B2B1B8A0F19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{81995BB3-403B-4B10-8065-72DFBEB4112D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{81995BB3-403B-4B10-8065-72DFBEB4112D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{81995BB3-403B-4B10-8065-72DFBEB4112D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{81995BB3-403B-4B10-8065-72DFBEB4112D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

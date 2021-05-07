@@ -9,6 +9,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PagedList;
+using System.Net.Http;
 
 namespace OnlineShop.Areas.Admin.Controllers
 {
@@ -18,13 +19,24 @@ namespace OnlineShop.Areas.Admin.Controllers
         [HasCredential(RoleID = "VIEW_USER")]
         public ActionResult Index(string searchString, int page = 1, int pageSize = 10)
         {
-            var dao = new UserDao();
-            var model = dao.ListAllPaging(searchString, page, pageSize);
-            // giữ thông tin seach và phân trang theo kết quả search nếu đã search ra
-            // Ex :Admin,admin1,giang tìm theo admin có 2 kqua và phân trang theo 2 kqua đó
-            // sdung viewBag để thêm tham số sẽ phân trang bên view
-            ViewBag.SearchString = searchString;
-            return View(model);
+            //var dao = new UserDao();
+            IEnumerable<User> users;
+            var respone = GlobalVariables.WebApiClient.GetAsync("Users?search=" + searchString);
+            respone.Wait();
+            var result = respone.Result;
+            if (result.IsSuccessStatusCode)
+            {
+                var resultRecord = result.Content.ReadAsAsync<IEnumerable<User>>();
+                resultRecord.Wait();
+                users = resultRecord.Result.ToPagedList(page, pageSize);
+                ViewBag.SearchString = searchString;
+            }
+            else
+            {
+                users = Enumerable.Empty<User>();
+                ModelState.AddModelError(string.Empty, "No record found!");
+            }
+            return View(users);
         }
         [HttpGet]   // đưa thông tin 
         [HasCredential(RoleID = "ADD_USER")]
@@ -35,7 +47,21 @@ namespace OnlineShop.Areas.Admin.Controllers
         [HasCredential(RoleID = "EDIT_USER")]
         public ActionResult Edit(int id)
         {
-            var model = new UserDao().ViewDetail(id);
+            User model = null;
+            //var model = new UserDao().ViewDetail(id);
+            var respone = GlobalVariables.WebApiClient.GetAsync("Users/" + id.ToString());
+            respone.Wait();
+            var result = respone.Result;
+            if (result.IsSuccessStatusCode)
+            {
+                var resultRecord = result.Content.ReadAsAsync<User>();
+                resultRecord.Wait();
+                model = resultRecord.Result;
+            }
+            else
+            {
+                ModelState.AddModelError(string.Empty, "No record found!");
+            }
             return View(model);
         }
         [HttpPost]  // thông tin mới
@@ -54,10 +80,22 @@ namespace OnlineShop.Areas.Admin.Controllers
                 });
                 User u = config.CreateMapper().Map<User>(user);
                 u.CreatedDate = DateTime.Now;
-                long id = dao.Insert(u);
+                //long id = dao.Insert(u);
+                //
+                var respone = GlobalVariables.WebApiClient.PostAsJsonAsync("Users", u);
+                respone.Wait();
+                var result = respone.Result;
+                int id = 0;
+                if (result.IsSuccessStatusCode)
+                {
+                    var resultRecord = result.Content.ReadAsAsync<int>();
+                    resultRecord.Wait();
+                    id = resultRecord.Result;
+                }
+                //
                 if (id > 0)
                 {
-                    SetAlert("Thêm User Thành Công","success");
+                    SetAlert("Thêm User Thành Công", "success");
                     return RedirectToAction("Index", "User");
                 }
                 else if (id == -1)
@@ -91,8 +129,19 @@ namespace OnlineShop.Areas.Admin.Controllers
                     cfg.CreateMap<UserModel, User>();
                 });
                 User u = config.CreateMapper().Map<User>(user);
-                var result = dao.Update(u);
-                if (result)
+                //var result = dao.Update(u);
+
+                var respone = GlobalVariables.WebApiClient.PutAsJsonAsync("Users/" + u.ID, u);
+                respone.Wait();
+                var result = respone.Result;
+                bool stt = false;
+                if (result.IsSuccessStatusCode)
+                {
+                    var resultRecord = result.Content.ReadAsAsync<bool>();
+                    resultRecord.Wait();
+                    stt = resultRecord.Result;
+                }
+                if (stt)
                 {
                     SetAlert("Sửa User Thành Công", "success");
                     return RedirectToAction("Index", "User");
@@ -108,8 +157,11 @@ namespace OnlineShop.Areas.Admin.Controllers
         [HasCredential(RoleID = "DELETE_USER")]
         public ActionResult Delete(int id)
         {
-            new UserDao().Delete(id);
-            return RedirectToAction("Index");
+            var respone = GlobalVariables.WebApiClient.DeleteAsync("Users/" + id.ToString());
+            respone.Wait();
+            var result = respone.Result;
+            if (result.IsSuccessStatusCode) return RedirectToAction("Index");
+            else return Content("Not success");
         }
         [HttpPost]
         [HasCredential(RoleID = "EDIT_USER")]
@@ -120,7 +172,7 @@ namespace OnlineShop.Areas.Admin.Controllers
             return Json(new
             {
                 status = result
-            }) ;
+            });
         }
     }
 }
