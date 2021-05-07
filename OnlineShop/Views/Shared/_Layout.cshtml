@@ -14,6 +14,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8" />
     <meta name="keywords" content="Electro Store Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   
     <script>
         addEventListener("load", function () {
             setTimeout(hideURLbar, 0);
@@ -22,14 +24,6 @@
         function hideURLbar() {
             window.scrollTo(0, 1);
         }
-
-        /* END EXTERNAL SOURCE */
-        /* BEGIN EXTERNAL SOURCE */
-
-        ///<reference path="C:\Users\Admin\Desktop\main1\OnlineShop\OnlineShop\Views\Shared\ \Assets\Client\js\jquery-2.2.3.min.js" />
-
-        /* END EXTERNAL SOURCE */
-        /* BEGIN EXTERNAL SOURCE */
 
         $(document).ready(function () {
             $(".dropdown").hover(
@@ -44,13 +38,6 @@
             );
         });
 
-        /* END EXTERNAL SOURCE */
-        /* BEGIN EXTERNAL SOURCE */
-
-        ///<reference path="C:\Users\Admin\Desktop\main1\OnlineShop\OnlineShop\Views\Shared\ \Assets\Client\js\jquery.magnific-popup.js" />
-
-        /* END EXTERNAL SOURCE */
-        /* BEGIN EXTERNAL SOURCE */
 
         $(document).ready(function () {
             $('.popup-with-zoom-anim').magnificPopup({
@@ -67,34 +54,6 @@
 
         });
 
-        /* END EXTERNAL SOURCE */
-        /* BEGIN EXTERNAL SOURCE */
-
-        ///<reference path="C:\Users\Admin\Desktop\main1\OnlineShop\OnlineShop\Views\Shared\ \Assets\Client\js\minicart.js" />
-
-      
-        /* END EXTERNAL SOURCE */
-        /* BEGIN EXTERNAL SOURCE */
-
-        ///<reference path="C:\Users\Admin\Desktop\main1\OnlineShop\OnlineShop\Views\Shared\ \Assets\Client\js\scroll.js" />
-
-        /* END EXTERNAL SOURCE */
-        /* BEGIN EXTERNAL SOURCE */
-
-        ///<reference path="C:\Users\Admin\Desktop\main1\OnlineShop\OnlineShop\Views\Shared\ \Assets\Client\js\SmoothScroll.min.js" />
-
-        /* END EXTERNAL SOURCE */
-        /* BEGIN EXTERNAL SOURCE */
-
-        ///<reference path="C:\Users\Admin\Desktop\main1\OnlineShop\OnlineShop\Views\Shared\ \Assets\Client\js\move-top.js" />
-
-        /* END EXTERNAL SOURCE */
-        /* BEGIN EXTERNAL SOURCE */
-
-        ///<reference path="C:\Users\Admin\Desktop\main1\OnlineShop\OnlineShop\Views\Shared\ \Assets\Client\js\easing.js" />
-
-        /* END EXTERNAL SOURCE */
-        /* BEGIN EXTERNAL SOURCE */
 
         jquery(document).ready(function ($) {
             $(".scroll").click(function (event) {
@@ -106,24 +65,15 @@
             });
         });
 
-        /* END EXTERNAL SOURCE */
-        /* BEGIN EXTERNAL SOURCE */
 
         $(document).ready(function () {
-            /*
-            var defaults = {
-                containerID: 'toTop', // fading element id
-                containerHoverID: 'toTopHover', // fading element hover id
-                scrollSpeed: 1200,
-                easingType: 'linear'
-            };
-            */
             $().UItoTop({
                 easingType: 'easeOutQuart'
             });
 
         });
     </script>
+    
     <!-- //Meta tag Keywords -->
     <!-- Custom-Files -->
     <link href="/Assets/Client/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
@@ -141,6 +91,8 @@
 
     <link href="/Assets/Client/css/easy-responsive-tabs.css" rel="stylesheet" />
     <link href="/Assets/Client/css/creditly.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="/Assets/Client/css/flexslider.css" type="text/css" media="screen" />
     <!-- menu style -->
     <!-- //Custom-Files -->
     <!-- web fonts -->
@@ -604,7 +556,7 @@
     <script src=" /Assets/Client/js/scroll.js"></script>
     <!-- //scroll seller -->
     <!-- smoothscroll -->
-    <script src=" /Assets/Client/js/SmoothScroll.min.js"></script>
+ @*   <script src=" /Assets/Client/js/SmoothScroll.min.js"></script>*@
     <!-- //smoothscroll -->
     <!-- start-smooth-scrolling -->
     <script src=" /Assets/Client/js/move-top.js"></script>
@@ -614,11 +566,11 @@
     <script>
         $(document).ready(
             function () {
-               
+
                 //add to cart
                 $('.btnaddtocart').on('click', function (e) {
                     e.preventDefault();
-                    
+
                     var curbtn = $(this);
                     var cartSize = $('#cartSize');
                     console.log('test');
@@ -683,7 +635,7 @@
     <!-- for bootstrap working -->
 
     <script src="/Assets/Client/js/bootstrap.js"></script>
-    <script src="/Assets/Client/js/jquery-3.4.1.min.js"></script>
+
     <script src="/Assets/Client/js/toastr.min.js"></script>
     <script src="/Assets/Client/js/bootbox.min.js"></script>
 
@@ -697,7 +649,7 @@
     <!-- //for bootstrap working -->
     <!-- //js-files -->
     @RenderSection("Scripts", required: false)
-    @Scripts.Render("~/bundles/controller")
-</body>
+@*    @Scripts.Render("~/bundles/controller")*@
+    </body>
 </html>
 

@@ -1,8 +1,30 @@
-﻿ 
+﻿@model OnlineShop.Areas.Admin.Models.FBPostsModel
+
 @{
     ViewBag.Title = "GetMyFacebookPageFeeds";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
 <h2>GetMyFacebookPageFeeds</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nội dung</th>
+            <th scope="col">Ngày tạo</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            @{ var i = 0; }
+            @foreach (var item in Model.data)
+            {
+                <th>@{i++;}</th>
+                <td>@item.message</td>
+                <td>@item.created_time</td>
+            }
+        </tr>
+    </tbody>
+</table>
+
 

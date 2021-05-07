@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -21,8 +22,8 @@ namespace OnlineShop.Areas.Admin.Controllers
         public ActionResult GetMyFacebookPageFeeds()
         {
             var NumberofFeeds = 100;
-            string AccessToken = "EAApYW8RNvfQBACSeaFeCpZAIDJMAupTxdYIxZCXMpHZB1FVlOF8zprlH9PzM52D5Nva1nK1CksYwUFRnAKbHZC2oNbNSpM6NRHCz1Gy0Io1D4E0joQ1rdqdOWIeZCY3cnZBiorm1gvDDslSkzmjqopYp8gMO3go8ZAtUfYYKUZAXCC2pOhkL2qXiitwfNuHRxwvjFZBWpp5lPn20J2abQZBW87EFTEvayashDBPzxAWXYQBAZDZD";
-            string PageId = "112730510914245";
+            string AccessToken = ConfigurationManager.AppSettings["Access_Token"];
+            string PageId = ConfigurationManager.AppSettings["PageId"];
 
             FBPostsModel posts;
             string FeedRequestUrl = string.Concat("https://graph.facebook.com/v10.0/" + PageId + "/feed?limit=", NumberofFeeds, "&fields=id,message,created_time&access_token=", AccessToken);
@@ -35,8 +36,8 @@ namespace OnlineShop.Areas.Admin.Controllers
             {
                 using (var reader = new StreamReader(feedResponse.GetResponseStream()))
                 {
-                    String message =reader.ReadToEnd();
-                    posts = JsonConvert.DeserializeObject<FBPostsModel>(reader.ReadToEnd());
+                    String message = reader.ReadToEnd();
+                    posts = JsonConvert.DeserializeObject<FBPostsModel>(message);
                 }
             }
             return View(posts);
