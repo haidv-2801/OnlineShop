@@ -139,7 +139,7 @@ namespace OnlineShop.Controllers
         public JsonResult LoadProvince()
         {
             //láy ra 1 ptu có tên "Root" r ms lấy nhiều
-            var xmlDoc = XDocument.Load(Server.MapPath(@"~/Assets/Client/data/Provinces_Data.xml"));
+            var xmlDoc = XDocument.Load(Server.MapPath(@"~/Assets/Client_old/data/Provinces_Data.xml"));
             var xElements = xmlDoc.Element("Root").Elements("Item").Where(x => x.Attribute("type").Value == "province");
             var list = new List<ProvinceModel>();
             ProvinceModel province = null;
@@ -159,7 +159,7 @@ namespace OnlineShop.Controllers
         public JsonResult LoadDistrict(int provinceID)
         {
             //láy ra 1 ptu có tên "Root" r ms lấy nhiều
-            var xmlDoc = XDocument.Load(Server.MapPath(@"~/Assets/Client/data/Provinces_Data.xml"));
+            var xmlDoc = XDocument.Load(Server.MapPath(@"~/Assets/Client_old/data/Provinces_Data.xml"));
             var xElements = xmlDoc.Element("Root").Elements("Item").Single(x => x.Attribute("type").Value == "province"
             && int.Parse(x.Attribute("id").Value) == provinceID);
             // tỉnh 
