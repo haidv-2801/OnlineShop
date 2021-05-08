@@ -32,6 +32,7 @@ namespace Model.Dao
         }
         public long Insert(Order order)
         {
+            order.Status = true;
             db.Orders.Add(order);
             db.SaveChanges();
             return order.ID;

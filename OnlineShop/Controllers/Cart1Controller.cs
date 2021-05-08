@@ -224,6 +224,11 @@ namespace OnlineShop.Controllers
             order.ShipMobile = mobile;
             order.ShipEmail = email;
             order.ShipName = shipName;
+            if(Session[Common.CommonConstants.USER_SESSION] == null)
+            {
+                order.CustomerID = 0;
+            }
+            else order.CustomerID = ((UserLogin)Session[Common.CommonConstants.USER_SESSION]).UserID;
             try
             {
                 var id = new OrderDao().Insert(order);
@@ -256,7 +261,7 @@ namespace OnlineShop.Controllers
                     detailDao.Insert(orderDetail);
                     total += item.Product.PromotionPrice.HasValue ? (item.Product.PromotionPrice.Value * item.Quantity) : (item.Product.Price.GetValueOrDefault(0) * item.Quantity);
                 }
-                string content = System.IO.File.ReadAllText(Server.MapPath("/Assets/Client/template/neworder.html"));
+                string content = System.IO.File.ReadAllText(Server.MapPath("/Assets/Client_old/template/neworder.html"));
                 content = content.Replace("{{CustomerName}}", shipName);
                 content = content.Replace("{{Phone}}", mobile);
                 content = content.Replace("{{Email}}", email);
@@ -264,17 +269,17 @@ namespace OnlineShop.Controllers
                 content = content.Replace("{{Total}}", total.ToString("N0"));
                 var toEmail = ConfigurationManager.AppSettings["ToEmailAddress"].ToString();
 
-                new MailHelper().SendMail(email, "Đơn hàng mới từ LearningWeb", content);
-                new MailHelper().SendMail(toEmail, "Đơn hàng mới từ LearningWeb", content);
+                //new MailHelper().SendMail(email, "Đơn hàng mới từ LearningWeb", content);
+                new MailHelper().SendMail(toEmail, "Đơn hàng mới từ OnlineShop", content);
             }
-            catch (Exception)
+            catch (Exception e )
             {
                 //ghi log
-
-                return RedirectToAction("Success");
+                string t = e.Message;
+                return RedirectToAction("Fail");
 
             }
-            return RedirectToAction("Fail");
+            return RedirectToAction("Success");
         }
 
         public ActionResult Success()
