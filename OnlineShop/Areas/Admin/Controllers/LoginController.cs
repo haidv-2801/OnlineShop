@@ -39,6 +39,7 @@ namespace OnlineShop.Areas.Admin.Controllers
                     Session.Add(CommonConstants.SESSION_CREDENTIALS, listCredentials);
                     Session.Add(CommonConstants.USER_SESSION, userSession);
                     // cookie
+
                     var json = JsonConvert.SerializeObject(user);
 
                     var userCookie = new HttpCookie("user", json);
