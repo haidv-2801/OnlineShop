@@ -34,7 +34,14 @@
 </head>
 
 <body>
-
+    @{
+        if (Session["USER_SESSION"] == null)
+        {
+            <script>
+                window.href = "/Admin/Login/Index";
+            </script>
+        }
+    }
     <div id="wrapper">
 
         <!-- Navigation -->
@@ -48,9 +55,9 @@
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
-                @if(TempData["AlertMessage"] != null)
+                @if (TempData["AlertMessage"] != null)
                 {
-                    <div id="AlertBox" class = "alert @TempData["AlertType"] hide">
+                    <div id="AlertBox" class="alert @TempData["AlertType"] hide">
                         @TempData["AlertMessage"]
                     </div>
                 }

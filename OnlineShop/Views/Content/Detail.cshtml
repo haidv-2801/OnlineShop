@@ -153,14 +153,10 @@
 
                         allCommentsArea.html(response);
                         allCommentsArea.appendTo('#commentsBlock_' + id);
-
-
                     },
                     error: function (response) {
                         alert('Sorry: Comments cannot be loaded !');
                     }
-
-
                 })
 
             });
@@ -184,19 +180,21 @@
                     url: '@Url.Action("AddComment", "Comment")',
                     data: { comment, postId },
                     success: function (response) {
+                        if (response.status) {
+                            $('div[class=allComments_' + postId + ']').remove();
 
-                        $('div[class=allComments_' + postId + ']').remove();
+                            var allCommentsArea = $('<div>').addClass('allComments_' + postId);
+                            allCommentsArea.html(response);
 
-                        var allCommentsArea = $('<div>').addClass('allComments_' + postId);
-                        allCommentsArea.html(response);
-
-                        allCommentsArea.appendTo('#commentsBlock_' + postId);
-
+                            allCommentsArea.appendTo('#commentsBlock_' + postId);
+                        }
+                        else {
+                            window.location.href = "/User/Login";
+                        }
                     },
                     error: function (response) {
                         alert('Sorry: Something Wrong');
                     }
-
                 });
 
             });

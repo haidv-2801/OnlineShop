@@ -29,29 +29,33 @@ namespace OnlineShop.Controllers
             //bool result = false;
             Comment commentEntity = null;
             var userSess = (UserLogin)Session[Common.CommonConstants.USER_SESSION];
-            var userId = userSess.UserID;
-            var user = db.Users.FirstOrDefault(u => u.ID == userId);
-            var post = db.Contents.FirstOrDefault(p => p.ID == postId);
-
-            if (comment != null)
+            if (userSess == null) return RedirectToAction("GetComments", "Comment", new { postId = postId, status = false });
+            else
             {
-                commentEntity = new Comment
-                {
-                    Text = comment.CommentMsg,
-                    CreatedDate = comment.CommentedDate,
-                };
+                var userId = userSess.UserID;
+                var user = db.Users.FirstOrDefault(u => u.ID == userId);
+                var post = db.Contents.FirstOrDefault(p => p.ID == postId);
 
-                if (user != null && post != null)
+                if (comment != null)
                 {
-                    post.Comments.Add(commentEntity);
-                    user.Comments.Add(commentEntity);
+                    commentEntity = new Comment
+                    {
+                        Text = comment.CommentMsg,
+                        CreatedDate = comment.CommentedDate,
+                    };
 
-                    db.SaveChanges();
-                    //result = true;
+                    if (user != null && post != null)
+                    {
+                        post.Comments.Add(commentEntity);
+                        user.Comments.Add(commentEntity);
+
+                        db.SaveChanges();
+                        //result = true;
+                    }
                 }
+                return RedirectToAction("GetComments", "Comment", new { postId = postId, status = true });
             }
 
-            return RedirectToAction("GetComments", "Comment", new { postId = postId });
         }
 
         [HttpGet]
@@ -66,29 +70,32 @@ namespace OnlineShop.Controllers
         {
             Reply subCommentEntity = null;
             var userSess = (UserLogin)Session[Common.CommonConstants.USER_SESSION];
-            var userId = userSess.UserID;
-            var user = db.Users.FirstOrDefault(u => u.ID == userId);
-            var comment = db.Comments.FirstOrDefault(p => p.Id == ComID);
-
-            if (subComment != null)
+            if (userSess == null) return RedirectToAction("GetSubComments", "Comment", new { ComID = ComID, status = false });
+            else
             {
+                var userId = userSess.UserID;
+                var user = db.Users.FirstOrDefault(u => u.ID == userId);
+                var comment = db.Comments.FirstOrDefault(p => p.Id == ComID);
 
-                subCommentEntity = new Reply
+                if (subComment != null)
                 {
-                    Text = subComment.CommentMsg,
-                    CreatedDate = subComment.CommentedDate,
-                };
+                    subCommentEntity = new Reply
+                    {
+                        Text = subComment.CommentMsg,
+                        CreatedDate = subComment.CommentedDate,
+                    };
 
-                if (user != null && comment != null)
-                {
-                    comment.Replies.Add(subCommentEntity);
-                    user.Replies.Add(subCommentEntity);
+                    if (user != null && comment != null)
+                    {
+                        comment.Replies.Add(subCommentEntity);
+                        user.Replies.Add(subCommentEntity);
 
-                    db.SaveChanges();
-                    //result = true;
+                        db.SaveChanges();
+                        //result = true;
+                    }
                 }
+                return RedirectToAction("GetSubComments", "Comment", new { ComID = ComID, status = true });
             }
-            return RedirectToAction("GetSubComments", "Comment", new { ComID = ComID });
         }
     }
 }

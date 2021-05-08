@@ -103,17 +103,21 @@
                 url: '@Url.Action("AddSubComment", "Comment")',
                 data: { subComment, ComID },
                 success: function (response) {
+                    if (response.status) {
 
-                    if ($('div').hasClass('zoneReply_' + ComID + '')) {
-                        $('div [class=zoneReply_' + ComID + ']').remove();
+                        if ($('div').hasClass('zoneReply_' + ComID + '')) {
+                            $('div [class=zoneReply_' + ComID + ']').remove();
+                        }
+
+                        var selReply = $("<div>").addClass('zoneReply_' + ComID);
+
+                        selReply.append(response);
+                        selReply.prependTo($('.ReplayComments_' + ComID));
+
+                        $('.ReplayComments_' + ComID).show();
+                    } else {
+                        window.location.href = "/User/Login";
                     }
-
-                    var selReply = $("<div>").addClass('zoneReply_' + ComID);
-
-                    selReply.append(response);
-                    selReply.prependTo($('.ReplayComments_' + ComID));
-
-                    $('.ReplayComments_' + ComID).show();
 
                 },
                 error: function (response) {
