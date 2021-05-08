@@ -15,3 +15,9 @@ C:\Users\Admin\Desktop\lastest_webnet\CLONE\OnlineShop\Common\obj\Debug\Common.c
 C:\Users\Admin\Desktop\lastest_webnet\CLONE\OnlineShop\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
 C:\Users\Admin\Desktop\lastest_webnet\CLONE\OnlineShop\Common\obj\Debug\Common.dll
 C:\Users\Admin\Desktop\lastest_webnet\CLONE\OnlineShop\Common\obj\Debug\Common.pdb
+C:\Users\Admin\Desktop\New folder (2)\OnlineShop\Common\bin\Debug\Common.dll
+C:\Users\Admin\Desktop\New folder (2)\OnlineShop\Common\bin\Debug\Common.pdb
+C:\Users\Admin\Desktop\New folder (2)\OnlineShop\Common\obj\Debug\Common.csprojAssemblyReference.cache
+C:\Users\Admin\Desktop\New folder (2)\OnlineShop\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\New folder (2)\OnlineShop\Common\obj\Debug\Common.dll
+C:\Users\Admin\Desktop\New folder (2)\OnlineShop\Common\obj\Debug\Common.pdb

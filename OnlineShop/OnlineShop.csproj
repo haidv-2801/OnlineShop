@@ -101,6 +101,12 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -186,6 +192,7 @@
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\Cart1Controller.cs" />
     <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\ContentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -3517,11 +3524,17 @@
     <Content Include="Assets\Client_old\js\jquery.accordion.js" />
     <Content Include="Assets\Client_old\js\jquery.easing.js" />
     <Content Include="Assets\Client_old\js\move-top.js" />
+    <Content Include="Assets\Client\js\old-jquery\handlebars-v4.0.12.js" />
+    <Content Include="Assets\Client\js\old-jquery\jquery.timeago.js" />
+    <Content Include="Assets\Client\js\old-jquery\respond.js" />
+    <Content Include="Assets\Client\js\old-jquery\respond.min.js" />
+    <None Include="Assets\Client\js\old-jquery\_references.js" />
     <Content Include="Assets\Client_old\js\script.js" />
     <Content Include="Assets\Client_old\js\slides.min.jquery.js" />
     <Content Include="Assets\Client_old\js\startstop-slider.js" />
     <Content Include="Assets\Client_old\template\neworder.html" />
     <Content Include="Assets\Client_Plus\css\blog-home.css" />
+    <Content Include="Content\comment.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
@@ -4107,6 +4120,8 @@
     <Content Include="Views\Cart1\Payment.cshtml" />
     <Content Include="Views\Cart1\Success.cshtml" />
     <Content Include="Views\Cart1\Fail.cshtml" />
+    <Content Include="Views\Shared\_MyComments.cshtml" />
+    <Content Include="Views\Shared\_MySubComments.cshtml" />
     <None Include="Views\Shared\_product.cshtml" />
     <Content Include="Views\Shared\_slider.cshtml" />
     <Content Include="Web.config" />

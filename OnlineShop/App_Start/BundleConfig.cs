@@ -8,6 +8,11 @@ namespace OnlineShop
         // For more information on bundling, visit https://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
+                       
+                        "~/Assets/Client/js/old-jquery/respond.min.js",
+                        "~/Assets/Client/js/old-jquery/respond.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/jscore").Include(
                         "~/Assets/Client/js/jquery-1.11.3.min.js",
                         "~/Assets/Client/js/jquery-ui.js",
@@ -21,6 +26,11 @@ namespace OnlineShop
                         "~/Assets/Client/js/controller/baseController.js"
                         ));
 
+            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
+                      
+                      "~/Assets/Client/js/old-jquery/respond.js",
+                      "~/Assets/Client/js/old-jquery/jquery.timeago.js"));
+
             bundles.Add(new StyleBundle("~/bundles/core").Include(
                       "~/Assets/Client/css/style.css",
                       "~/Assets/Client/css/slider.css",
@@ -33,6 +43,10 @@ namespace OnlineShop
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/PagedList.css"
                 ));
+
+            bundles.Add(new StyleBundle("~/Content/cssComment").Include(
+                      "~/Content/comment.css"));
+
             BundleTable.EnableOptimizations = true;
         }
     }
