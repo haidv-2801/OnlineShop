@@ -16,6 +16,7 @@ namespace OnlineShop
             var session = (UserLogin)HttpContext.Current.Session[Common.CommonConstants.USER_SESSION];
             if (session == null)
             {
+                httpContext.Response.Redirect("~/Admin/Login");
                 return false;
             }
 
@@ -24,6 +25,11 @@ namespace OnlineShop
             if (privilegeLevels.Contains(this.RoleID) || session.GroupID == CommonConstants.ADMIN_GROUP)
             {
                 return true;
+            }
+            else if (session.GroupID == CommonConstants.MEMBER_GROUP)
+            {
+                httpContext.Response.Redirect("~/Admin/");
+                return false;
             }
             else
             {

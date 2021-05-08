@@ -67,7 +67,6 @@ namespace OnlineShop.Controllers
                         Response.Cookies["password"].Expires = DateTime.Now.AddYears(1);
                         Response.SetCookie(Response.Cookies["username"]);
                         Response.SetCookie(Response.Cookies["password"]);
-                        
                     }
                     return RedirectToAction("Index", "Home");
                 }

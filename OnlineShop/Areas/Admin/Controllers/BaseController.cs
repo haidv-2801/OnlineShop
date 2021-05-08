@@ -36,6 +36,7 @@ namespace OnlineShop.Areas.Admin.Controllers
             Session[CommonConstants.CurrentCulture] = ddlCulture;
             return Redirect(returnUrl);
         }
+
         protected override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             var session = (UserLogin)Session[CommonConstants.USER_SESSION];
@@ -43,6 +44,14 @@ namespace OnlineShop.Areas.Admin.Controllers
             {
                 filterContext.Result = new RedirectToRouteResult(new
                     RouteValueDictionary(new { controller = "Login", action = "Index", Area = "Admin" }));
+            }
+            else
+            {
+                if (session.GroupID != "ADMIN" && session.GroupID != "MOD")
+                {
+                    filterContext.Result = new RedirectToRouteResult(new
+                    RouteValueDictionary(new { controller = "Login", action = "Logout", Area = "Admin" }));
+                }
             }
             base.OnActionExecuting(filterContext);
         }

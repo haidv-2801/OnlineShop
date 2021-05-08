@@ -17,6 +17,7 @@ namespace OnlineShop.Areas.Admin.Controllers
         {
             return View();
         }
+        
         public ActionResult Login(LoginModel model)
         {
             if (ModelState.IsValid)
