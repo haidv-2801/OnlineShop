@@ -36,6 +36,7 @@ namespace OnlineShop.Controllers
         public ActionResult Login()
         {
             var cku = new LoginModel();
+
             if (Request.Cookies["username"] != null && Request.Cookies["password"] != null)
             {
                 cku.UserName = Request.Cookies["username"].Value;
@@ -43,6 +44,7 @@ namespace OnlineShop.Controllers
             }
             return View(cku);
         }
+
         [HttpPost]
         public ActionResult Login(LoginModel model)
         {
@@ -67,8 +69,11 @@ namespace OnlineShop.Controllers
                         Response.Cookies["password"].Expires = DateTime.Now.AddYears(1);
                         Response.SetCookie(Response.Cookies["username"]);
                         Response.SetCookie(Response.Cookies["password"]);
-                        
                     }
+
+                 /*   if (user.GroupID == "ADMIN")
+                        return  RedirectToAction("Index", "Home", new { area = "Admin" });*/
+
                     return RedirectToAction("Index", "Home");
                 }
                 else if (result == 0)
@@ -90,6 +95,8 @@ namespace OnlineShop.Controllers
             }
             return View(model);
         }
+
+
         [HttpPost]
         [CaptchaValidation("CaptchaCode", "registerCapcha", "Mã xác nhận không đúng!")]
         public ActionResult Register(RegisterModel model)

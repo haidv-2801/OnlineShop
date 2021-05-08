@@ -44,6 +44,14 @@ namespace OnlineShop.Areas.Admin.Controllers
                 filterContext.Result = new RedirectToRouteResult(new
                     RouteValueDictionary(new { controller = "Login", action = "Index", Area = "Admin" }));
             }
+            else 
+            {
+                if (session.GroupID != "ADMIN" && session.GroupID != "MOD")
+                {
+                    filterContext.Result = new RedirectToRouteResult(new
+                    RouteValueDictionary(new { controller = "Login", action = "Logout", Area = "Admin" }));
+                }
+            }
             base.OnActionExecuting(filterContext);
         }
         protected void SetAlert(string message, string type)

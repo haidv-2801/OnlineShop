@@ -52,20 +52,23 @@
                                 <img src="@user.Avatar" width="10">
                                 Welcome @user.UserName
                             </a>
-                            <ul class="dropdown-menu">
 
-                                <li class="dropdown-item">
-                                    @Html.ActionLink("Đăng xuất", "Logout", "User")
-                                </li>
-                            </ul>
+                            @if (user.GroupID == "ADMIN" || user.GroupID == "MOD")
+                            {
+                                <ul class="dropdown-menu">
+                                    <li class="dropdown-item">
+                                        @Html.ActionLink("Quản trị website", "Index", "Home", new { area = "Admin" })
+                                    </li>
+                                </ul>
+                            }
+
 
                         </li>
                         <li class="text-center border-right text-white dropdown">
                             <a class="text-white" href="#">
-                                @Html.ActionLink("Đăng xuất", "Logout", "User")
+                                <a href="/User/Logout" style="color:white">Đăng Xuất</a>
+                               @* @Html.ActionLink("Đăng xuất", "Logout", "User", new { @style="color:white;"})*@
                             </a>
-
-
                         </li>
                     }
                     else if (cookiesUserName != null)
@@ -84,7 +87,7 @@
                             </ul>
 
                         </li>
-                        
+
                     }
 
                 }
