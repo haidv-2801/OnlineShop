@@ -497,7 +497,7 @@
     <!-- //copyright -->
     <!-- js-files -->
     <!-- jquery -->
-    <script src="/Assets/Client/js/jquery-2.2.3.min.js"></script>
+    @*<script src="/Assets/Client/js/jquery-2.2.3.min.js"></script>*@
     <!-- //jquery -->
     <!-- nav smooth scroll -->
     <script></script>
@@ -607,8 +607,7 @@
 
     <script src="/Assets/Client/js/toastr.min.js"></script>
     <script src="/Assets/Client/js/bootbox.min.js"></script>
-
-    <script src="Assets/Client/js/creditly.js"></script>
+    <script src="/Assets/Client/js/creditly.js"></script>
     <script src="/Assets/Client/js/creditly2.js"></script>
     <script src="/Assets/Client/js/controllers/Payment.js"></script>
     <script src="/Assets/Client/js/jquery.magnific-popup.js"></script>
@@ -618,6 +617,7 @@
     <!-- //for bootstrap working -->
     <!-- //js-files -->
     @RenderSection("Scripts", required: false)
+    @Scripts.Render("~/bundles/bootstrap")
     @*    @Scripts.Render("~/bundles/controller")*@
 </body>
 </html>

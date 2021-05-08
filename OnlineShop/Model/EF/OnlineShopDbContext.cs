@@ -33,6 +33,8 @@ namespace Model.EF
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<Credential> Credentials { get; set; }
         public virtual DbSet<UserGroup> UserGroups { get; set; }
+        public virtual DbSet<Comment> Comments { get; set; }
+        public virtual DbSet<Reply> Replies { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
