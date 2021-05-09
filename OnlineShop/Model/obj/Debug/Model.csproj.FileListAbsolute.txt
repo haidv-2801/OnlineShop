@@ -357,3 +357,26 @@ C:\Users\Admin\Desktop\lastest_webnet\CLONE\OnlineShop\OnlineShop\Model\obj\Debu
 C:\Users\Admin\Desktop\lastest_webnet\CLONE\OnlineShop\OnlineShop\Model\obj\Debug\Model.pdb
 C:\Users\Admin\Desktop\New folder (2)\OnlineShop\OnlineShop\Model\bin\Debug\Newtonsoft.Json.dll
 C:\Users\Admin\Desktop\New folder (2)\OnlineShop\OnlineShop\Model\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Admin\Desktop\lastest_webnet\CLONE2\OnlineShop\OnlineShop\Model\bin\Debug\Model.dll.config
+C:\Users\Admin\Desktop\lastest_webnet\CLONE2\OnlineShop\OnlineShop\Model\bin\Debug\Model.dll
+C:\Users\Admin\Desktop\lastest_webnet\CLONE2\OnlineShop\OnlineShop\Model\bin\Debug\Model.pdb
+C:\Users\Admin\Desktop\lastest_webnet\CLONE2\OnlineShop\OnlineShop\Model\bin\Debug\Common.dll
+C:\Users\Admin\Desktop\lastest_webnet\CLONE2\OnlineShop\OnlineShop\Model\bin\Debug\EntityFramework.dll
+C:\Users\Admin\Desktop\lastest_webnet\CLONE2\OnlineShop\OnlineShop\Model\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Admin\Desktop\lastest_webnet\CLONE2\OnlineShop\OnlineShop\Model\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Admin\Desktop\lastest_webnet\CLONE2\OnlineShop\OnlineShop\Model\bin\Debug\PagedList.dll
+C:\Users\Admin\Desktop\lastest_webnet\CLONE2\OnlineShop\OnlineShop\Model\bin\Debug\PagedList.Mvc.dll
+C:\Users\Admin\Desktop\lastest_webnet\CLONE2\OnlineShop\OnlineShop\Model\bin\Debug\StaticResources.dll
+C:\Users\Admin\Desktop\lastest_webnet\CLONE2\OnlineShop\OnlineShop\Model\bin\Debug\Common.pdb
+C:\Users\Admin\Desktop\lastest_webnet\CLONE2\OnlineShop\OnlineShop\Model\bin\Debug\StaticResources.pdb
+C:\Users\Admin\Desktop\lastest_webnet\CLONE2\OnlineShop\OnlineShop\Model\bin\Debug\EntityFramework.xml
+C:\Users\Admin\Desktop\lastest_webnet\CLONE2\OnlineShop\OnlineShop\Model\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Admin\Desktop\lastest_webnet\CLONE2\OnlineShop\OnlineShop\Model\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Admin\Desktop\lastest_webnet\CLONE2\OnlineShop\OnlineShop\Model\bin\Debug\PagedList.xml
+C:\Users\Admin\Desktop\lastest_webnet\CLONE2\OnlineShop\OnlineShop\Model\bin\Debug\PagedList.Mvc.xml
+C:\Users\Admin\Desktop\lastest_webnet\CLONE2\OnlineShop\OnlineShop\Model\bin\Debug\en\StaticResources.resources.dll
+C:\Users\Admin\Desktop\lastest_webnet\CLONE2\OnlineShop\OnlineShop\Model\obj\Debug\Model.csprojAssemblyReference.cache
+C:\Users\Admin\Desktop\lastest_webnet\CLONE2\OnlineShop\OnlineShop\Model\obj\Debug\Model.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\lastest_webnet\CLONE2\OnlineShop\OnlineShop\Model\obj\Debug\Model.csproj.CopyComplete
+C:\Users\Admin\Desktop\lastest_webnet\CLONE2\OnlineShop\OnlineShop\Model\obj\Debug\Model.dll
+C:\Users\Admin\Desktop\lastest_webnet\CLONE2\OnlineShop\OnlineShop\Model\obj\Debug\Model.pdb
