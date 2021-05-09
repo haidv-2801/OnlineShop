@@ -27,13 +27,16 @@ namespace OnlineShop.Models
         public string Address { get; set; }
         [Display(Name = "Email")]
         [Required(ErrorMessage = "Yêu cầu nhập Email")]
+        [RegularExpression(@"^(?!\.)(""([^""\r\\]|\\[""\r\\])*""|"
+            + @"([-a-z0-9!#$%&'*+/=?^_`{|}~]|(?<!\.)\.)*)(?<!\.)"
+            + @"@[a-z0-9][\w\.-]*[a-z0-9]\.[a-z][a-z\.]*[a-z]$", ErrorMessage = "Sai định dạng email")]
         public string Email { get; set; }
         [Display(Name = "Số Điện Thoại")]
+        [RegularExpression("([0-9]+)", ErrorMessage = "Sai định dạng SĐT")]
         public string Phone { get; set; }
         [Display(Name = "Tỉnh/Thành")]
         public string ProvinceID { get; set; }
         [Display(Name = "Quận/Huyện")]
         public string DistrictID { get; set; }
-
     }
 }
