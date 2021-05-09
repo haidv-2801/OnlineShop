@@ -29,7 +29,7 @@ namespace OnlineShop.Controllers
             //bool result = false;
             Comment commentEntity = null;
             var userSess = (UserLogin)Session[Common.CommonConstants.USER_SESSION];
-            if (userSess == null) return RedirectToAction("GetComments", "Comment", new { postId = postId, status = false });
+            if (userSess == null) return RedirectToAction("Login", "User", new { postId = postId, status = false });
             else
             {
                 var userId = userSess.UserID;
@@ -70,7 +70,7 @@ namespace OnlineShop.Controllers
         {
             Reply subCommentEntity = null;
             var userSess = (UserLogin)Session[Common.CommonConstants.USER_SESSION];
-            if (userSess == null) return RedirectToAction("GetSubComments", "Comment", new { ComID = ComID, status = false });
+            if (userSess == null) return RedirectToAction("Login", "User", new { ComID = ComID, status = false });
             else
             {
                 var userId = userSess.UserID;
